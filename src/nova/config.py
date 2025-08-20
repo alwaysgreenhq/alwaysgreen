@@ -63,7 +63,7 @@ class NovaSettings(BaseModel):
             allowed = _default_allowed_domains()
 
         return cls(
-            openai_api_key="your_openai_api_key_here",
+            openai_api_key=_get("OPENAI_API_KEY"),
             anthropic_api_key=_get("ANTHROPIC_API_KEY"),
             openswe_base_url=_get("OPENSWE_BASE_URL"),
             openswe_api_key=_get("OPENSWE_API_KEY"),
