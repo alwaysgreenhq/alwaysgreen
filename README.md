@@ -9,6 +9,7 @@ Nova is an autonomous CI/CD autopatcher. On every pull request, Nova reproduces 
 Result: PRs arrive shippable, with full auditability and guardrails.
 
 ## Table of Contents
+
 - [Why Nova?](#why-nova)
 - [What Nova Does](#what-nova-does)
 - [How It Works (Autopatch Loop)](#how-it-works-autopatch-loop)
@@ -39,17 +40,20 @@ Writing software is easy; shipping it safely at velocity is hard. Nova closes th
 ## What Nova Does
 
 ### PR Review + Auto‑Fix (v1)
+
 - Summarizes failing checks and likely root causes.
 - Proposes and commits minimal diffs on a safe branch (`nova/fix/...`).
 - Re‑runs checks and iterates until green or limits are hit.
 - Works even with light/no tests via lint/type/build/import fixes and generated smoke tests (optional).
 
 ### Safe by Default
+
 - Never touches `main`.
 - Risk budget & limits (files/LOC/attempts).
 - One‑paragraph rationale, diff stats, and provenance in every patch.
 
 ### BYO Model
+
 Bring your own API key (OpenAI / others). You stay in control.
 
 ## How It Works (Autopatch Loop)
@@ -64,6 +68,7 @@ Each patch includes: rationale, diff stats, provenance. Limits and risk policy k
 ## Quickstart
 
 ### GitHub Actions
+
 Create `.github/workflows/nova.yml`:
 
 ```yaml
@@ -95,6 +100,7 @@ jobs:
 `--ci "pytest -q"` is your build/test command. Replace with whatever your pipeline runs.
 
 ### Local run
+
 ```bash
 pip install nova-ci-rescue
 export OPENAI_API_KEY=sk-...   # your key
@@ -104,6 +110,7 @@ nova run --ci "pytest -q"
 Nova will run your checks, attempt minimal fixes on a local branch, and re‑run until green or limits are reached.
 
 ### Other CI (GitLab, Buildkite)
+
 Install `nova-ci-rescue` in your CI job, then invoke:
 
 ```bash
@@ -206,17 +213,19 @@ Badges / Links
 - Taglines: “Not a coding copilot. A shipping copilot.” · “Every PR shippable, automatically.”
 
 ## Market One‑Pager
+
 <!-- BEGIN: MARKET ONE-PAGER -->
+
 # Nova (AI CI/CD Fix Agent) – TAM & SAM Overview
 
 Nova is an AI-based CI/CD review and fix agent that automatically reviews pull requests, identifies failing checks (tests, builds, lint, policy), and pushes minimal patches to fix them. Below we estimate Nova’s Total Addressable Market (TAM) and Serviceable Available Market (SAM) under two monetization models: a usage-based pricing (per fix) and an enterprise licensing (per team). The table summarizes annual market size, followed by key assumptions.
 
 ## TAM & SAM Estimates
 
-| Market Size | Usage-Based Model <br/>(per fix pricing) | Enterprise Model <br/>(team licensing) |
-|---|---|---|
-| **TAM (Global)** | ~\$100 M/year <br/><small>(mid-scenario; up to ~\$400 M in high-case)</small> | ~\$32 B/year <br/><small>(all dev teams globally)</small> |
-| **SAM (Initial focus)** | ~\$50 M/year <br/><small>(GitHub Actions users)</small> | ~\$24 B/year <br/><small>(teams on GitHub platform)</small> |
+| Market Size             | Usage-Based Model <br/>(per fix pricing)                                      | Enterprise Model <br/>(team licensing)                      |
+| ----------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| **TAM (Global)**        | ~\$100 M/year <br/><small>(mid-scenario; up to ~\$400 M in high-case)</small> | ~\$32 B/year <br/><small>(all dev teams globally)</small>   |
+| **SAM (Initial focus)** | ~\$50 M/year <br/><small>(GitHub Actions users)</small>                       | ~\$24 B/year <br/><small>(teams on GitHub platform)</small> |
 
 > (All figures are rough, back-of-envelope estimates.)
 
@@ -246,23 +255,23 @@ Actions/GitLab/Buildkite run your checks; Nova makes them pass—safely, automat
 
 ## Core markets Nova touches (size → forecast)
 
-| Category | Base (\$B) | Base Year | Forecast / Horizon | CAGR |
-|---|---:|---:|---|---:|
-| DevOps platforms | 16.13 | 2025 | \$43.17B by 2030 | 21.76% |
-| Continuous delivery (CI/CD) | 3.67 | 2023 | to 2030 | 19.2% (2024–2030) |
-| Automation testing | 20.60 | 2025 | \$63.05B by 2032 | 17.3% (2025–2032) |
-| AIOps platforms | 2.23 | 2025 | \$8.64B by 2032 | 21.4% (2025–2032) |
-| Observability tools & platforms | 2.94 | 2024 | \$5.40B by 2030 | 10.7% (2024–2030) |
-| Application security | 33.7 | 2024 | \$55.0B by 2029 | 10.3% (2024–2029) |
+| Category                        | Base (\$B) | Base Year | Forecast / Horizon |              CAGR |
+| ------------------------------- | ---------: | --------: | ------------------ | ----------------: |
+| DevOps platforms                |      16.13 |      2025 | \$43.17B by 2030   |            21.76% |
+| Continuous delivery (CI/CD)     |       3.67 |      2023 | to 2030            | 19.2% (2024–2030) |
+| Automation testing              |      20.60 |      2025 | \$63.05B by 2032   | 17.3% (2025–2032) |
+| AIOps platforms                 |       2.23 |      2025 | \$8.64B by 2032    | 21.4% (2025–2032) |
+| Observability tools & platforms |       2.94 |      2024 | \$5.40B by 2030    | 10.7% (2024–2030) |
+| Application security            |       33.7 |      2024 | \$55.0B by 2029    | 10.3% (2024–2029) |
 
 > Notes: scopes overlap (don’t sum). Windows vary; use directionally to show tailwinds.
 
 ## Adjacent AI‑dev categories (end‑game autonomy relevance)
 
-| Category | Base (\$B) | Base Year | Forecast / Horizon | CAGR |
-|---|---:|---:|---|---:|
-| AI in software development | 0.674 | 2024 | \$15.7B by 2033 | 42.3% (2025–2033) |
-| AI code assistants / code tools | 6.7–29.6 | 2024–2025 | \$25.7–97.9B by 2030 | ~25% / 24.8% |
+| Category                        | Base (\$B) | Base Year | Forecast / Horizon   |              CAGR |
+| ------------------------------- | ---------: | --------: | -------------------- | ----------------: |
+| AI in software development      |      0.674 |      2024 | \$15.7B by 2033      | 42.3% (2025–2033) |
+| AI code assistants / code tools |   6.7–29.6 | 2024–2025 | \$25.7–97.9B by 2030 |      ~25% / 24.8% |
 
 ## Adoption & volume (Why now)
 
@@ -289,10 +298,13 @@ CNCF Annual Survey 2024; GitHub Octoverse 2024; Stack Overflow Developer Survey 
 ---
 
 If helpful, I can harmonize all forecasts to a single window (e.g., 2025–2030) and add a PNG chart for the CAGRs.
+
 <!-- END: MARKET ONE-PAGER -->
 
 ## Business Model & Pricing
+
 <!-- BEGIN: BUSINESS MODEL -->
+
 # Nova Greenline™ — Business Model & Pricing
 
 Below I'll (1) name the billion‑dollar model in one sentence, then (2) lay out a concrete business model you can ship from the GitHub Marketplace up through enterprise ELAs, with pricing, packaging, ROI math, GTM, and defensibility that aligns with your repo's story.
@@ -305,9 +317,9 @@ Below I'll (1) name the billion‑dollar model in one sentence, then (2) lay out
 
 Why this scales:
 
-* **Mass adoption + measurable pain.** CI "main branch" success averages ~**82.15%**, leaving a persistent failure tail your agent can remediate. Autopatching that tail is quantifiable dollars saved in compute + developer time.
-* **DevOps is mainstream.** ~**83%** of developers participate in DevOps/CI/CD activities—the user base is there.
-* **Favorable channel economics.** The **GitHub Marketplace takes only 5%**, leaving 95% to you, which supports PLG distribution and strong margins.
+- **Mass adoption + measurable pain.** CI "main branch" success averages ~**82.15%**, leaving a persistent failure tail your agent can remediate. Autopatching that tail is quantifiable dollars saved in compute + developer time.
+- **DevOps is mainstream.** ~**83%** of developers participate in DevOps/CI/CD activities—the user base is there.
+- **Favorable channel economics.** The **GitHub Marketplace takes only 5%**, leaving 95% to you, which supports PLG distribution and strong margins.
 
 ---
 
@@ -317,24 +329,26 @@ Why this scales:
 
 **Wedge (PLG): GitHub App — "Nova CI Rescue" (Team‑ready)**
 
-* **Promises**: On every PR, reproduce failure → propose a minimal patch → commit to a safe side branch → re‑run checks until green (within a risk budget).
-* **Trust UX**: never touch `main`; show rationale, diff stats, provenance; configurable risk categories (auto‑commit vs suggest‑only).
-* **Distribution**: GitHub Marketplace (simple install, SSO), with 14‑day trial.
+- **Promises**: On every PR, reproduce failure → propose a minimal patch → commit to a safe side branch → re‑run checks until green (within a risk budget).
+- **Trust UX**: never touch `main`; show rationale, diff stats, provenance; configurable risk categories (auto‑commit vs suggest‑only).
+- **Distribution**: GitHub Marketplace (simple install, SSO), with 14‑day trial.
 
 **SKUs**
 
 1. **Starter (App Store)** – Flat plan
-   * For small teams/on‑ramps.
-   * Includes **BYO LLM** (customer pays their model bill), basic guardrails, and **N** monthly **Fix Credits** (see pricing).
-   * Extra Fix Credits available as in‑app top‑ups.
+
+   - For small teams/on‑ramps.
+   - Includes **BYO LLM** (customer pays their model bill), basic guardrails, and **N** monthly **Fix Credits** (see pricing).
+   - Extra Fix Credits available as in‑app top‑ups.
 
 2. **Team (Pods of 10)** – Team license + credits
-   * Adds "managed inference" (your model bill), advanced policy & audit, Slack/Jira hooks, test‑impact execution, and SSO.
-   * Billed per **team pod** (≈10 devs), mapping to the way engineering orgs actually budget pods/squads.
+
+   - Adds "managed inference" (your model bill), advanced policy & audit, Slack/Jira hooks, test‑impact execution, and SSO.
+   - Billed per **team pod** (≈10 devs), mapping to the way engineering orgs actually budget pods/squads.
 
 3. **Enterprise (Org‑wide ELA)** – Unlimited & SLA
-   * Org‑wide coverage, **on‑prem runner / private cloud**, custom risk policy, PII controls, audit ledger, and **Greenline SLA** (e.g., 90% of fixable reds auto‑remediated or credits back).
-   * Seatless org pricing (ELA) + optional volume **Fix Credits** for bursty workloads.
+   - Org‑wide coverage, **on‑prem runner / private cloud**, custom risk policy, PII controls, audit ledger, and **Greenline SLA** (e.g., 90% of fixable reds auto‑remediated or credits back).
+   - Seatless org pricing (ELA) + optional volume **Fix Credits** for bursty workloads.
 
 > **Note on Marketplace rules**: GitHub supports flat‑rate and per‑unit (per‑user) pricing in Marketplace; usage‑only (per‑fix) billing isn't natively supported. The pattern that works: ship flat/per‑user plans that include a monthly Fix‑Credit allowance, with optional credit packs handled either as: (a) additional Marketplace plans or (b) direct billing (if you also list at least one paid Marketplace plan). GitHub remits 95% of Marketplace revenue to you.
 
@@ -342,16 +356,16 @@ Why this scales:
 
 Anchor against what buyers already know:
 
-* **Copilot** normalizes **$19–$39/user/mo** enterprise budgets.
-* **Buildkite Pro** is **$30/active user/mo** and their Test Engine includes a **$0.10/test** usage component—so mixed seat + usage pricing is familiar.
+- **Copilot** normalizes **$19–$39/user/mo** enterprise budgets.
+- **Buildkite Pro** is **$30/active user/mo** and their Test Engine includes a **$0.10/test** usage component—so mixed seat + usage pricing is familiar.
 
 **Recommended price points (launch):**
 
-| Plan | What they get | Price (suggested) |
-|---|---|---|
-| **Starter (App Store)** | BYO‑LLM; 2,000 **Fix Credits**/mo; PR comments + safe‑branch patches; basic policy | **$299/org/mo** |
-| **Team (Pods of 10)** | Managed inference; 10,000 **Fix Credits**/mo; SSO; Slack/Jira; test‑impact execution; policy packs | **$1,200/pod/mo** (=$12k/yr/pod) |
-| **Enterprise ELA** | Org‑wide, on‑prem / VPC option, unlimited attempts*, Greenline SLA, custom policy/audit | **$150k–$500k/yr** (by org size); *soft‑cap with fair use |
+| Plan                    | What they get                                                                                      | Price (suggested)                                          |
+| ----------------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| **Starter (App Store)** | BYO‑LLM; 2,000 **Fix Credits**/mo; PR comments + safe‑branch patches; basic policy                 | **$299/org/mo**                                            |
+| **Team (Pods of 10)**   | Managed inference; 10,000 **Fix Credits**/mo; SSO; Slack/Jira; test‑impact execution; policy packs | **$1,200/pod/mo** (=$12k/yr/pod)                           |
+| **Enterprise ELA**      | Org‑wide, on‑prem / VPC option, unlimited attempts\*, Greenline SLA, custom policy/audit           | **$150k–$500k/yr** (by org size); \*soft‑cap with fair use |
 
 **Overage**: additional **Fix Credits** @ **$0.25–$0.50/fix attempt** (down‑tiered by volume).
 (You can start at $0.50 and step down at 100k+/mo.)
@@ -362,7 +376,7 @@ Anchor against what buyers already know:
 
 Use public benchmarks to do a fast payback story in‑product:
 
-* CircleCI's 2025 report shows **avg main‑branch success = 82.15%**, i.e., **17.85% failure** baseline. Suppose a customer runs **5,000 workflows/day**. Fails/day ≈ 5,000 × 17.85% = **893**. If Nova auto‑fixes **30%** of those, that's **268** saves/day. At **30 minutes** engineer time per failure avoided and a loaded rate of **$120/hour**, that's **~$16,065/day** or **~$4.18M/year** saved (260 workdays). Even at 5–10% autofix rates, the payback remains obvious.
+- CircleCI's 2025 report shows **avg main‑branch success = 82.15%**, i.e., **17.85% failure** baseline. Suppose a customer runs **5,000 workflows/day**. Fails/day ≈ 5,000 × 17.85% = **893**. If Nova auto‑fixes **30%** of those, that's **268** saves/day. At **30 minutes** engineer time per failure avoided and a loaded rate of **$120/hour**, that's **~$16,065/day** or **~$4.18M/year** saved (260 workdays). Even at 5–10% autofix rates, the payback remains obvious.
 
 You can show similar ROI for smaller teams—e.g., **600 runs/day** yields **~$501k/year** in avoided toil at a 30% autofix rate.
 
@@ -379,16 +393,16 @@ You can show similar ROI for smaller teams—e.g., **600 runs/day** yields **~$5
 
 A **Fix Credit** is one full autopatch attempt cycle on a PR (plan → patch → re‑run → critic).
 
-* **Charge on attempt**, **refund** on obvious non‑actionables (e.g., external outage).
-* Separate **"analyze‑only"** free tier (summarize failure, likely root causes) to keep the funnel wide.
+- **Charge on attempt**, **refund** on obvious non‑actionables (e.g., external outage).
+- Separate **"analyze‑only"** free tier (summarize failure, likely root causes) to keep the funnel wide.
 
 ### F. Enterprise features that justify the big check
 
-* **Greenline SLA**: commitment that X% of fixable CI reds are auto‑remediated (by category) within Y minutes—or give **service credits**.
-* **Risk policy & audit ledger:** regulators and security teams get a **verifiable record** of every bot action.
-* **Guardrails**: never touch `main`; LOC/attempt caps; category‑gated auto‑commits (lint/format/import/type), suggestions for risky fixes (deps/schema/security).
-* **Data governance**: on‑prem runners, model choice (BYO or managed), PII redaction, repo scoping.
-* **Change accountability**: owners, diffs, provenance, and revert buttons.
+- **Greenline SLA**: commitment that X% of fixable CI reds are auto‑remediated (by category) within Y minutes—or give **service credits**.
+- **Risk policy & audit ledger:** regulators and security teams get a **verifiable record** of every bot action.
+- **Guardrails**: never touch `main`; LOC/attempt caps; category‑gated auto‑commits (lint/format/import/type), suggestions for risky fixes (deps/schema/security).
+- **Data governance**: on‑prem runners, model choice (BYO or managed), PII redaction, repo scoping.
+- **Change accountability**: owners, diffs, provenance, and revert buttons.
 
 ### G. Moat: why this compounds defensibility
 
@@ -398,9 +412,9 @@ A **Fix Credit** is one full autopatch attempt cycle on a PR (plan → patch →
 
 ### H. Risks & how to handle them (brief)
 
-* **False positives / risky changes** → keep "risky categories" as **suggest‑only** until trust builds; clear rollbacks; diff stats & rationale in every patch.
-* **LLM cost volatility** → dual model strategy (BYO or managed); knob to cap tokens per attempt; compression/cot pruning.
-* **Marketplace constraints on usage billing** → sell **plans with included credits**; offer **credit add‑ons**; for very large customers, close **direct ELAs**.
+- **False positives / risky changes** → keep "risky categories" as **suggest‑only** until trust builds; clear rollbacks; diff stats & rationale in every patch.
+- **LLM cost volatility** → dual model strategy (BYO or managed); knob to cap tokens per attempt; compression/cot pruning.
+- **Marketplace constraints on usage billing** → sell **plans with included credits**; offer **credit add‑ons**; for very large customers, close **direct ELAs**.
 
 ---
 
@@ -408,14 +422,14 @@ A **Fix Credit** is one full autopatch attempt cycle on a PR (plan → patch →
 
 ### GitHub Marketplace listing
 
-* **Starter** – $299/org/month – 2,000 Fix Credits/month, BYO LLM, safe‑branch patches, PR comments, basic policy & audit.
-* **Team** – $1,200/pod/month (10 devs) – 10,000 Fix Credits/month, managed inference, SSO, Slack/Jira, test‑impact, advanced policy packs.
-* **Credit add‑ons** – $0.50 per attempt (tiered down to $0.25 at 100k+/mo).
+- **Starter** – $299/org/month – 2,000 Fix Credits/month, BYO LLM, safe‑branch patches, PR comments, basic policy & audit.
+- **Team** – $1,200/pod/month (10 devs) – 10,000 Fix Credits/month, managed inference, SSO, Slack/Jira, test‑impact, advanced policy packs.
+- **Credit add‑ons** – $0.50 per attempt (tiered down to $0.25 at 100k+/mo).
 
 ### Direct (Sales)
 
-* **Enterprise ELA** – $150k–$500k/year – org‑wide; on‑prem/VPC; unlimited\* with fair use; Greenline SLA; custom policy; audit API; DLP/PII controls; premium support.
-* Optional **savings‑share** rider (e.g., 5–10% of verified GitHub Actions compute **saved** vs baseline); keep as a lever only when procurement pushes for pay‑for‑outcomes. (You can estimate baselines from Actions usage metrics exports.)
+- **Enterprise ELA** – $150k–$500k/year – org‑wide; on‑prem/VPC; unlimited\* with fair use; Greenline SLA; custom policy; audit API; DLP/PII controls; premium support.
+- Optional **savings‑share** rider (e.g., 5–10% of verified GitHub Actions compute **saved** vs baseline); keep as a lever only when procurement pushes for pay‑for‑outcomes. (You can estimate baselines from Actions usage metrics exports.)
 
 ---
 
@@ -423,18 +437,18 @@ A **Fix Credit** is one full autopatch attempt cycle on a PR (plan → patch →
 
 ### Week 0–2:
 
-* Ship **Marketplace verified publisher** and **paid plans** (Starter/Team). (Marketplace requires annual + monthly prices and allows free trials.)
-* In‑product **ROI panel** based on observed workflow counts and your fix‑acceptance rate (CSV usage imports optional).
+- Ship **Marketplace verified publisher** and **paid plans** (Starter/Team). (Marketplace requires annual + monthly prices and allows free trials.)
+- In‑product **ROI panel** based on observed workflow counts and your fix‑acceptance rate (CSV usage imports optional).
 
 ### Week 3–6:
 
-* **Design partners** (3–5 logos) on Enterprise preview—lock down policy packs and the audit ledger.
-* Publish a **"State of CI Auto‑Repair"** blog with anonymized stats: % PR reds turned green; median time‑to‑green saved; top fix categories. Anchor it to CircleCI's 82% success baseline to show the slice you remove.
+- **Design partners** (3–5 logos) on Enterprise preview—lock down policy packs and the audit ledger.
+- Publish a **"State of CI Auto‑Repair"** blog with anonymized stats: % PR reds turned green; median time‑to‑green saved; top fix categories. Anchor it to CircleCI's 82% success baseline to show the slice you remove.
 
 ### Week 7–12:
 
-* Launch **Greenline SLA** and announce **on‑prem runner**.
-* Start **co‑marketing** with a CI vendor (Buildkite/GitHub Actions ecosystem partners). Buildkite's public pricing normalizes mixed license + usage—good adjacent narrative.
+- Launch **Greenline SLA** and announce **on‑prem runner**.
+- Start **co‑marketing** with a CI vendor (Buildkite/GitHub Actions ecosystem partners). Buildkite's public pricing normalizes mixed license + usage—good adjacent narrative.
 
 ---
 
@@ -446,11 +460,14 @@ Actions/GitLab/Buildkite run your checks; Nova makes them pass—and you only pa
 
 ---
 
-*If you want, I'll adapt this into (a) a pricing page draft and (b) a one‑slide sales ROI calculator you can drop into the repo's /docs.*
+_If you want, I'll adapt this into (a) a pricing page draft and (b) a one‑slide sales ROI calculator you can drop into the repo's /docs._
+
 <!-- END: BUSINESS MODEL -->
 
 ## Solution Audit & Technical Framing
+
 <!-- BEGIN: SOLUTION AUDIT -->
+
 # Nova "Green-SLA" Shipping Copilot – Solution Audit and Framing
 
 ## Problem Context: Failing CI/CD Drains Velocity
@@ -502,11 +519,13 @@ By mapping the manual runbook steps to these capabilities, Nova ensures that the
 Nova's solution is delivered through a combination of config-as-code, CI pipeline hooks, and lightweight CLI tools/scripts. The major components include:
 
 ### Nova Configuration (nova.yml)
-A file (e.g. `.github/nova.yml`) in the repo defines Nova's operating limits and policies. For example, you can set limits like `max_attempts: 2` (Nova will try at most 2 patches), `max_files_changed: 5`, `max_loc_delta: 40` (no patch bigger than 40 lines added/removed) etc. It also defines risk categories – e.g., Nova might auto-commit safe fixes (linting, formatting, simple type errors) but only suggest changes for higher-risk issues (dependency upgrades, major refactors). 
+
+A file (e.g. `.github/nova.yml`) in the repo defines Nova's operating limits and policies. For example, you can set limits like `max_attempts: 2` (Nova will try at most 2 patches), `max_files_changed: 5`, `max_loc_delta: 40` (no patch bigger than 40 lines added/removed) etc. It also defines risk categories – e.g., Nova might auto-commit safe fixes (linting, formatting, simple type errors) but only suggest changes for higher-risk issues (dependency upgrades, major refactors).
 
 The config also lists alert channels and rules (Slack, GitHub comments, PagerDuty escalation) and policy settings (like which paths are protected, whether to enforce CODEOWNERS checks, etc.). All these settings make Nova's behavior transparent and tunable via versioned code.
 
 ### GitHub Actions Workflows
+
 Nova integrates into CI via standard workflows. The solution provides ready-to-use YAML workflows:
 
 **PR Auto-Fix Workflow** (e.g., `.github/workflows/nova-ci-rescue.yml`): This runs on every pull request update. It checks out the code, ensures the environment is ready (using a preflight script), then invokes Nova's CLI (for example: `nova run --pr $PR_NUMBER --ci "pytest -q"`). Nova then attempts to fix any test failures on that PR. If Nova makes changes, it commits them to a new branch (like `nova/fix/123` for PR #123) and pushes, so the PR picks up the changes.
@@ -516,6 +535,7 @@ Nova integrates into CI via standard workflows. The solution provides ready-to-u
 **On-Demand Bisect Workflow** (`nova-bisect.yml`): This is a manually-triggered (`workflow_dispatch`) job that takes inputs (a "good" last-known-green SHA, a "bad" current SHA, and a test command). It uses `git bisect` under the hood to automatically run the failing test on different commits to pinpoint which commit introduced a failure.
 
 ### Utility Scripts
+
 Alongside the workflows, Nova provides scripts to assist in the CI environment:
 
 - `scripts/ci/preflight.sh` – This runs before Nova's main logic. It checks that the environment is sane and sets consistent environment settings.
@@ -523,6 +543,7 @@ Alongside the workflows, Nova provides scripts to assist in the CI environment:
 - `scripts/ci/env_fingerprint.sh` – This gathers information about the environment and dependencies and writes it to an artifact file.
 
 ### Guardrail Policies (OPA/Rego)
+
 The solution includes a policy file `policy/guardrails.rego` which encodes organization-specific rules for patches. Nova's orchestrator can query this policy before applying any fix. For example, the policy might say:
 
 - "If more than 5 files are changed or more than 40 lines are added/removed, that's a violation (too large of a fix)."
@@ -532,6 +553,7 @@ The solution includes a policy file `policy/guardrails.rego` which encodes organ
 If any such rule is violated, Nova will not auto-commit the patch; instead, it can either skip that fix or mark it for human review.
 
 ### Alerts and Notifications
+
 Nova is designed to integrate with team communication channels:
 
 **Slack**: You can configure a Slack webhook in the Nova config. The solution provides a sample shell script (`alerts/slack_payload.sh`) that formats a message with an emoji/status and a direct link to the relevant CI run or PR, then POSTs it to Slack.
@@ -559,6 +581,7 @@ At the heart of Nova is an autopatch loop that embodies the "reproduce and repai
 6. **Critique & Iterate**: If the tests are still failing, Nova goes back to step 1 or 2: it analyzes the new failure and will then come up with a refined plan or a new plan for the new error. Nova will iterate this cycle, but only up to a fixed number of attempts (`max_attempts`) to avoid an infinite loop.
 
 7. **Decide & Report**: After either succeeding or exhausting attempts, Nova makes a decision:
+
    - **Success**: Nova will update the PR with the fix branch commit(s) and typically add a comment like "✅ Nova auto-fix applied: all checks are now passing."
    - **Failure/Exceeded Budget**: If Nova couldn't fix the issue within the set attempts, Nova will comment with a failure report and attach artifacts.
 
@@ -626,7 +649,7 @@ The solution appears technically feasible and robust, covering the full spectrum
 In positioning Nova, it's important to convey that this is not just another CI tool, but a new category of developer assistant focused on shipping quality code faster:
 
 - **Category Name**: Self-Healing CI/CD
-- **Role**: Shipping Copilot  
+- **Role**: Shipping Copilot
 - **Core Promise**: Green-SLA
 - **Unit of Value**: "Minutes to Green" and "% PRs Auto-Fixed"
 - **Patch Style**: "minimal, auditable diffs"
@@ -637,4 +660,5 @@ In positioning Nova, it's important to convey that this is not just another CI t
 The Nova "Green-SLA Shipping Copilot" solution provides a comprehensive answer to the problem of failing CI pipelines by automating the diagnosis and repair process with safety and accountability. The audit shows that it covers all the critical bases: effectiveness, safety, transparency, completeness, adaptability, and vision.
 
 If implemented and calibrated correctly, Nova could significantly improve engineering productivity and confidence in the CI/CD process. It represents a promising step towards truly self-healing pipelines that change the mindset from "oh no, the build is red, who's going to fix it?" to "the build is red, but Nova is on it – it might be green by the time I get back from lunch."
+
 <!-- END: SOLUTION AUDIT -->
