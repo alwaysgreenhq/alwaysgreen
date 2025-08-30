@@ -57,7 +57,7 @@ jobs:
 
       - name: Create PR with fixes
         if: success()
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
           title: "🤖 Nova Auto-Fix: ${{ github.event.pull_request.title || 'Manual trigger' }}"
           body: |
