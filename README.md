@@ -1,74 +1,77 @@
-Nova: Self-Healing CI/CD
+# Nova — Self‑Healing CI/CD
 
 Actions/GitLab/Buildkite run your checks; Nova makes them pass — safely, automatically.
 
-Nova is an autonomous CI/CD autopatcher. On every pull request, Nova reproduces failures, maps them to likely fixes, proposes a minimal diff, commits the fix on a safe side-branch, and re-runs your pipeline until the suite is green. The result: every PR arrives shippable (automatically!), backed by full auditability and guardrails. In short, Nova isn't just another coding assistant – it's a shipping copilot for your code delivery pipeline.
+Not a coding copilot. A shipping copilot.
 
-Why Nova? (The Core Problem)
+Nova is an autonomous CI/CD autopatcher. On every pull request, Nova reproduces failures, maps them to likely fixes, proposes a minimal diff, commits on a safe side branch, and re‑runs your pipeline until the suite is green (or a safety limit is reached).
 
-Modern code editors have coding copilots (e.g. GitHub Copilot, Cursor, Claude Code) to help write code, but shipping that code safely to production is still fraught with friction. CI/CD is often where development velocity dies: broken builds, flaky tests, blocked merges, and constant babysitting of pipelines. Existing CI/CD tools mostly alert you to failures and block merges, but none reliably act to repair the problems.
+Result: PRs arrive shippable, with full auditability and guardrails.
 
-This gap creates massive waste. Writing software is easy; shipping it safely, at velocity, is hard. Every engineering org spends countless hours fixing red builds, re-running flaky tests, and diagnosing broken deployments – a trillion-dollar productivity problem industry-wide. Nova closes this loop by not only detecting CI failures, but automatically fixing them. (As we like to say: "Alerts are cheap; fixes are priceless. Nova does both.")
+## Table of Contents
+- [Why Nova?](#why-nova)
+- [What Nova Does](#what-nova-does)
+- [How It Works (Autopatch Loop)](#how-it-works-autopatch-loop)
+- [Quickstart](#quickstart)
+  - [GitHub Actions](#github-actions)
+  - [Local run](#local-run)
+  - [Other CI (GitLab, Buildkite)](#other-ci-gitlab-buildkite)
+- [Configuration](#configuration)
+- [Metrics Nova Improves](#metrics-nova-improves)
+- [Roadmap](#roadmap)
+- [What Nova Is / Isn’t](#what-nova-is--isnt)
+- [FAQ](#faq)
+- [Contributing](#contributing)
+- [License](#license)
 
-How Nova Works (Autopatch Loop)
+## Why Nova?
 
-Nova operates an intelligent four-step loop whenever it encounters a failed build or test, continually iterating until the pipeline goes green (or a safe limit is reached):
+Editors have coding copilots (Copilot, Cursor, Claude Code). Shipping is still where velocity dies:
 
-Plan – Classify the failure and draft a repair plan within a risk budget (deciding what kind of fix is safe to attempt).
+- Red builds, flaky tests, blocked merges.
+- Hours of babysitting pipelines and parsing logs.
+- Tools that alert and gate, but rarely act and repair.
 
-Generate – Propose a minimal patch to address the issue (no more than ~40 lines changed, applied on a side branch).
+Writing software is easy; shipping it safely at velocity is hard. Nova closes the loop by not only detecting failures but fixing them automatically.
 
-Patch – Apply the changes on a new branch (e.g. nova/fix/...), never touching the main branch directly.
+“Alerts are cheap; fixes are priceless. Nova does both.”
 
-Critic – Re-run the CI checks on the patched branch. If failures persist, Nova critiques the result and goes back to planning the next fix, iterating until the build is green or a sensible attempt limit is reached.
+## What Nova Does
 
-Each Nova-generated patch comes with a one-paragraph rationale explaining the change, diff stats, and provenance info for audit. All fixes are done under strict guardrails – Nova only commits to a separate fix branch and within the predefined safety limits – ensuring you remain in control of your codebase.
+### PR Review + Auto‑Fix (v1)
+- Summarizes failing checks and likely root causes.
+- Proposes and commits minimal diffs on a safe branch (`nova/fix/...`).
+- Re‑runs checks and iterates until green or limits are hit.
+- Works even with light/no tests via lint/type/build/import fixes and generated smoke tests (optional).
 
-Features & Current Capabilities (v1: PR Auto-Fix)
+### Safe by Default
+- Never touches `main`.
+- Risk budget & limits (files/LOC/attempts).
+- One‑paragraph rationale, diff stats, and provenance in every patch.
 
-Nova's initial focus is automatic pull request repair. On every new or updated PR, Nova can analyze the CI results and:
+### BYO Model
+Bring your own API key (OpenAI / others). You stay in control.
 
-Summarize the failing checks and potential root causes (so you understand what went wrong).
+## How It Works (Autopatch Loop)
 
-Automatically apply fixes for common failure causes (on a nova/fix branch) and re-run the pipeline to verify the solution.
+- **Plan** — Classify the failure and draft a repair plan within a risk budget.
+- **Generate** — Propose a minimal patch (e.g., LOCΔ ≤ 40) on a side branch.
+- **Patch** — Apply changes to `nova/fix/...` (never `main`).
+- **Critic** — Re‑run checks; if still failing, critique → loop.
 
-Handle even PRs with minimal or no test coverage by targeting issues like lint errors, type errors, import problems, build failures, etc., and even generating basic smoke tests on the fly to cover critical paths if needed.
+Each patch includes: rationale, diff stats, provenance. Limits and risk policy keep changes reviewable and safe.
 
-This essentially provides a "green build SLA" for your pull requests – Nova works behind the scenes to ensure your PRs end up green and merge-ready with little to no human intervention. It's not magic; it's systematic autopatching of the mundane breakages that slow teams down.
+## Quickstart
 
-Metrics Nova Improves: Nova is measured by how much it boosts your CI/CD efficiency. Key metrics include:
+### GitHub Actions
+Create `.github/workflows/nova.yml`:
 
-Time-to-Green: ↓ Decreased – Faster turnaround to get failing pipelines back to green.
-
-Red PR Auto-Fix Rate: ↑ Increased – A higher percentage of broken PRs are automatically fixed without developer input.
-
-Accepted Diff Rate: ↑ Increased – Most of Nova's proposed patches are minimal and accurate, so maintainers accept them at a high rate.
-
-Reviewer Babysitting Time: ↓ Reduced – Less time spent by developers manually troubleshooting CI issues and babysitting pipelines.
-
-Roadmap: From PR Patches to Full Autopilot
-
-Nova's vision is self-healing CI/CD. We're starting with the most pressing pain point (PR fixes) and expanding towards an autonomous CI/CD guardian. Planned stages:
-
-V1 (Current) – PR Auto-Fix: Focus on minimal diffs to fix linting errors, type failures, simple test failures, import/build issues, etc., on pull requests. (This is the current "wedge" feature proving out Nova's value.)
-
-V2 – Policy & Test Synthesis: Enforce org-specific policies and standards (conventions, security checks, etc.) and automatically generate missing micro-tests to improve coverage. Nova will not just fix breaks, but also proactively add tests or adjustments to meet compliance/coverage requirements.
-
-V3 – Flake & Reliability Stabilizer: Identify flaky tests or unreliable infrastructure in CI. Nova will quarantine or rewrite flaky tests and optimize CI execution (for example, intelligent test selection or parallelization tweaks) to improve reliability and speed.
-
-V4 – Deploy Guardian: Extend Nova's self-healing to deployments. Monitor canary releases and SLOs; if a release is failing or degrading, Nova can auto-rollback or auto-forward to a safe state and even prepare surgical PRs to address the root cause of production issues.
-
-Endgame: Nova becomes the neutral autopilot brain for any CI/CD system, guaranteeing that every code change from PR to production stays green. In the endgame, you can trust that if a pipeline turns red, Nova will handle it or guide you to the fix – ensuring every PR is shippable, automatically.
-
-Getting Started
-
-You can integrate Nova into your existing CI pipeline in minutes. For example, on GitHub Actions you can add a workflow file to trigger Nova on pull requests:
-
-# .github/workflows/nova.yml
+```yaml
 name: Nova CI Rescue
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
   nova:
     runs-on: ubuntu-latest
@@ -80,46 +83,124 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with: 
+        with:
           python-version: "3.12"
       - run: pip install nova-ci-rescue
-      - run: nova run --pr "${{ github.event.pull_request.number }}" --ci "pytest -q"
+      - name: Run Nova on this PR
+        run: nova run --pr "${{ github.event.pull_request.number }}" --ci "pytest -q"
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+```
 
+`--ci "pytest -q"` is your build/test command. Replace with whatever your pipeline runs.
 
-In the above workflow, Nova is installed via pip and then invoked on the current pull request. The --ci "pytest -q" argument tells Nova how to run your test suite (in this case, using pytest; you can replace this with your build/test command). Note: Nova uses OpenAI's API under the hood for code reasoning and generation – be sure to provide your API key as an environment variable (OPENAI_API_KEY) or secret in your CI setup.
+### Local run
+```bash
+pip install nova-ci-rescue
+export OPENAI_API_KEY=sk-...   # your key
+nova run --ci "pytest -q"
+```
 
-Nova can run on other CI platforms (GitLab CI, Buildkite, etc.) in a similar way: install the nova-ci-rescue package in your pipeline and execute nova run pointing to the current PR or commit and your test command. Wherever your tests run, Nova can step in to make them pass!
+Nova will run your checks, attempt minimal fixes on a local branch, and re‑run until green or limits are reached.
 
-Configuration
+### Other CI (GitLab, Buildkite)
+Install `nova-ci-rescue` in your CI job, then invoke:
 
-Nova's behavior can be tuned via a configuration file (by default, .github/nova.yml in your repo). Here is an example configuration and what it means:
+```bash
+nova run --ci "pytest -q"
+```
 
+Nova works wherever your checks run. Use your CI’s secret manager to provide `OPENAI_API_KEY`.
+
+## Configuration
+
+Create `.github/nova.yml` (path is configurable) to set limits and risk policy:
+
+```yaml
 limits:
   max_attempts: 3
   max_files_changed: 5
   max_loc_delta: 40
+
 risk:
   auto_commit: ["lint", "format", "import", "type"]
   suggest_only: ["dependency", "schema"]
+
 features:
   generate_smoke_tests: true
   test_impact_selection: true
+```
 
+- **limits** — Safety rails that keep diffs small and reviewable.
+- **risk** — Low‑risk categories may auto‑commit; riskier ones become suggestions for human review.
+- **features**
+  - `generate_smoke_tests`: synthesize tiny checks for uncovered critical paths.
+  - `test_impact_selection`: run primarily impacted tests to speed iterations.
 
-limits: Safety limits to control Nova's scope. In the above example, Nova will try at most 3 attempts to fix a PR, will not modify more than 5 files, and will keep the total lines of code changed under 40. These limits ensure fixes remain minimal and reviewable.
+Tune these to your comfort level (e.g., move categories into `auto_commit` as trust grows).
 
-risk: Categories of fixes and how to handle them. Here, certain low-risk fix types (lint, format, import, type errors) are allowed to be auto-committed by Nova, whereas riskier changes like dependency upgrades or schema migrations are marked as "suggest_only" (Nova will propose a fix but not commit it automatically, prompting a human to review/approve). This risk budget mechanism keeps Nova's automated changes safe.
+## Metrics Nova Improves
 
-features: Optional feature toggles. generate_smoke_tests: true allows Nova to create simple smoke tests for uncovered code paths when tests are lacking, helping to prevent regressions. test_impact_selection: true enables intelligent test selection, so Nova (or your CI) can run only tests impacted by the changes, speeding up re-test cycles.
+- Time‑to‑Green ↓
+- % of Red PRs Auto‑Fixed ↑
+- Accepted‑Diff Rate ↑
+- Reviewer Babysitting Minutes ↓
 
-You can adjust these settings based on your comfort level. For instance, if you fully trust Nova for certain kinds of changes, you can move them into the auto_commit list. The config ensures Nova fits your project's risk profile.
+Track these over time to quantify ROI.
 
-Contributing
+## Roadmap
 
-Contributions to Nova are welcome! 🤝 If you have ideas, bug reports, or improvements, please open an issue or pull request. We encourage feedback and community involvement to make CI/CD fully autonomous and robust.
+- **V1 (now)** — PR Auto‑Fix: minimal diffs for lint/type/build/test/import failures.
+- **V2** — Policy & Test Synthesis: enforce conventions/security; generate missing micro‑tests.
+- **V3** — Flake & Reliability Stabilizer: quarantine/rewrite flakies; optimize CI time.
+- **V4** — Deploy Guardian: canary & SLO watch; auto‑rollback/forward; surgical PRs.
 
-For major changes or proposals, consider starting a discussion first to align on design. Please ensure that any contributed code is covered by appropriate tests (Nova should help keep itself green, after all!). We plan to add a Contributing Guide with more details soon – including how to run Nova locally for development, coding style, and our CLA/License info.
+Endgame: A self‑healing CI/CD autopilot that keeps PR→prod green across any runner.
 
-Nova is on a mission to eliminate the pain of broken builds and slow, error-prone deployments. With Nova as your shipping copilot, every PR can arrive green and ready to merge – every PR shippable, automatically.
+## What Nova Is / Isn’t
+
+- **Is**: An agentic reviewer/fixer that patches the obvious & repetitive breakages before humans look.
+- **Isn’t**: An IDE coding assistant. Nova focuses on shipping, not typing.
+- **Is**: Safe, auditable, and conservative by default.
+- **Isn’t**: A “big bang” refactorer; Nova prefers minimal diffs with clear rationales.
+
+## FAQ
+
+**Do I need a big test suite?**
+No. Nova already helps with lint/type/import/build failures and can generate small smoke tests. More tests = more autopatch power.
+
+**Will Nova touch main?**
+No. Nova works on `nova/fix/...` (or your configured branch). You review/merge.
+
+**What if a fix looks risky?**
+Riskier categories land as suggestions (PR comments or draft commits). You stay in control via the risk policy.
+
+**Which languages are supported?**
+Nova’s v1 flow is optimized for Python projects (e.g., pytest). Additional stacks are on the roadmap.
+
+**Which models can I use?**
+Bring your own API key (e.g., OpenAI). Configure via `OPENAI_API_KEY`. (Follow your model provider’s data policies.)
+
+**How do I observe what Nova changed?**
+Each patch includes a one‑paragraph rationale, diff stats, and provenance. The CI logs also show Nova’s plan/critic loop.
+
+## Contributing
+
+Contributions welcome!
+
+- Open an issue or PR with repro steps and failing checks.
+- Keep diffs minimal where possible (Nova approves!).
+- Larger proposals: start a discussion first.
+
+We’ll add a full CONTRIBUTING guide and code of conduct shortly.
+
+## License
+
+MIT © Nova contributors
+
+---
+
+Badges / Links
+
+- Install: `pip install nova-ci-rescue`
+- Taglines: “Not a coding copilot. A shipping copilot.” · “Every PR shippable, automatically.”
