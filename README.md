@@ -1,10 +1,10 @@
-# Nova — Self‑Healing CI/CD
+# AlwaysGreen — Self‑Healing CI/CD
 
-Actions/GitLab/Buildkite run your checks; Nova makes them pass — safely, automatically.
+Actions/GitLab/Buildkite run your checks; AlwaysGreen makes them pass — safely, automatically.
 
 Not a coding copilot. A shipping copilot.
 
-Nova is an autonomous CI/CD autopatcher. On every pull request, Nova reproduces failures, maps them to likely fixes, proposes a minimal diff, commits on a safe side branch, and re‑runs your pipeline until the suite is green (or a safety limit is reached).
+AlwaysGreen is an autonomous CI/CD autopatcher. On every pull request, AlwaysGreen reproduces failures, maps them to likely fixes, proposes a minimal diff, commits on a safe side branch, and re‑runs your pipeline until the suite is green (or a safety limit is reached).
 
 Result: PRs arrive shippable, with full auditability and guardrails.
 

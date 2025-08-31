@@ -1,4 +1,4 @@
-"""Agent module for Nova CI-Rescue."""
+"""Agent module for AlwaysGreen."""
 
 from .state import AgentState
 

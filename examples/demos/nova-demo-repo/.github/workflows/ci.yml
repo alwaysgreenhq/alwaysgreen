@@ -65,10 +65,10 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          echo "🤖 Nova CI-Rescue: Attempting to fix failing tests..."
+          echo "🤖 AlwaysGreen: Attempting to fix failing tests..."
 
           # Clone Nova repository using PAT
-          echo "Cloning Nova CI-Rescue repository..."
+          echo "Cloning AlwaysGreen repository..."
           git config --global url."https://${{ secrets.PAT }}@github.com/".insteadOf "https://github.com/"
 
                     # Clone Nova with proper error handling
@@ -90,7 +90,7 @@ jobs:
           cd -
 
           # Run real Nova fix
-          echo "Running Nova CI-Rescue..."
+          echo "Running AlwaysGreen..."
           export OPENAI_API_KEY="${{ secrets.OPENAI_API_KEY }}"
           PYTHONPATH=../nova-temp/src python -m nova.cli fix . --max-iters 3 --timeout 300
 
@@ -123,7 +123,7 @@ jobs:
             echo "❌ **Initial tests failed**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
 
-            echo "🤖 **Nova CI-Rescue is fixing the issues!**" >> $GITHUB_STEP_SUMMARY
+            echo "🤖 **AlwaysGreen is fixing the issues!**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
 
             if [ "${{ github.event_name }}" == "push" ]; then

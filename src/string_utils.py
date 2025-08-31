@@ -1,4 +1,4 @@
-"""String utilities module for demonstrating Nova CI-Rescue."""
+"""String utilities module for demonstrating AlwaysGreen."""
 
 import re
 from typing import Optional

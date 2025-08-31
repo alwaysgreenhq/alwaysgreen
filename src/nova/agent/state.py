@@ -1,5 +1,5 @@
 """
-Agent state management for Nova CI-Rescue.
+Agent state management for AlwaysGreen.
 """
 
 from dataclasses import dataclass, field

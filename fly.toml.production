@@ -1,4 +1,4 @@
-app = "nova-ci-rescue"
+app = "alwaysgreen"
 primary_region = "iad"
 
 [build]

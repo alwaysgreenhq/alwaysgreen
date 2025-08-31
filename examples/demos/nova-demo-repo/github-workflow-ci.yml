@@ -62,10 +62,10 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          echo "🤖 Nova CI-Rescue: Attempting to fix failing tests..."
+          echo "🤖 AlwaysGreen: Attempting to fix failing tests..."
 
           # Install Nova from GitHub repository
-          pip install "git+https://github.com/novasolve/nova-ci-rescue.git@demo/latest" || pip install -e ../src
+          pip install "git+https://github.com/novasolve/alwaysgreen.git@demo/latest" || pip install -e ../src
 
           # Run Nova fix
           nova fix . --max-iters 3 --timeout 300 || python -m nova.cli fix . --max-iters 3
@@ -102,7 +102,7 @@ jobs:
             echo "" >> $GITHUB_STEP_SUMMARY
 
             if [ "${{ github.event_name }}" == "push" ]; then
-              echo "🤖 **Nova CI-Rescue ran and fixed the issues!**" >> $GITHUB_STEP_SUMMARY
+              echo "🤖 **AlwaysGreen ran and fixed the issues!**" >> $GITHUB_STEP_SUMMARY
               echo "" >> $GITHUB_STEP_SUMMARY
               echo "Check the [Actions tab](../actions) for the auto-generated PR." >> $GITHUB_STEP_SUMMARY
             else

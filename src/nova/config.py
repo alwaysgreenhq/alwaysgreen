@@ -33,7 +33,7 @@ def load_yaml_config(config_path: Path) -> Dict[str, Any]:
         )
 
 
-class NovaSettings(BaseModel):
+class AlwaysGreenSettings(BaseModel):
     """Runtime configuration for Nova CI‑Rescue.
 
     Uses python-dotenv to load a local .env (if present), and reads values from
@@ -65,7 +65,7 @@ class NovaSettings(BaseModel):
     whole_file_mode: bool = True  # Use whole file replacement instead of patches
 
     @classmethod
-    def from_env(cls) -> "NovaSettings":
+    def from_env(cls) -> "AlwaysGreenSettings":
         """Load settings from .env and environment variables."""
         load_dotenv()
 
@@ -79,9 +79,9 @@ class NovaSettings(BaseModel):
             except Exception:
                 return default
 
-        # Optional override for domain allow-list via NOVA_ALLOWED_DOMAINS.
+        # Optional override for domain allow-list via ALWAYSGREEN_ALLOWED_DOMAINS.
         # Accepts CSV ("a.com,b.com") or JSON-like with brackets.
-        domains_env = os.environ.get("NOVA_ALLOWED_DOMAINS")
+        domains_env = os.environ.get("ALWAYSGREEN_ALLOWED_DOMAINS")
         if domains_env:
             raw = domains_env.strip()
             if raw.startswith("[") and raw.endswith("]"):
@@ -99,34 +99,34 @@ class NovaSettings(BaseModel):
             openswe_base_url=_get("OPENSWE_BASE_URL"),
             openswe_api_key=_get("OPENSWE_API_KEY"),
             allowed_domains=allowed,
-            max_iters=_get_int("NOVA_MAX_ITERS", 5),
-            run_timeout_sec=_get_int("NOVA_RUN_TIMEOUT_SEC", 300),
-            test_timeout_sec=_get_int("NOVA_TEST_TIMEOUT_SEC", 120),
-            llm_call_timeout_sec=_get_int("NOVA_LLM_TIMEOUT_SEC", 60),
-            min_repo_run_interval_sec=_get_int("NOVA_MIN_REPO_RUN_INTERVAL_SEC", 600),
-            max_daily_llm_calls=_get_int("NOVA_MAX_DAILY_LLM_CALLS", 200),
+            max_iters=_get_int("ALWAYSGREEN_MAX_ITERS", 5),
+            run_timeout_sec=_get_int("ALWAYSGREEN_RUN_TIMEOUT_SEC", 300),
+            test_timeout_sec=_get_int("ALWAYSGREEN_TEST_TIMEOUT_SEC", 120),
+            llm_call_timeout_sec=_get_int("ALWAYSGREEN_LLM_TIMEOUT_SEC", 60),
+            min_repo_run_interval_sec=_get_int("ALWAYSGREEN_MIN_REPO_RUN_INTERVAL_SEC", 600),
+            max_daily_llm_calls=_get_int("ALWAYSGREEN_MAX_DAILY_LLM_CALLS", 200),
             warn_daily_llm_calls_pct=float(
-                os.environ.get("NOVA_WARN_DAILY_LLM_CALLS_PCT", 0.8)
+                os.environ.get("ALWAYSGREEN_WARN_DAILY_LLM_CALLS_PCT", 0.8)
             ),
-            telemetry_dir=os.environ.get("NOVA_TELEMETRY_DIR", "telemetry"),
-            enable_telemetry=os.environ.get("NOVA_ENABLE_TELEMETRY", "false").lower()
+            telemetry_dir=os.environ.get("ALWAYSGREEN_TELEMETRY_DIR", "telemetry"),
+            enable_telemetry=os.environ.get("ALWAYSGREEN_ENABLE_TELEMETRY", "false").lower()
             == "true",
-            default_llm_model=os.environ.get("NOVA_DEFAULT_LLM_MODEL", "gpt-5"),
-            pr_llm_model=os.environ.get("NOVA_PR_LLM_MODEL", "gpt-4o"),
-            reasoning_effort=os.environ.get("NOVA_REASONING_EFFORT", "high"),
-            whole_file_mode=os.environ.get("NOVA_WHOLE_FILE_MODE", "true").lower()
+            default_llm_model=os.environ.get("ALWAYSGREEN_DEFAULT_LLM_MODEL", "gpt-5"),
+            pr_llm_model=os.environ.get("ALWAYSGREEN_PR_LLM_MODEL", "gpt-4o"),
+            reasoning_effort=os.environ.get("ALWAYSGREEN_REASONING_EFFORT", "high"),
+            whole_file_mode=os.environ.get("ALWAYSGREEN_WHOLE_FILE_MODE", "true").lower()
             == "true",
         )
 
 
-_CACHED_SETTINGS: Optional[NovaSettings] = None
+_CACHED_SETTINGS: Optional[AlwaysGreenSettings] = None
 
 
-def get_settings() -> NovaSettings:
-    """Return a cached NovaSettings instance loaded from environment (.env)."""
+def get_settings() -> AlwaysGreenSettings:
+    """Return a cached AlwaysGreenSettings instance loaded from environment (.env)."""
     global _CACHED_SETTINGS
     if _CACHED_SETTINGS is None:
-        _CACHED_SETTINGS = NovaSettings.from_env()
+        _CACHED_SETTINGS = AlwaysGreenSettings.from_env()
     return _CACHED_SETTINGS
 
 
@@ -136,7 +136,7 @@ def get_settings() -> NovaSettings:
 # Provide that alias while still supporting the cached getter.
 # This is initialized at import time; if you need to re-read env in tests,
 # call `_reset_settings_cache()` and re-import or reassign.
-settings: NovaSettings = get_settings()
+settings: AlwaysGreenSettings = get_settings()
 
 
 def _reset_settings_cache() -> None:
@@ -147,14 +147,14 @@ def _reset_settings_cache() -> None:
 
 
 __all__ = [
-    "NovaSettings",
+    "AlwaysGreenSettings",
     "get_settings",
     "settings",
     "_reset_settings_cache",
     "load_yaml_config",
 ]
 
-settings: NovaSettings = get_settings()
+settings: AlwaysGreenSettings = get_settings()
 
 
 def _reset_settings_cache() -> None:
@@ -165,14 +165,14 @@ def _reset_settings_cache() -> None:
 
 
 __all__ = [
-    "NovaSettings",
+    "AlwaysGreenSettings",
     "get_settings",
     "settings",
     "_reset_settings_cache",
     "load_yaml_config",
 ]
 
-settings: NovaSettings = get_settings()
+settings: AlwaysGreenSettings = get_settings()
 
 
 def _reset_settings_cache() -> None:
@@ -183,14 +183,14 @@ def _reset_settings_cache() -> None:
 
 
 __all__ = [
-    "NovaSettings",
+    "AlwaysGreenSettings",
     "get_settings",
     "settings",
     "_reset_settings_cache",
     "load_yaml_config",
 ]
 
-settings: NovaSettings = get_settings()
+settings: AlwaysGreenSettings = get_settings()
 
 
 def _reset_settings_cache() -> None:
@@ -201,14 +201,14 @@ def _reset_settings_cache() -> None:
 
 
 __all__ = [
-    "NovaSettings",
+    "AlwaysGreenSettings",
     "get_settings",
     "settings",
     "_reset_settings_cache",
     "load_yaml_config",
 ]
 
-settings: NovaSettings = get_settings()
+settings: AlwaysGreenSettings = get_settings()
 
 
 def _reset_settings_cache() -> None:
@@ -219,14 +219,14 @@ def _reset_settings_cache() -> None:
 
 
 __all__ = [
-    "NovaSettings",
+    "AlwaysGreenSettings",
     "get_settings",
     "settings",
     "_reset_settings_cache",
     "load_yaml_config",
 ]
 
-settings: NovaSettings = get_settings()
+settings: AlwaysGreenSettings = get_settings()
 
 
 def _reset_settings_cache() -> None:
@@ -237,7 +237,7 @@ def _reset_settings_cache() -> None:
 
 
 __all__ = [
-    "NovaSettings",
+    "AlwaysGreenSettings",
     "get_settings",
     "settings",
     "_reset_settings_cache",

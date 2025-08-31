@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Nova CI-Rescue Demo Test Script - String Utils Truncate Bug
-# This tests the demo version of Nova with a missing validation bug in verbose mode
+# AlwaysGreen CI-Rescue Demo Test Script - String Utils Truncate Bug
+# This tests the demo version of AlwaysGreen with a missing validation bug in verbose mode
 
 # Unset potentially conflicting environment variables
 unset PYTHONPATH
@@ -11,20 +11,20 @@ unset NOVA_API_KEY
 unset NOVA_CONFIG
 unset GIT_PYTHON_REFRESH
 
-echo "🧪 Testing Nova CI-Rescue Demo Version - String Utils Bug (Verbose Mode)"
+echo "🧪 Testing AlwaysGreen CI-Rescue Demo Version - String Utils Bug (Verbose Mode)"
 echo "======================================================================"
 echo
 
 # Use consistent venv directory
 VENV_DIR=".venv"
 
-# Always run setup to ensure Nova is installed and up-to-date
-if [ -f "setup_nova.sh" ]; then
-  echo "📦 Running setup_nova.sh to ensure Nova is installed..."
-  bash setup_nova.sh "$VENV_DIR"
+# Always run setup to ensure AlwaysGreen is installed and up-to-date
+if [ -f "setup_alwaysgreen.sh" ]; then
+  echo "📦 Running setup_alwaysgreen.sh to ensure AlwaysGreen is installed..."
+  bash setup_alwaysgreen.sh "$VENV_DIR"
   echo
 else
-  echo "❌ setup_nova.sh not found!"
+  echo "❌ setup_alwaysgreen.sh not found!"
   exit 1
 fi
 
@@ -37,14 +37,14 @@ else
   exit 1
 fi
 
-# Verify Nova is available
-if ! command -v nova &> /dev/null; then
-  echo "❌ Nova command not found after setup!"
+# Verify AlwaysGreen is available
+if ! command -v alwaysgreen &> /dev/null; then
+  echo "❌ AlwaysGreen command not found after setup!"
   exit 1
 fi
 
-echo "Nova version:"
-nova version 2>/dev/null || echo "Nova CI-Rescue (demo version)"
+echo "AlwaysGreen version:"
+alwaysgreen version 2>/dev/null || echo "AlwaysGreen CI-Rescue (demo version)"
 echo
 
 # Create a test bug in string_utils - remove validation in truncate_string
@@ -80,12 +80,12 @@ echo "Modified truncate_string method:"
 grep -A 5 "def truncate_string" src/string_utils.py || true
 echo
 
-# Run Nova to fix it in verbose mode
+# Run AlwaysGreen to fix it in verbose mode
 # Target the specific test that checks zero length validation
-echo "🚀 Running Nova in VERBOSE mode to fix the string utils bug..."
+echo "🚀 Running AlwaysGreen in VERBOSE mode to fix the string utils bug..."
 echo "   Targeting: tests/test_string_utils.py::TestStringProcessor::test_truncate_string_zero_length"
 echo
-nova fix . --verbose --pytest-args "tests/test_string_utils.py::TestStringProcessor::test_truncate_string_zero_length"
+alwaysgreen fix . --verbose --pytest-args "tests/test_string_utils.py::TestStringProcessor::test_truncate_string_zero_length"
 
 # Check if the specific test passes
 echo
@@ -93,4 +93,4 @@ echo "✅ Verifying fix..."
 pytest tests/test_string_utils.py::TestStringProcessor::test_truncate_string_zero_length -v
 
 echo
-echo "🎉 Nova successfully fixed the string utils validation bug!"
+echo "🎉 AlwaysGreen successfully fixed the string utils validation bug!"

@@ -1,5 +1,5 @@
 """
-Apply patch node for Nova CI-Rescue agent workflow.
+Apply patch node for AlwaysGreen agent workflow.
 """
 
 from typing import Dict, Any, Optional

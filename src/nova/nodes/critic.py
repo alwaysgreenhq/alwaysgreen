@@ -1,5 +1,5 @@
 """
-Critic node for Nova CI-Rescue agent workflow.
+Critic node for AlwaysGreen agent workflow.
 """
 
 from typing import Tuple, Optional, Any
