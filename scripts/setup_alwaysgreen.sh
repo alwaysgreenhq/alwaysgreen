@@ -7,8 +7,8 @@ set -euo pipefail
 # Location of your repo venv (can be overridden by first argument)
 VENV_DIR="${1:-.venv}"
 
-# Path to ci-auto-rescue .env file (adjust if you move it)
-ENV_FILE="$HOME/clone-repos/ci-auto-rescue/.env"
+# Path to alwaysgreen .env file (adjust if you move it)
+ENV_FILE="$HOME/clone-repos/alwaysgreen/.env"
 
 # Ensure venv exists
 if [ ! -d "$VENV_DIR" ]; then

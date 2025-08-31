@@ -14,8 +14,8 @@ This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for p
 ### 1. Clone and Setup
 
 ```bash
-git clone https://github.com/ci-auto-rescue/ci-auto-rescue.git
-cd ci-auto-rescue/github-app
+git clone https://github.com/alwaysgreenhq/alwaysgreen.git
+cd alwaysgreen/github-app
 npm install
 ```
 
@@ -233,8 +233,8 @@ This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for p
 ### 1. Clone and Setup
 
 ```bash
-git clone https://github.com/ci-auto-rescue/ci-auto-rescue.git
-cd ci-auto-rescue/github-app
+git clone https://github.com/alwaysgreenhq/alwaysgreen.git
+cd alwaysgreen/github-app
 npm install
 ```
 
@@ -452,8 +452,8 @@ This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for p
 ### 1. Clone and Setup
 
 ```bash
-git clone https://github.com/ci-auto-rescue/ci-auto-rescue.git
-cd ci-auto-rescue/github-app
+git clone https://github.com/alwaysgreenhq/alwaysgreen.git
+cd alwaysgreen/github-app
 npm install
 ```
 
@@ -671,8 +671,8 @@ This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for p
 ### 1. Clone and Setup
 
 ```bash
-git clone https://github.com/ci-auto-rescue/ci-auto-rescue.git
-cd ci-auto-rescue/github-app
+git clone https://github.com/alwaysgreenhq/alwaysgreen.git
+cd alwaysgreen/github-app
 npm install
 ```
 
@@ -890,8 +890,8 @@ This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for p
 ### 1. Clone and Setup
 
 ```bash
-git clone https://github.com/ci-auto-rescue/ci-auto-rescue.git
-cd ci-auto-rescue/github-app
+git clone https://github.com/alwaysgreenhq/alwaysgreen.git
+cd alwaysgreen/github-app
 npm install
 ```
 
@@ -1109,8 +1109,8 @@ This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for p
 ### 1. Clone and Setup
 
 ```bash
-git clone https://github.com/ci-auto-rescue/ci-auto-rescue.git
-cd ci-auto-rescue/github-app
+git clone https://github.com/alwaysgreenhq/alwaysgreen.git
+cd alwaysgreen/github-app
 npm install
 ```
 

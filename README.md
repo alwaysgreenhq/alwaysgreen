@@ -1,5 +1,10 @@
 # AlwaysGreen — Self‑Healing CI/CD
 
+[![CI](https://github.com/alwaysgreenhq/alwaysgreen/workflows/CI/badge.svg)](https://github.com/alwaysgreenhq/alwaysgreen/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![PyPI version](https://badge.fury.io/py/alwaysgreen.svg)](https://badge.fury.io/py/alwaysgreen)
+
 Actions/GitLab/Buildkite run your checks; AlwaysGreen makes them pass — safely, automatically.
 
 Not a coding copilot. A shipping copilot.
@@ -10,8 +15,8 @@ Result: PRs arrive shippable, with full auditability and guardrails.
 
 ## Table of Contents
 
-- [Why AlwaysGreen?](#why-nova)
-- [What AlwaysGreen Does](#what-nova-does)
+- [Why AlwaysGreen?](#why-alwaysgreen)
+- [What AlwaysGreen Does](#what-alwaysgreen-does)
 - [How It Works (Autopatch Loop)](#how-it-works-autopatch-loop)
 - [Quickstart](#quickstart)
   - [GitHub Actions](#github-actions)
@@ -20,7 +25,7 @@ Result: PRs arrive shippable, with full auditability and guardrails.
 - [Configuration](#configuration)
 - [Metrics AlwaysGreen Improves](#metrics-nova-improves)
 - [Roadmap](#roadmap)
-- [What AlwaysGreen Is / Isn’t](#what-nova-is--isnt)
+- [What AlwaysGreen Is / Isn't](#what-alwaysgreen-is--isnt)
 - [FAQ](#faq)
 - [Contributing](#contributing)
 - [License](#license)
@@ -202,6 +207,8 @@ Contributions welcome!
 We’ll add a full CONTRIBUTING guide and code of conduct shortly.
 
 ## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 MIT © AlwaysGreen contributors
 

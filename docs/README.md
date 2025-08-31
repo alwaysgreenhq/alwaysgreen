@@ -19,7 +19,7 @@ This folder contains all documentation for the CI-Rescue v1.0 Happy Path project
 ## 🚀 Quick Links
 
 - [Linear Project](https://linear.app/nova-solve/project/ci-rescue-v10-happy-path-536aaf0d73d7)
-- [GitHub Repository](https://github.com/nova-solve/ci-auto-rescue)
+- [GitHub Repository](https://github.com/alwaysgreenhq/alwaysgreen)
 - [Slite Workspace](https://joinnova.slite.com)
 
 ## 📝 How to Use

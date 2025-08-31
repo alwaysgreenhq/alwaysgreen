@@ -112,5 +112,5 @@ src/nova/
 
 ---
 
-[v0.1.0-alpha]: https://github.com/nova-solve/ci-auto-rescue/releases/tag/v0.1.0-alpha
-[Unreleased]: https://github.com/nova-solve/ci-auto-rescue/compare/v0.1.0-alpha...HEAD
+[v0.1.0-alpha]: https://github.com/alwaysgreenhq/alwaysgreen/releases/tag/v0.1.0-alpha
+[Unreleased]: https://github.com/alwaysgreenhq/alwaysgreen/compare/v0.1.0-alpha...HEAD

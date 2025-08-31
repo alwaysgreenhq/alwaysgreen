@@ -85,7 +85,7 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions to Fly.i
 
 - [Documentation](https://alwaysgreen.fly.dev/docs)
 - [Troubleshooting Guide](https://alwaysgreen.fly.dev/troubleshooting)
-- [GitHub Issues](https://github.com/ci-auto-rescue/ci-auto-rescue/issues)
+- [GitHub Issues](https://github.com/alwaysgreenhq/alwaysgreen/issues)
 
 A GitHub App that automatically fixes failing CI tests using AI-powered analysis and patch generation.
 
@@ -172,7 +172,7 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions to Fly.i
 
 - [Documentation](https://alwaysgreen.fly.dev/docs)
 - [Troubleshooting Guide](https://alwaysgreen.fly.dev/troubleshooting)
-- [GitHub Issues](https://github.com/ci-auto-rescue/ci-auto-rescue/issues)
+- [GitHub Issues](https://github.com/alwaysgreenhq/alwaysgreen/issues)
 
 A GitHub App that automatically fixes failing CI tests using AI-powered analysis and patch generation.
 
@@ -259,7 +259,7 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions to Fly.i
 
 - [Documentation](https://alwaysgreen.fly.dev/docs)
 - [Troubleshooting Guide](https://alwaysgreen.fly.dev/troubleshooting)
-- [GitHub Issues](https://github.com/ci-auto-rescue/ci-auto-rescue/issues)
+- [GitHub Issues](https://github.com/alwaysgreenhq/alwaysgreen/issues)
 
 A GitHub App that automatically fixes failing CI tests using AI-powered analysis and patch generation.
 
@@ -346,7 +346,7 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions to Fly.i
 
 - [Documentation](https://alwaysgreen.fly.dev/docs)
 - [Troubleshooting Guide](https://alwaysgreen.fly.dev/troubleshooting)
-- [GitHub Issues](https://github.com/ci-auto-rescue/ci-auto-rescue/issues)
+- [GitHub Issues](https://github.com/alwaysgreenhq/alwaysgreen/issues)
 
 A GitHub App that automatically fixes failing CI tests using AI-powered analysis and patch generation.
 
@@ -433,7 +433,7 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions to Fly.i
 
 - [Documentation](https://alwaysgreen.fly.dev/docs)
 - [Troubleshooting Guide](https://alwaysgreen.fly.dev/troubleshooting)
-- [GitHub Issues](https://github.com/ci-auto-rescue/ci-auto-rescue/issues)
+- [GitHub Issues](https://github.com/alwaysgreenhq/alwaysgreen/issues)
 
 A GitHub App that automatically fixes failing CI tests using AI-powered analysis and patch generation.
 
@@ -520,4 +520,4 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions to Fly.i
 
 - [Documentation](https://alwaysgreen.fly.dev/docs)
 - [Troubleshooting Guide](https://alwaysgreen.fly.dev/troubleshooting)
-- [GitHub Issues](https://github.com/ci-auto-rescue/ci-auto-rescue/issues)
+- [GitHub Issues](https://github.com/alwaysgreenhq/alwaysgreen/issues)

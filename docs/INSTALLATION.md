@@ -7,8 +7,8 @@ Requirements: Python 3.10+ and an API key for either OpenAI or Anthropic.
 1. Clone the repo
 
 ```bash
-git clone https://github.com/novasolve/ci-auto-rescue
-cd ci-auto-rescue
+git clone https://github.com/alwaysgreenhq/alwaysgreen
+cd alwaysgreen
 ```
 
 2. Create a virtual environment (recommended)

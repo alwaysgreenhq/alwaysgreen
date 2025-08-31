@@ -179,12 +179,12 @@ Want to try AlwaysGreen locally first? Run this one-liner:
 ```bash
 pip install alwaysgreen && \
 export OPENAI_API_KEY=your-key-here && \
-git clone https://github.com/novasolve/ci-auto-rescue.git && \
-nova fix ci-auto-rescue/examples/demos/demo_broken_project
+git clone https://github.com/alwaysgreenhq/alwaysgreen.git && \
+alwaysgreen fix alwaysgreen/examples/demos/demo_broken_project
 ```
 
 This will show you AlwaysGreen fixing a deliberately broken calculator project.
 
 ---
 
-**Need help?** Check [Troubleshooting & FAQ](TROUBLESHOOTING.md) or [open an issue](https://github.com/novasolve/ci-auto-rescue/issues).
+**Need help?** Check [Troubleshooting & FAQ](TROUBLESHOOTING.md) or [open an issue](https://github.com/alwaysgreenhq/alwaysgreen/issues).
