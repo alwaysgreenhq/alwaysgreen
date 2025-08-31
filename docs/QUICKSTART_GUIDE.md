@@ -1,4 +1,4 @@
-# Nova CI-Rescue — Quickstart Guide
+# AlwaysGreen — Quickstart Guide
 
 ## Installation
 
@@ -97,5 +97,5 @@ git clean -fd
 ## Getting Help
 
 - Check logs: `.nova/<run>/trace.jsonl`
-- Join Discord: [discord.gg/nova-solve]
-- Email support: support@joinnova.com
+- GitHub Issues: [github.com/alwaysgreen-ci/alwaysgreen/issues](https://github.com/alwaysgreen-ci/alwaysgreen/issues)
+- Email support: support@alwaysgreen.ai
