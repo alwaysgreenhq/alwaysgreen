@@ -73,7 +73,7 @@ Your app includes a health check endpoint at `/health` that returns:
 {
   "status": "ok",
   "timestamp": "2024-01-01T12:00:00.000Z",
-  "service": "nova-ci-rescue-github-app",
+  "service": "alwaysgreen-github-app",
   "version": "1.0.0"
 }
 ```

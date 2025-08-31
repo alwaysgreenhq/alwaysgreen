@@ -1,5 +1,5 @@
 """
-Git operations for Nova CI-Rescue.
+Git operations for AlwaysGreen.
 Handles branch management and repository state, and creates GitHub PRs.
 
 Improvements:
@@ -122,7 +122,7 @@ class GitBranchManager:
     def get_default_branch(self) -> str:
         """Get the default branch name (main, master, etc.)."""
         # Check for environment variable override first
-        env_base_branch = os.environ.get("NOVA_BASE_BRANCH")
+        env_base_branch = os.environ.get("ALWAYSGREEN_BASE_BRANCH")
         if env_base_branch:
             # Verify the branch exists
             success, _ = self._run_git_command(
@@ -132,7 +132,7 @@ class GitBranchManager:
                 return env_base_branch
             else:
                 console.print(
-                    f"[yellow]Warning: NOVA_BASE_BRANCH '{env_base_branch}' not found on remote, falling back to auto-detection[/yellow]"
+                    f"[yellow]Warning: ALWAYSGREEN_BASE_BRANCH '{env_base_branch}' not found on remote, falling back to auto-detection[/yellow]"
                 )
 
         # Original auto-detection logic
@@ -483,7 +483,7 @@ class GitBranchManager:
         headers = {
             "Authorization": f"Bearer {token}",
             "Accept": "application/vnd.github+json",
-            "User-Agent": "nova-ci-rescue",
+            "User-Agent": "alwaysgreen",
         }
 
         try:

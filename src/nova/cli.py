@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Nova CI-Rescue CLI interface.
+AlwaysGreen CLI interface.
 """
 
 import os
@@ -18,13 +18,13 @@ from rich.table import Table
 
 from nova.runner import TestRunner
 from nova.agent import AgentState
-from nova.config import NovaSettings, get_settings
+from nova.config import AlwaysGreenSettings, get_settings
 from nova.tools.git import GitBranchManager
 from nova.telemetry.logger import JSONLLogger
 
 app = typer.Typer(
     name="nova",
-    help="Nova CI-Rescue: Automated test fixing agent",
+    help="AlwaysGreen: Automated test fixing agent",
     add_completion=False,
 )
 console = Console()
@@ -38,14 +38,14 @@ def main(
     ),
 ):
     """
-    Nova CI-Rescue: Automated test fixing agent.
+    AlwaysGreen: Automated test fixing agent.
 
     Main callback to handle global options like --version.
     """
     if version:
         from nova import __version__
 
-        console.print(f"[green]Nova CI-Rescue[/green] v{__version__}")
+        console.print(f"[green]AlwaysGreen[/green] v{__version__}")
         raise typer.Exit()
 
     # If no command is provided, show help
@@ -252,7 +252,7 @@ def fix(
         )
     )
 
-    console.print("[green]Nova CI-Rescue[/green] 🚀")
+    console.print("[green]AlwaysGreen[/green] 🚀")
     if config_file:
         console.print(f"[dim]Loaded configuration from {config_file}[/dim]")
 
@@ -272,7 +272,7 @@ def fix(
         git_manager.setup_signal_handler()
 
         # Initialize settings and telemetry
-        settings = NovaSettings()
+        settings = AlwaysGreenSettings()
         if config_data and config_data.model:
             settings.default_llm_model = config_data.model
         telemetry = JSONLLogger()
@@ -386,7 +386,7 @@ def fix(
                         api.create_pr_comment(
                             repo=repo,
                             pr_number=int(pr_num),
-                            body="## ✅ Nova CI-Rescue: No failing tests to fix! 🎉\n\nAll tests are passing.",
+                            body="## ✅ AlwaysGreen: No failing tests to fix! 🎉\n\nAll tests are passing.",
                         )
                         if verbose:
                             console.print("[dim]✅ Posted PR comment to GitHub[/dim]")
@@ -723,7 +723,7 @@ def fix(
         git_manager.setup_signal_handler()
 
         # Initialize settings and telemetry
-        settings = NovaSettings()
+        settings = AlwaysGreenSettings()
         if config_data and config_data.model:
             settings.default_llm_model = config_data.model
         telemetry = JSONLLogger()
@@ -838,7 +838,7 @@ def fix(
                         api.create_pr_comment(
                             repo=repo,
                             pr_number=int(pr_num),
-                            body="## ✅ Nova CI-Rescue: No failing tests to fix! 🎉\n\nAll tests are passing.",
+                            body="## ✅ AlwaysGreen: No failing tests to fix! 🎉\n\nAll tests are passing.",
                         )
                         if verbose:
                             console.print("[dim]✅ Posted PR comment to GitHub[/dim]")
@@ -1217,7 +1217,7 @@ def eval(
     """
     Evaluate Nova on multiple repositories.
     """
-    console.print("[green]Nova CI-Rescue Evaluation[/green] 🔬")
+    console.print("[green]AlwaysGreen Evaluation[/green] 🔬")
     console.print(f"Loading evaluation config from: {eval_file}")
 
     # Implementation placeholder
@@ -1236,7 +1236,7 @@ def validate_installation(
 ):
     """
     Validate installation and test end-to-end functionality.
-    This command performs comprehensive validation of the Nova CI-Rescue installation.
+    This command performs comprehensive validation of the AlwaysGreen installation.
 
     Args:
         base_url: Base URL where the GitHub App is running (default: http://localhost:3000)
@@ -1245,7 +1245,7 @@ def validate_installation(
 
     console = Console()
 
-    console.print("[green]🔍 Nova CI-Rescue Installation Validation[/green]")
+    console.print("[green]🔍 AlwaysGreen Installation Validation[/green]")
     console.print("=" * 50)
 
     try:
@@ -1363,7 +1363,7 @@ def config():
     Display current Nova configuration and verify setup.
     """
 
-    console.print("[green]Nova CI-Rescue Configuration[/green] ⚙️")
+    console.print("[green]AlwaysGreen Configuration[/green] ⚙️")
     console.print()
 
     try:
@@ -1424,11 +1424,11 @@ def config():
 @app.command()
 def version():
     """
-    Show Nova CI-Rescue version.
+    Show AlwaysGreen version.
     """
     from nova import __version__
 
-    console.print(f"[green]Nova CI-Rescue[/green] v{__version__}")
+    console.print(f"[green]AlwaysGreen[/green] v{__version__}")
 
 
 if __name__ == "__main__":

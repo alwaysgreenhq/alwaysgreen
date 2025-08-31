@@ -1,10 +1,10 @@
 # Quickstart Guide
 
-Get Nova CI-Rescue fixing your failing tests in under 5 minutes.
+Get AlwaysGreen fixing your failing tests in under 5 minutes.
 
 ## Step 1: Install the GitHub App
 
-[![Install Nova CI‑Rescue](https://img.shields.io/badge/Install-GitHub%20App-blue?logo=github)](https://github.com/apps/nova-ci-rescue/installations/new)
+[![Install Nova CI‑Rescue](https://img.shields.io/badge/Install-GitHub%20App-blue?logo=github)](https://github.com/apps/alwaysgreen/installations/new)
 
 1. Click the install button above
 2. Choose your organization or personal account
@@ -27,10 +27,10 @@ Nova needs an OpenAI API key to analyze and fix your code.
 
 ## Step 3: Add the Nova workflow
 
-Create `.github/workflows/nova-ci-rescue.yml` in your repository:
+Create `.github/workflows/alwaysgreen.yml` in your repository:
 
 ```yaml
-name: Nova CI-Rescue (on CI failure)
+name: AlwaysGreen (on CI failure)
 
 on:
   workflow_run:
@@ -70,12 +70,12 @@ jobs:
         run: |
           python -m pip install -U pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          pip install nova-ci-rescue pytest
+          pip install alwaysgreen pytest
 
       - name: Configure git author
         run: |
-          git config user.name "nova-ci-rescue[bot]"
-          git config user.email "nova-ci-rescue[bot]@users.noreply.github.com"
+          git config user.name "alwaysgreen[bot]"
+          git config user.email "alwaysgreen[bot]@users.noreply.github.com"
 
       - name: Run Nova auto-fix
         env:
@@ -147,9 +147,9 @@ Nova posts a status check showing what it did:
 
 Nova leaves a comment explaining the failure and linking to the fix:
 
-> 🤖 **Nova CI-Rescue detected failing tests and triggered an auto-fix.**
+> 🤖 **AlwaysGreen detected failing tests and triggered an auto-fix.**
 >
-> View the fix workflow: [Actions → Nova CI-Rescue](link-to-actions)
+> View the fix workflow: [Actions → AlwaysGreen](link-to-actions)
 
 ### 🔧 Fix Pull Request
 
@@ -177,7 +177,7 @@ Nova opens a new PR with:
 Want to try Nova locally first? Run this one-liner:
 
 ```bash
-pip install nova-ci-rescue && \
+pip install alwaysgreen && \
 export OPENAI_API_KEY=sk-your-key && \
 git clone https://github.com/novasolve/ci-auto-rescue.git && \
 nova fix ci-auto-rescue/examples/demos/demo_broken_project

@@ -1,6 +1,6 @@
 """
 Enhanced LLM agent that implements the full Planner, Actor, and Critic workflow.
-This is the production agent for Nova CI-Rescue that uses GPT-4/5 or Claude.
+This is the production agent for AlwaysGreen that uses GPT-4/5 or Claude.
 """
 
 import json
