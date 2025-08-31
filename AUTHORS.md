@@ -3,6 +3,7 @@
 ## Core Team
 
 **Sebastian Heyneman** (@seabass011)
+
 - Project Creator & Lead Developer
 - Architecture, AI Agent Design, Security Implementation
 
@@ -17,6 +18,7 @@ We welcome contributions from the community! Please see [CONTRIBUTING.md](CONTRI
 ## Recognition
 
 Special thanks to the open source community and the tools that made AlwaysGreen possible:
+
 - OpenAI and Anthropic for LLM APIs
 - The Python ecosystem (pytest, pydantic, typer, etc.)
 - GitHub Actions and CI/CD platform providers
