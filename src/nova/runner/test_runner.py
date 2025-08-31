@@ -8,8 +8,8 @@ Usage (library):
     print(TestRunner.format_failures_table(failures))
 
 Usage (CLI):
-    # Installed as `nova`:
-    nova fix . --verbose
+    # Installed as `alwaysgreen`:
+    alwaysgreen fix . --verbose
 """
 
 from __future__ import annotations
