@@ -1,182 +1,50 @@
+# AlwaysGreen GitHub App - Production Configuration
 app = "alwaysgreen"
 primary_region = "iad"
 
 [build]
   dockerfile = "github-app/Dockerfile"
 
-[http_service]
-  internal_port = 8080
-  force_https = true
-  auto_stop_machines = false
-  min_machines_running = 1
-  max_machines_running = 3
-
-[[http_service.checks]]
-  grace_period = "10s"
-  interval = "30s"
-  method = "GET"
-  timeout = "5s"
-  path = "/health"
-
-[mounts]
-  source = "nova_data"
-  destination = "/data"
-
 [env]
   NODE_ENV = "production"
   PORT = "8080"
 
+# VM size - shared CPU is perfect for GitHub apps
 [[vm]]
+  size = "shared-cpu-1x"
   memory = "256mb"
-  cpu_kind = "shared"
-  cpus = 1
-
-[build]
-  dockerfile = "github-app/Dockerfile"
 
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = false
-  min_machines_running = 1
-  max_machines_running = 3
+  auto_start_machines = true
+  auto_stop_machines = false  # Keep running for instant webhook handling
+  min_machines_running = 1    # Always have at least 1 machine ready
+  max_machines_running = 3    # Scale up to 3 if needed
 
-[[http_service.checks]]
-  grace_period = "10s"
-  interval = "30s"
-  method = "GET"
-  timeout = "5s"
-  path = "/health"
+  # Health check for GitHub Marketplace requirements
+  [[http_service.checks]]
+    interval = "15s"
+    grace_period = "30s"
+    method = "GET"
+    path = "/health"
+    protocol = "http"
+    timeout = "5s"
 
+    [http_service.checks.headers]
+      Accept = "application/json"
+
+# Persistent storage for telemetry and logs
 [mounts]
-  source = "nova_data"
+  source = "alwaysgreen_data"
   destination = "/data"
 
-[env]
-  NODE_ENV = "production"
-  PORT = "8080"
+# Auto-restart on crashes
+[[restart]]
+  policy = "always"
+  retries = 3
 
-[[vm]]
-  memory = "256mb"
-  cpu_kind = "shared"
-  cpus = 1
-
-[build]
-  dockerfile = "github-app/Dockerfile"
-
-[http_service]
-  internal_port = 8080
-  force_https = true
-  auto_stop_machines = false
-  min_machines_running = 1
-  max_machines_running = 3
-
-[[http_service.checks]]
-  grace_period = "10s"
-  interval = "30s"
-  method = "GET"
-  timeout = "5s"
-  path = "/health"
-
-[mounts]
-  source = "nova_data"
-  destination = "/data"
-
-[env]
-  NODE_ENV = "production"
-  PORT = "8080"
-
-[[vm]]
-  memory = "256mb"
-  cpu_kind = "shared"
-  cpus = 1
-
-[build]
-  dockerfile = "github-app/Dockerfile"
-
-[http_service]
-  internal_port = 8080
-  force_https = true
-  auto_stop_machines = false
-  min_machines_running = 1
-  max_machines_running = 3
-
-[[http_service.checks]]
-  grace_period = "10s"
-  interval = "30s"
-  method = "GET"
-  timeout = "5s"
-  path = "/health"
-
-[mounts]
-  source = "nova_data"
-  destination = "/data"
-
-[env]
-  NODE_ENV = "production"
-  PORT = "8080"
-
-[[vm]]
-  memory = "256mb"
-  cpu_kind = "shared"
-  cpus = 1
-
-[build]
-  dockerfile = "github-app/Dockerfile"
-
-[http_service]
-  internal_port = 8080
-  force_https = true
-  auto_stop_machines = false
-  min_machines_running = 1
-  max_machines_running = 3
-
-[[http_service.checks]]
-  grace_period = "10s"
-  interval = "30s"
-  method = "GET"
-  timeout = "5s"
-  path = "/health"
-
-[mounts]
-  source = "nova_data"
-  destination = "/data"
-
-[env]
-  NODE_ENV = "production"
-  PORT = "8080"
-
-[[vm]]
-  memory = "256mb"
-  cpu_kind = "shared"
-  cpus = 1
-
-[build]
-  dockerfile = "github-app/Dockerfile"
-
-[http_service]
-  internal_port = 8080
-  force_https = true
-  auto_stop_machines = false
-  min_machines_running = 1
-  max_machines_running = 3
-
-[[http_service.checks]]
-  grace_period = "10s"
-  interval = "30s"
-  method = "GET"
-  timeout = "5s"
-  path = "/health"
-
-[mounts]
-  source = "nova_data"
-  destination = "/data"
-
-[env]
-  NODE_ENV = "production"
-  PORT = "8080"
-
-[[vm]]
-  memory = "256mb"
-  cpu_kind = "shared"
-  cpus = 1
+# Zero-downtime deployments
+[deploy]
+  strategy = "rolling"
+  max_unavailable = 0
