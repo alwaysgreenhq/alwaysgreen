@@ -1,10 +1,10 @@
-# Nova CI-Rescue Demo Repository
+# AlwaysGreen CI-Rescue Demo Repository
 
-This repository demonstrates Nova's self-healing CI/CD capabilities through a realistic workflow:
+This repository demonstrates AlwaysGreen's self-healing CI/CD capabilities through a realistic workflow:
 
 1. ✅ **Working Code**: Initial calculator with passing tests
 2. ❌ **Breaking Change**: A "bad PR" introduces bugs
-3. 🤖 **Auto-Fix**: Nova detects and fixes the failures automatically
+3. 🤖 **Auto-Fix**: AlwaysGreen detects and fixes the failures automatically
 4. ✅ **Green Pipeline**: Tests pass again without human intervention
 
 ## Demo Workflow
@@ -33,10 +33,10 @@ git push
 # Watch GitHub Actions fail ❌
 ```
 
-### Step 3: Nova Auto-Fix
+### Step 3: AlwaysGreen Auto-Fix
 GitHub Actions will automatically:
 1. Detect the test failures
-2. Run Nova CI-Rescue
+2. Run AlwaysGreen CI-Rescue
 3. Fix the bugs
 4. Create a PR with the fixes
 5. All tests pass again ✅
@@ -51,7 +51,7 @@ nova-demo-repo/
 │   └── test_calculator.py # Comprehensive test suite
 ├── .github/
 │   └── workflows/
-│       └── ci.yml         # CI/CD with Nova integration
+│       └── ci.yml         # CI/CD with AlwaysGreen integration
 ├── requirements.txt       # Python dependencies
 ├── breaking-changes.patch # The "bad PR" changes
 └── demo-script.sh        # Automated demo runner
@@ -73,7 +73,7 @@ nova-demo-repo/
 
 ### Option 3: Exact Documentation Flow
 ```bash
-# Follows the exact steps from the Nova documentation
+# Follows the exact steps from the AlwaysGreen documentation
 ./demo-exact-flow.sh
 ```
 
@@ -81,23 +81,23 @@ This will:
 1. Show the working state
 2. Apply breaking changes
 3. Push to trigger CI
-4. Show Nova fixing the issues
+4. Show AlwaysGreen fixing the issues
 5. Display the auto-generated PR
 
 ## Key Features Demonstrated
 
-- **Autonomous Detection**: Nova identifies failing tests without human input
+- **Autonomous Detection**: AlwaysGreen identifies failing tests without human input
 - **Intelligent Fixes**: AI understands the test failures and generates appropriate fixes
 - **PR Generation**: Creates professional pull requests with GPT-5
 - **Zero Human Intervention**: Complete automation from failure to fix
 
 ## Technologies Used
 
-- **Nova CI-Rescue**: AI-powered test fixing
+- **AlwaysGreen CI-Rescue**: AI-powered test fixing
 - **GitHub Actions**: CI/CD automation
 - **GPT-5**: Intelligent code analysis and PR generation
 - **Python + pytest**: Test framework
 
 ## Watch It In Action
 
-Check the [Actions tab](../../actions) to see Nova in action fixing broken tests!
+Check the [Actions tab](../../actions) to see AlwaysGreen in action fixing broken tests!

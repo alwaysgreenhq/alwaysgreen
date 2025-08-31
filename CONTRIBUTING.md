@@ -1,6 +1,6 @@
-# Contributing to Nova CI‑Rescue
+# Contributing to AlwaysGreen CI‑Rescue
 
-Thanks for your interest in improving Nova CI‑Rescue! We welcome issues and PRs.
+Thanks for your interest in improving AlwaysGreen CI‑Rescue! We welcome issues and PRs.
 
 ## Getting started
 
