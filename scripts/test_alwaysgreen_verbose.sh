@@ -18,10 +18,15 @@ echo
 # Use consistent venv directory
 VENV_DIR=".venv"
 
+# Determine script and repo root, and ensure we run from repo root
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$REPO_ROOT"
+
 # Always run setup to ensure AlwaysGreen is installed and up-to-date
-if [ -f "setup_alwaysgreen.sh" ]; then
+if [ -f "$SCRIPT_DIR/setup_alwaysgreen.sh" ]; then
   echo "📦 Running setup_alwaysgreen.sh to ensure AlwaysGreen is installed..."
-  bash setup_alwaysgreen.sh "$VENV_DIR"
+  bash "$SCRIPT_DIR/setup_alwaysgreen.sh" "$VENV_DIR"
   echo
 else
   echo "❌ setup_alwaysgreen.sh not found!"

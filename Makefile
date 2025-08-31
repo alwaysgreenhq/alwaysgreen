@@ -15,3 +15,21 @@ venv:
 	@if [ -f pyproject.toml ]; then \
 		. .venv/bin/activate && pip install -e .; \
 	fi
+
+.PHONY: setup-demo smoke test-demo test-demo-verbose
+
+# Run demo setup script to install AlwaysGreen demo into .venv
+setup-demo:
+	@bash scripts/setup_alwaysgreen.sh .venv
+
+# Run Fly.io app smoke tests
+smoke:
+	@bash scripts/smoke_test.sh
+
+# Run the AlwaysGreen CI-rescue demo test
+test-demo:
+	@bash scripts/test_alwaysgreen.sh
+
+# Run the verbose AlwaysGreen CI-rescue demo test
+test-demo-verbose:
+	@bash scripts/test_alwaysgreen_verbose.sh
