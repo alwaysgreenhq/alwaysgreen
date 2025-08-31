@@ -13,6 +13,8 @@ AlwaysGreen is an autonomous CI/CD autopatcher. On every pull request, AlwaysGre
 
 Result: PRs arrive shippable, with full auditability and guardrails.
 
+> **Note**: This is the first public release of AlwaysGreen. Prior internal development history was not published to ensure a clean, secure, and professional open source launch.
+
 ## Table of Contents
 
 - [Why AlwaysGreen?](#why-alwaysgreen)
