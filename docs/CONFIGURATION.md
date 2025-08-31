@@ -1,6 +1,6 @@
 # Configuration
 
-Nova is configured via environment variables (e.g., `.env`).
+AlwaysGreen is configured via environment variables (e.g., `.env`).
 
 ## Core
 

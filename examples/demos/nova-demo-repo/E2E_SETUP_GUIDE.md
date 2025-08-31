@@ -1,6 +1,6 @@
-# End-to-End Setup Guide: From Local to GitHub PR with Nova
+# End-to-End Setup Guide: From Local to GitHub PR with AlwaysGreen
 
-This guide walks you through setting up the nova-demo-repo from scratch, pushing to GitHub, creating a breaking PR, and watching Nova automatically fix it.
+This guide walks you through setting up the nova-demo-repo from scratch, pushing to GitHub, creating a breaking PR, and watching AlwaysGreen automatically fix it.
 
 ## Prerequisites
 
@@ -114,9 +114,9 @@ gh pr create --title "Fix: Optimize calculator performance" \
    FAILED tests/test_calculator.py::test_average_empty_list
    ```
 
-## Step 7: Nova Auto-Fix in Action
+## Step 7: AlwaysGreen Auto-Fix in Action
 
-If Nova is configured in your GitHub Actions (with API keys), it will:
+If AlwaysGreen is configured in your GitHub Actions (with API keys), it will:
 
 1. **Automatically trigger** when tests fail
 2. **Analyze** the failures
@@ -127,20 +127,20 @@ If Nova is configured in your GitHub Actions (with API keys), it will:
 
 You'll see in the Actions log:
 ```
-🤖 Nova CI-Rescue: Attempting to fix failing tests...
-[Nova] ❌ Detected 4 failing tests
-[Nova] 🔍 Analyzing failures...
-[Nova] 🔧 Applying fixes...
-[Nova] ✅ All tests passed after fix!
-[Nova] 📤 Pushing fixes to nova-fix-20250820-083945
-[Nova] 🎯 Creating pull request...
+🤖 AlwaysGreen CI-Rescue: Attempting to fix failing tests...
+[AlwaysGreen] ❌ Detected 4 failing tests
+[AlwaysGreen] 🔍 Analyzing failures...
+[AlwaysGreen] 🔧 Applying fixes...
+[AlwaysGreen] ✅ All tests passed after fix!
+[AlwaysGreen] 📤 Pushing fixes to nova-fix-20250820-083945
+[AlwaysGreen] 🎯 Creating pull request...
 ```
 
-## Step 8: Review Nova's Fix PR
+## Step 8: Review AlwaysGreen's Fix PR
 
 1. Go to "Pull requests" tab
-2. You'll see a new PR from Nova
-3. Title: "Nova Fix: Correct calculator logic errors"
+2. You'll see a new PR from AlwaysGreen
+3. Title: "AlwaysGreen Fix: Correct calculator logic errors"
 4. The PR will have:
    - ✅ All checks passing
    - Clear description of what was fixed
@@ -149,14 +149,14 @@ You'll see in the Actions log:
 
 ## Step 9: Merge the Fix
 
-1. Review Nova's changes
+1. Review AlwaysGreen's changes
 2. Approve the PR
 3. Merge it to main
 4. The calculator is now working correctly!
 
 ## Local Testing (Alternative)
 
-If you want to test Nova locally before GitHub:
+If you want to test AlwaysGreen locally before GitHub:
 
 ```bash
 # Make sure you're on the broken branch
@@ -165,16 +165,16 @@ git checkout bugfix/wrong-subtraction
 # Run tests to see failures
 pytest -v
 
-# Run Nova locally
-cd ..  # Go to parent directory with Nova
+# Run AlwaysGreen locally
+cd ..  # Go to parent directory with AlwaysGreen
 PYTHONPATH=./src python -m nova.cli fix nova-demo-repo --max-iters 3
 
-# Nova will create a fix branch and show the results
+# AlwaysGreen will create a fix branch and show the results
 ```
 
 ## Key Observations
 
-1. **Branch Isolation**: Nova never modifies your branch directly
+1. **Branch Isolation**: AlwaysGreen never modifies your branch directly
 2. **Atomic Commits**: Each fix is a separate commit
 3. **Full Transparency**: All changes are reviewable
 4. **CI Integration**: Works seamlessly with GitHub Actions
@@ -182,9 +182,9 @@ PYTHONPATH=./src python -m nova.cli fix nova-demo-repo --max-iters 3
 
 ## Troubleshooting
 
-- **No Nova action?** Check GitHub Secrets for API keys
-- **Nova can't push?** Ensure Actions have write permissions
-- **Tests still failing?** Nova will iterate up to max attempts
+- **No AlwaysGreen action?** Check GitHub Secrets for API keys
+- **AlwaysGreen can't push?** Ensure Actions have write permissions
+- **Tests still failing?** AlwaysGreen will iterate up to max attempts
 - **PR not created?** Check if `gh` CLI is available in Actions
 
 ## Success Metrics
@@ -194,4 +194,4 @@ PYTHONPATH=./src python -m nova.cli fix nova-demo-repo --max-iters 3
 - 👥 Developer time saved: 15-30 minutes per issue
 - 🔄 Iteration capability: Up to 6 attempts
 
-This E2E flow demonstrates Nova's value: turning red builds green automatically!
+This E2E flow demonstrates AlwaysGreen's value: turning red builds green automatically!

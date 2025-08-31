@@ -7,7 +7,7 @@
 - Git
 - OpenAI or Anthropic API key
 
-### Install Nova
+### Install AlwaysGreen
 ```bash
 pip install -e .
 ```
@@ -29,7 +29,7 @@ NOVA_MAX_ITERS=3
 NOVA_RUN_TIMEOUT_SEC=600
 ```
 
-## Running Nova
+## Running AlwaysGreen
 
 ### Basic Usage
 ```bash

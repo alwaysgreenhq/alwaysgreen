@@ -9,7 +9,7 @@ This folder contains all documentation for the CI-Rescue v1.0 Happy Path project
 3. **[Task Dependency Graph](03-task-dependency-graph.md)** - Task dependencies and sequencing
 4. **[Milestone Board](04-milestone-board.md)** - Linear integration and issue tracking
 5. **[Proof Checklist Template](05-proof-checklist-template.md)** - Standardized success metrics
-6. **[Quickstart Guide](06-quickstart-guide.md)** - Getting started with Nova
+6. **[Quickstart Guide](06-quickstart-guide.md)** - Getting started with AlwaysGreen
 7. **[Risks & Guardrails](07-risks-and-guardrails.md)** - Safety measures and limitations
 8. **[Demo Script](08-demo-script.md)** - Step-by-step demo instructions
 9. **[Links & Resources](09-links-and-resources.md)** - All external links and references
