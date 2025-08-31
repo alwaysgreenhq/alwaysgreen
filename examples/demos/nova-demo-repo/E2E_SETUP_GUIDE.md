@@ -1,6 +1,6 @@
 # End-to-End Setup Guide: From Local to GitHub PR with AlwaysGreen
 
-This guide walks you through setting up the alwaysgreen-demo-repo from scratch, pushing to GitHub, creating a breaking PR, and watching AlwaysGreen automatically fix it.
+This guide walks you through setting up the nova-demo-repo from scratch, pushing to GitHub, creating a breaking PR, and watching AlwaysGreen automatically fix it.
 
 ## Prerequisites
 
@@ -12,8 +12,8 @@ This guide walks you through setting up the alwaysgreen-demo-repo from scratch, 
 ## Step 1: Initialize Local Repository
 
 ```bash
-# Navigate to the alwaysgreen-demo-repo directory
-cd alwaysgreen-demo-repo
+# Navigate to the nova-demo-repo directory
+cd nova-demo-repo
 
 # Initialize Git repository
 git init -b main
@@ -29,7 +29,7 @@ git commit -m "Initial commit: Calculator with comprehensive tests"
 
 ### Option A: Using GitHub Website
 1. Go to github.com and click "New repository"
-2. Name it `alwaysgreen-demo`
+2. Name it `nova-ci-rescue-demo`
 3. Leave it empty (no README, .gitignore, or license)
 4. Choose public or private
 5. Create repository
@@ -37,13 +37,13 @@ git commit -m "Initial commit: Calculator with comprehensive tests"
 ### Option B: Using GitHub CLI (Recommended)
 ```bash
 # One command to create repo, add remote, and push
-gh repo create alwaysgreen-demo --public --source=. --remote=origin --push
+gh repo create nova-ci-rescue-demo --public --source=. --remote=origin --push
 ```
 
 If using Option A, link and push manually:
 ```bash
 # Add GitHub as remote
-git remote add origin https://github.com/YOUR_USERNAME/alwaysgreen-demo.git
+git remote add origin https://github.com/YOUR_USERNAME/nova-ci-rescue-demo.git
 
 # Push to GitHub
 git push -u origin main
@@ -121,7 +121,7 @@ If AlwaysGreen is configured in your GitHub Actions (with API keys), it will:
 1. **Automatically trigger** when tests fail
 2. **Analyze** the failures
 3. **Generate** fixes
-4. **Create** a new branch `alwaysgreen-fix-[timestamp]`
+4. **Create** a new branch `nova-fix-[timestamp]`
 5. **Push** the fixes
 6. **Open** a new PR with the corrections
 
@@ -132,7 +132,7 @@ You'll see in the Actions log:
 [AlwaysGreen] 🔍 Analyzing failures...
 [AlwaysGreen] 🔧 Applying fixes...
 [AlwaysGreen] ✅ All tests passed after fix!
-[AlwaysGreen] 📤 Pushing fixes to alwaysgreen-fix-20250820-083945
+[AlwaysGreen] 📤 Pushing fixes to nova-fix-20250820-083945
 [AlwaysGreen] 🎯 Creating pull request...
 ```
 
@@ -167,7 +167,7 @@ pytest -v
 
 # Run AlwaysGreen locally
 cd ..  # Go to parent directory with AlwaysGreen
-PYTHONPATH=./src python -m nova.cli fix alwaysgreen-demo-repo --max-iters 3
+PYTHONPATH=./src python -m nova.cli fix nova-demo-repo --max-iters 3
 
 # AlwaysGreen will create a fix branch and show the results
 ```

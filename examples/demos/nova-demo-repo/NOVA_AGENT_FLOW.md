@@ -48,7 +48,7 @@ AlwaysGreen follows a structured loop to converge on solutions:
 ### 5. **Apply Phase**
 ```
 [AlwaysGreen] Applying patch to calculator.py...
-[AlwaysGreen] Creating commit: "alwaysgreen: step 1 - fix subtract logic"
+[AlwaysGreen] Creating commit: "nova: step 1 - fix subtract logic"
 ```
 - Applies the patch to a new branch
 - Never modifies main or original PR branch
@@ -77,15 +77,15 @@ AlwaysGreen follows strict branch isolation:
 ```
 main
   └── bugfix/wrong-subtraction (PR #1 - failing)
-  └── alwaysgreen-fix-20250820-083945 (AlwaysGreen's fix branch)
+  └── nova-fix-20250820-083945 (AlwaysGreen's fix branch)
         └── Creates PR #2 with passing tests
 ```
 
 ## Commit Messages
 
 AlwaysGreen uses structured commit messages:
-- `alwaysgreen: step 1 - fix subtract logic`
-- `alwaysgreen: step 2 - handle edge case`
+- `nova: step 1 - fix subtract logic`
+- `nova: step 2 - handle edge case`
 - Each commit represents one iteration
 
 ## Integration Points
@@ -97,7 +97,7 @@ AlwaysGreen uses structured commit messages:
   env:
     OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
   run: |
-    alwaysgreen fix . --max-iters 3 --timeout 300
+    nova fix . --max-iters 3 --timeout 300
 ```
 
 ### Pull Request Creation
@@ -122,10 +122,10 @@ AlwaysGreen can automatically:
 ❌ tests/test_calculator.py::test_subtract FAILED
 
 # 2. AlwaysGreen triggered automatically
-$ alwaysgreen fix .
+$ nova fix .
 
 # 3. AlwaysGreen creates fix branch
-[AlwaysGreen] Creating branch: alwaysgreen-fix-20250820-083945
+[AlwaysGreen] Creating branch: nova-fix-20250820-083945
 
 # 4. AlwaysGreen analyzes and fixes
 [AlwaysGreen] 🔍 Analyzing failure...
