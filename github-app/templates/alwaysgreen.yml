@@ -1,4 +1,4 @@
-name: Nova CI-Rescue Auto-Fix
+name: AlwaysGreen Auto-Fix
 
 # Enable/disable the workflow
 on:
@@ -14,7 +14,7 @@ on:
         description: "PR to run Nova on (optional)"
         required: false
 
-# Permissions needed for Nova CI-Rescue
+# Permissions needed for AlwaysGreen
 permissions:
   contents: write # Needed for pushing fixes
   pull-requests: write # For commenting or opening PRs
@@ -45,18 +45,18 @@ jobs:
         run: |
           python -m pytest --tb=short --junitxml=test-results.xml || echo "Tests failed - Nova will attempt to fix"
 
-      - name: Install Nova CI-Rescue
+      - name: Install AlwaysGreen
         run: |
           # Install from GitHub release or your preferred method
-          pip install nova-ci-rescue
+          pip install alwaysgreen
 
-      - name: Run Nova CI-Rescue
+      - name: Run AlwaysGreen
         if: steps.initial-test.outcome == 'failure'
         env:
           # Add your Nova configuration here
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          nova fix \
+          alwaysgreen fix \
             --max-iters 3 \
             --timeout 300 \
             --auto-pr \

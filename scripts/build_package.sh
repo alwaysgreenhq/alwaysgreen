@@ -1,9 +1,9 @@
 #!/bin/bash
-# Build and test the nova-ci-rescue package locally
+# Build and test the alwaysgreen package locally
 
 set -e
 
-echo "🔨 Building nova-ci-rescue package..."
+echo "🔨 Building alwaysgreen package..."
 
 # Clean up old builds
 rm -rf dist/ build/ *.egg-info src/*.egg-info
@@ -18,7 +18,7 @@ ls -la dist/
 
 echo ""
 echo "To test the package locally:"
-echo "  pip install dist/nova_ci_rescue-*.whl"
+echo "  pip install dist/alwaysgreen-*.whl"
 echo ""
 echo "To upload to PyPI:"
 echo "  python -m twine upload dist/*"
