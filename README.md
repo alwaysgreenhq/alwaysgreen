@@ -1,9 +1,7 @@
 # AlwaysGreen — Self‑Healing CI/CD
 
-[![CI](https://github.com/alwaysgreenhq/alwaysgreen/workflows/CI/badge.svg)](https://github.com/alwaysgreenhq/alwaysgreen/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![PyPI version](https://badge.fury.io/py/alwaysgreen.svg)](https://badge.fury.io/py/alwaysgreen)
 
 Actions/GitLab/Buildkite run your checks; AlwaysGreen makes them pass — safely, automatically.
 
