@@ -20,7 +20,7 @@ AlwaysGreen needs an OpenAI API key to analyze and fix your code.
 1. Go to your repository → **Settings** → **Secrets and variables** → **Actions**
 2. Click **New repository secret**
 3. Name: `OPENAI_API_KEY`
-4. Value: Your OpenAI API key (starts with `sk-`)
+4. Value: Your OpenAI API key
 5. Click **Add secret**
 
 > **Don't have an OpenAI API key?** Get one at [platform.openai.com](https://platform.openai.com/api-keys)
@@ -178,7 +178,7 @@ Want to try AlwaysGreen locally first? Run this one-liner:
 
 ```bash
 pip install alwaysgreen && \
-export OPENAI_API_KEY=sk-your-key && \
+export OPENAI_API_KEY=your-key-here && \
 git clone https://github.com/novasolve/ci-auto-rescue.git && \
 nova fix ci-auto-rescue/examples/demos/demo_broken_project
 ```

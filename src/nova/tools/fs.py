@@ -475,13 +475,13 @@ def apply_patch_with_git(
     """
     from nova.tools.git import GitBranchManager
 
-    # Create .nova directory for temporary files if it doesn't exist
-    nova_dir = Path(repo_root) / ".nova"
-    nova_dir.mkdir(exist_ok=True, parents=True)
+    # Create .alwaysgreen directory for temporary files if it doesn't exist
+    alwaysgreen_dir = Path(repo_root) / ".alwaysgreen"
+    alwaysgreen_dir.mkdir(exist_ok=True, parents=True)
 
-    # Write patch to a temporary file in .nova directory
+    # Write patch to a temporary file in .alwaysgreen directory
     with tempfile.NamedTemporaryFile(
-        mode="w", suffix=".patch", delete=False, dir=nova_dir
+        mode="w", suffix=".patch", delete=False, dir=alwaysgreen_dir
     ) as f:
         patch_file = Path(f.name)
         f.write(diff_text)
@@ -662,12 +662,12 @@ def apply_patch_with_git(
             if verbose:
                 print(f"Warning: Could not delete temporary patch file: {e}")
 
-        # Clean up old patch files in .nova directory (older than 1 hour)
+        # Clean up old patch files in .alwaysgreen directory (older than 1 hour)
         try:
             import time
 
             current_time = time.time()
-            for old_patch in nova_dir.glob("*.patch"):
+            for old_patch in alwaysgreen_dir.glob("*.patch"):
                 if (current_time - old_patch.stat().st_mtime) > 3600:  # 1 hour
                     old_patch.unlink()
         except Exception:

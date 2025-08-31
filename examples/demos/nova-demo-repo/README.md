@@ -13,7 +13,7 @@ This repository demonstrates AlwaysGreen's self-healing CI/CD capabilities throu
 ```bash
 # Clone and setup
 git clone <this-repo>
-cd nova-demo-repo
+cd alwaysgreen-demo-repo
 
 # Install dependencies
 pip install -r requirements.txt
@@ -44,7 +44,7 @@ GitHub Actions will automatically:
 ## Repository Structure
 
 ```
-nova-demo-repo/
+alwaysgreen-demo-repo/
 ├── src/
 │   └── calculator.py      # Main calculator module
 ├── tests/
