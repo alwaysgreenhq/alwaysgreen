@@ -1,0 +1,190 @@
+# Quickstart Guide
+
+Get AlwaysGreen fixing your failing tests in under 5 minutes.
+
+## Step 1: Install the GitHub App
+
+[![Install AlwaysGreen CI‑Rescue](https://img.shields.io/badge/Install-GitHub%20App-blue?logo=github)](https://github.com/apps/alwaysgreen/installations/new)
+
+1. Click the install button above
+2. Choose your organization or personal account
+3. Select "All repositories" or specific repos you want AlwaysGreen to monitor
+4. Click **Install**
+
+![GitHub App Installation](https://via.placeholder.com/600x300/f8f9fa/6c757d?text=GitHub+App+Installation+Flow)
+
+## Step 2: Add your API key
+
+AlwaysGreen needs an OpenAI API key to analyze and fix your code.
+
+1. Go to your repository → **Settings** → **Secrets and variables** → **Actions**
+2. Click **New repository secret**
+3. Name: `OPENAI_API_KEY`
+4. Value: Your OpenAI API key
+5. Click **Add secret**
+
+> **Don't have an OpenAI API key?** Get one at [platform.openai.com](https://platform.openai.com/api-keys)
+
+## Step 3: Add the AlwaysGreen workflow
+
+Create `.github/workflows/alwaysgreen.yml` in your repository:
+
+```yaml
+name: AlwaysGreen (on CI failure)
+
+on:
+  workflow_run:
+    workflows: ["CI"] # ⚠️ Must match your CI workflow name exactly
+    types: [completed]
+
+concurrency:
+  group: nova-rescue-${{ github.event.workflow_run.head_repository.full_name }}-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: false
+
+jobs:
+  rescue:
+    if: >-
+      ${{
+        github.event.workflow_run.conclusion == 'failure' &&
+        github.event.workflow_run.event == 'pull_request' &&
+        github.event.workflow_run.head_repository.full_name == github.repository
+      }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.workflow_run.head_repository.full_name }}
+          ref: ${{ github.event.workflow_run.head_branch }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install AlwaysGreen + test deps
+        run: |
+          python -m pip install -U pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install alwaysgreen pytest
+
+      - name: Configure git author
+        run: |
+          git config user.name "alwaysgreen[bot]"
+          git config user.email "alwaysgreen[bot]@users.noreply.github.com"
+
+      - name: Run AlwaysGreen auto-fix
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NOVA_ENABLE_TELEMETRY: "true"
+          NOVA_DEFAULT_LLM_MODEL: "gpt-4o"
+        run: |
+          nova fix . --max-iters 5 --timeout 300
+
+      - name: Re-run tests (confirm green)
+        run: pytest -q
+```
+
+**Important:** Change `workflows: ["CI"]` to match your actual CI workflow name.
+
+## Step 4: Ensure you have a CI workflow
+
+AlwaysGreen triggers when your CI fails. Make sure you have a basic CI workflow at `.github/workflows/ci.yml`:
+
+```yaml
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install deps
+        run: |
+          python -m pip install -U pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install pytest
+      - name: Run tests
+        run: pytest -q
+```
+
+## Step 5: Test it out
+
+Create a pull request with a failing test to see AlwaysGreen in action:
+
+1. **Create a branch:** `git checkout -b test-nova-fix`
+2. **Break a test:** Edit a test file to make it fail
+3. **Push and open PR:** `git push origin test-nova-fix`
+4. **Watch the magic:**
+   - Your CI will fail ❌
+   - AlwaysGreen will automatically trigger 🤖
+   - AlwaysGreen will analyze, fix, and open a new PR with the solution ✅
+
+## Step 6: See AlwaysGreen's results
+
+After AlwaysGreen runs, you'll see:
+
+### ✅ GitHub Check
+
+AlwaysGreen posts a status check showing what it did:
+
+![AlwaysGreen Check Status](https://via.placeholder.com/500x100/28a745/ffffff?text=✓+AlwaysGreen+CI-Rescue+triggered+auto-fix)
+
+### 💬 PR Comment
+
+AlwaysGreen leaves a comment explaining the failure and linking to the fix:
+
+> 🤖 **AlwaysGreen detected failing tests and triggered an auto-fix.**
+>
+> View the fix workflow: [Actions → AlwaysGreen](link-to-actions)
+
+### 🔧 Fix Pull Request
+
+AlwaysGreen opens a new PR with:
+
+- **Focused fixes** for the failing tests
+- **Detailed explanation** of what was changed and why
+- **Test results** showing green status
+- **Artifacts** (patches, logs) for review
+
+![Before and After](https://via.placeholder.com/600x200/dc3545/ffffff?text=Before%3A+❌+Tests+Failing)
+![Arrow](https://via.placeholder.com/50x50/6c757d/ffffff?text=→)
+![After Fix](https://via.placeholder.com/600x200/28a745/ffffff?text=After%3A+✅+Tests+Passing)
+
+## What's Next?
+
+- **Review AlwaysGreen's fixes** before merging - always verify the changes make sense
+- **Customize behavior** with [configuration options](CONFIGURATION.md)
+- **Get help** if something doesn't work - see [Troubleshooting](TROUBLESHOOTING.md)
+
+---
+
+## Quick Test (Local)
+
+Want to try AlwaysGreen locally first? Run this one-liner:
+
+```bash
+pip install alwaysgreen && \
+export OPENAI_API_KEY=your-key-here && \
+git clone https://github.com/alwaysgreenhq/alwaysgreen.git && \
+alwaysgreen fix alwaysgreen/examples/demos/demo_broken_project
+```
+
+This will show you AlwaysGreen fixing a deliberately broken calculator project.
+
+---
+
+**Need help?** Check [Troubleshooting & FAQ](TROUBLESHOOTING.md) or [open an issue](https://github.com/alwaysgreenhq/alwaysgreen/issues).
