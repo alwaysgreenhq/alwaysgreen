@@ -1,5 +1,5 @@
 """
-Actor node for Nova CI-Rescue agent workflow.
+Actor node for AlwaysGreen agent workflow.
 """
 
 from typing import Any, Optional

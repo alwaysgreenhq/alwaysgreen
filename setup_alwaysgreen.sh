@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Nova CI-Rescue Demo Setup Script
+# AlwaysGreen Demo Setup Script
 # This installs the demo version with GPT-5 and optimized settings
 
 # Location of your repo venv (can be overridden by first argument)
@@ -31,11 +31,11 @@ source "$VENV_DIR/bin/activate"
 echo "✅ Using Python: $(which python)"
 echo "✅ Using Pip:    $(which pip)"
 
-# Remove pyenv shim for nova if present in PATH
-if command -v nova &>/dev/null; then
-  NOVA_PATH="$(command -v nova)"
-  if [[ "$NOVA_PATH" == *".pyenv/shims/nova"* ]]; then
-    echo "⚠️  Removing pyenv shim for nova from PATH for this session."
+# Remove pyenv shim for alwaysgreen if present in PATH
+if command -v alwaysgreen &>/dev/null; then
+  NOVA_PATH="$(command -v alwaysgreen)"
+  if [[ "$NOVA_PATH" == *".pyenv/shims/alwaysgreen"* ]]; then
+    echo "⚠️  Removing pyenv shim for alwaysgreen from PATH for this session."
     # Remove pyenv shims from PATH for this session
     export PATH="$(echo "$PATH" | tr ':' '\n' | grep -v '\.pyenv/shims' | paste -sd: -)"
     hash -r
@@ -61,29 +61,29 @@ else
   pip install --upgrade pip wheel
 fi
 
-# Uninstall any existing nova first to ensure clean install
-pip uninstall -y nova nova-ci-rescue 2>/dev/null || true
+# Uninstall any existing alwaysgreen first to ensure clean install
+pip uninstall -y alwaysgreen alwaysgreen-ci-rescue 2>/dev/null || true
 
-# Install/upgrade Nova from demo branch (force reinstall, no cache)
+# Install/upgrade AlwaysGreen from demo branch (force reinstall, no cache)
 if [ -n "${CI:-}" ]; then
-  pip install --quiet --force-reinstall --no-cache-dir "git+https://github.com/novasolve/nova-ci-rescue.git@demo/latest"
+  pip install --quiet --force-reinstall --no-cache-dir "git+https://github.com/alwaysgreen-ci/alwaysgreen.git@demo/latest"
 else
-  pip install --force-reinstall --no-cache-dir "git+https://github.com/novasolve/nova-ci-rescue.git@demo/latest"
+  pip install --force-reinstall --no-cache-dir "git+https://github.com/alwaysgreen-ci/alwaysgreen.git@demo/latest"
 fi
 
-# Show nova version (ensure using venv's nova)
+# Show alwaysgreen version (ensure using venv's alwaysgreen)
 echo
-if [ -x "$VENV_DIR/bin/nova" ]; then
-  "$VENV_DIR/bin/nova" version || true
+if [ -x "$VENV_DIR/bin/alwaysgreen" ]; then
+  "$VENV_DIR/bin/alwaysgreen" version || true
 else
-  nova version || true
+  alwaysgreen version || true
 fi
 
-# Ready to use Nova demo version!
+# Ready to use AlwaysGreen demo version!
 # echo
-# echo "✨ Nova demo version installed successfully!"
+# echo "✨ AlwaysGreen demo version installed successfully!"
 # echo "   - GPT-5 model with high reasoning effort"
 # echo "   - Temperature set to 1.0"
 # echo "   - No warnings or frequency caps"
 # echo ""
-# echo "Try running: nova fix <path-to-repo> --whole-file"
+# echo "Try running: alwaysgreen fix <path-to-repo> --whole-file"

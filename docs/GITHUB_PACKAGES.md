@@ -1,6 +1,6 @@
 # Publishing to GitHub Packages
 
-This guide explains how to publish `nova-ci-rescue` to GitHub Packages.
+This guide explains how to publish `alwaysgreen` to GitHub Packages.
 
 ## Quick Start
 
@@ -34,14 +34,14 @@ This guide explains how to publish `nova-ci-rescue` to GitHub Packages.
 
 ## Installing from GitHub Packages
 
-To install `nova-ci-rescue` from GitHub Packages:
+To install `alwaysgreen` from GitHub Packages:
 
 ```bash
 # First, authenticate with GitHub Packages
 echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> ~/.npmrc
 
 # Install the package
-pip install nova-ci-rescue \
+pip install alwaysgreen \
   --index-url https://pypi.org/simple \
   --extra-index-url https://maven.pkg.github.com/novasolve/ci-auto-rescue
 ```
@@ -60,5 +60,5 @@ If you see "GitHub Packages upload failed", this is expected. GitHub Packages ha
 For the best experience, continue using PyPI as the primary distribution channel:
 
 ```bash
-pip install nova-ci-rescue
+pip install alwaysgreen
 ```

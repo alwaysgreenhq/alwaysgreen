@@ -1,5 +1,5 @@
 """
-Nova CI-Rescue agent nodes for the workflow.
+AlwaysGreen agent nodes for the workflow.
 """
 
 from .apply_patch import ApplyPatchNode

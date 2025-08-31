@@ -1,5 +1,5 @@
 """
-Run Tests node for Nova CI-Rescue agent workflow.
+Run Tests node for AlwaysGreen agent workflow.
 """
 
 from typing import Tuple, List, Optional

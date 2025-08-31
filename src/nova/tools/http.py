@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 
 import httpx
 
-from ..config import NovaSettings
+from ..config import AlwaysGreenSettings
 
 
 def _host_from_url(url: str) -> str:
@@ -23,7 +23,7 @@ class AllowedHTTPClient:
 
     def __init__(
         self,
-        settings: NovaSettings,
+        settings: AlwaysGreenSettings,
         timeout: Optional[float] = 30.0,
         headers: Optional[Dict[str, str]] = None,
     ) -> None:

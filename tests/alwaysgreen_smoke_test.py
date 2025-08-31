@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
 """
-Nova CI-Rescue E2E Smoke Test Script.
+AlwaysGreen CI-Rescue E2E Smoke Test Script.
 
 Assumptions:
-- Running inside a virtual environment with Nova CI-Rescue installed (providing the `nova` CLI).
+- Running inside a virtual environment with AlwaysGreen CI-Rescue installed (providing the `alwaysgreen` CLI).
 - An OpenAI API key is set in the environment (OPENAI_API_KEY) for the real LLM agent.
 - A demo repository folder named 'demo_test_repo' is present, initialized as a git repo with intentional test failures.
 
 This script will:
-1. Verify that the environment is correctly set up (Nova installed, API key present, demo repo exists).
+1. Verify that the environment is correctly set up (AlwaysGreen installed, API key present, demo repo exists).
 2. Run the tests in the demo repo to confirm the number of failing tests (initial state).
-3. Invoke `nova fix` on the repo to attempt to automatically fix the failing tests.
-4. Capture Nova's output logs to a file (demo_test_repo/nova_fix_run.log).
-5. After Nova completes, run the tests again to check if all failures were resolved.
+3. Invoke `alwaysgreen fix` on the repo to attempt to automatically fix the failing tests.
+4. Capture AlwaysGreen's output logs to a file (demo_test_repo/alwaysgreen_fix_run.log).
+5. After AlwaysGreen completes, run the tests again to check if all failures were resolved.
 6. Print a summary of the results (initial vs final failures, success/failure status).
-7. Optionally clean up the git branch that Nova created for the fixes (if the run was successful).
+7. Optionally clean up the git branch that AlwaysGreen created for the fixes (if the run was successful).
 
-Note: The Nova fix run is limited to 3 iterations and 5 minutes for this smoke test.
+Note: The AlwaysGreen fix run is limited to 3 iterations and 5 minutes for this smoke test.
 """
 import subprocess
 import sys
@@ -55,14 +55,14 @@ def run_command(cmd, cwd=None):
 
 def main():
     # 1. Environment checks
-    if not shutil.which("nova"):
+    if not shutil.which("alwaysgreen"):
         print(
-            "Error: 'nova' CLI not found. Ensure Nova CI-Rescue is installed and activated."
+            "Error: 'alwaysgreen' CLI not found. Ensure AlwaysGreen CI-Rescue is installed and activated."
         )
         return 1
     if not os.getenv("OPENAI_API_KEY"):
         print(
-            "Error: OPENAI_API_KEY is not set. Please export your OpenAI API key for Nova."
+            "Error: OPENAI_API_KEY is not set. Please export your OpenAI API key for AlwaysGreen."
         )
         return 1
     repo_path = Path("demo_test_repo")
@@ -71,7 +71,7 @@ def main():
         return 1
 
     print(f"🔎 Using demo repository at: {repo_path}")
-    print("📋 Starting Nova CI-Rescue smoke test...")
+    print("📋 Starting AlwaysGreen CI-Rescue smoke test...")
 
     # 2. Run initial tests to gather failing test count
     print("🧪 Running initial test suite to confirm failing tests...")
@@ -116,51 +116,51 @@ def main():
             f"   Initial tests: {initial_pass_count} passed, {initial_fail_count} failed (out of {total_tests})"
         )
 
-    # 3. Run Nova fix on the repository
-    print("\n🤖 Invoking Nova CI-Rescue (nova fix) on the repository...")
-    nova_cmd = ["nova", "fix", ".", "--max-iters", "3", "--timeout", "300", "--verbose"]
-    code, out, err = run_command(nova_cmd, cwd=repo_path)
-    nova_logs = out + err
-    # Save Nova's logs to a file for debugging/inspection
-    log_path = repo_path / "nova_fix_run.log"
+    # 3. Run AlwaysGreen fix on the repository
+    print("\n🤖 Invoking AlwaysGreen CI-Rescue (alwaysgreen fix) on the repository...")
+    alwaysgreen_cmd = ["alwaysgreen", "fix", ".", "--max-iters", "3", "--timeout", "300", "--verbose"]
+    code, out, err = run_command(alwaysgreen_cmd, cwd=repo_path)
+    alwaysgreen_logs = out + err
+    # Save AlwaysGreen's logs to a file for debugging/inspection
+    log_path = repo_path / "alwaysgreen_fix_run.log"
     try:
         with open(log_path, "w") as f:
-            f.write(nova_logs)
+            f.write(alwaysgreen_logs)
     except Exception as e:
         print(f"⚠️  Warning: Could not write logs to {log_path}: {e}")
     else:
-        print(f"📄 Nova output logged to: {log_path}")
+        print(f"📄 AlwaysGreen output logged to: {log_path}")
 
-    # Determine if Nova reported success (exit code 0 typically means all tests fixed)
+    # Determine if AlwaysGreen reported success (exit code 0 typically means all tests fixed)
     success = code == 0
 
-    # Extract the name of the fix branch Nova created (if any), from Nova's output
+    # Extract the name of the fix branch AlwaysGreen created (if any), from AlwaysGreen's output
     branch_name = None
-    logs_clean = ANSI_ESCAPE_RE.sub("", nova_logs)
+    logs_clean = ANSI_ESCAPE_RE.sub("", alwaysgreen_logs)
     for line in logs_clean.splitlines():
         if "Changes saved to branch" in line:
-            # e.g. "Success! Changes saved to branch: nova-fix/20250814_072910"
+            # e.g. "Success! Changes saved to branch: alwaysgreen-fix/20250814_072910"
             branch_name = line.split("branch:")[-1].strip()
             break
         if branch_name is None and "Created branch" in line:
-            # e.g. "Created branch: nova-fix/20250814_072910"
+            # e.g. "Created branch: alwaysgreen-fix/20250814_072910"
             branch_name = line.split("branch:")[-1].strip()
             # don't break, in case "Changes saved..." comes later in output
             continue
 
     if success:
         print(
-            "✅ Nova fix run completed **successfully** – now running tests to verify fixes..."
+            "✅ AlwaysGreen fix run completed **successfully** – now running tests to verify fixes..."
         )
     else:
         print(
-            "❌ Nova fix run **failed** or did not fix all issues (exit code {}).".format(
+            "❌ AlwaysGreen fix run **failed** or did not fix all issues (exit code {}).".format(
                 code
             )
         )
-        print("   (Check the log file for detailed Nova output.)")
+        print("   (Check the log file for detailed AlwaysGreen output.)")
 
-    # 4. Run tests again after Nova to see if failures remain
+    # 4. Run tests again after AlwaysGreen to see if failures remain
     final_fail_count = None
     final_pass_count = None
     if success:
@@ -196,13 +196,13 @@ def main():
         # Print verification result
         if final_fail_count == 0:
             print(
-                f"🎉 After Nova fix: ALL tests are passing ({final_pass_count} passed, 0 failed)."
+                f"🎉 After AlwaysGreen fix: ALL tests are passing ({final_pass_count} passed, 0 failed)."
             )
         else:
-            print(f"⚠️  After Nova fix: {final_fail_count} tests are still failing.")
+            print(f"⚠️  After AlwaysGreen fix: {final_fail_count} tests are still failing.")
             success = False  # mark as overall failure if any tests still failing
     else:
-        # If Nova failed, the repository was likely reset to original state.
+        # If AlwaysGreen failed, the repository was likely reset to original state.
         # We can re-run tests to confirm the failures are as before.
         code2, out2, err2 = run_command(["pytest"], cwd=repo_path)
         final_output = out2 + err2
@@ -216,8 +216,8 @@ def main():
                     break
         print(f"(Post-run, tests still failing: {final_fail_count} failures)")
 
-    # 5. (Optional) Clean up the Nova fix branch
-    CLEANUP_BRANCH = False  # set to True to delete the Nova fix branch after the test
+    # 5. (Optional) Clean up the AlwaysGreen fix branch
+    CLEANUP_BRANCH = False  # set to True to delete the AlwaysGreen fix branch after the test
     if success and branch_name:
         if CLEANUP_BRANCH:
             print(f"🗑️  Cleaning up Git branch '{branch_name}'...")
@@ -254,14 +254,14 @@ def main():
         f"Final Failures   : {0 if success and final_fail_count == 0 else final_fail_count}"
     )
     if success:
-        print("Result           : ✅ SUCCESS - Nova fixed all failing tests.")
+        print("Result           : ✅ SUCCESS - AlwaysGreen fixed all failing tests.")
         if branch_name and not CLEANUP_BRANCH:
             print(f"Fix Branch       : {branch_name} (contains the applied fixes)")
     else:
         print(
             "Result           : ❌ FAILURE - Some tests remain failing or an error occurred."
         )
-        print(f"Please check the log file ({log_path.name}) for details on Nova's run.")
+        print(f"Please check the log file ({log_path.name}) for details on AlwaysGreen's run.")
     return 0 if success else 1
 
 
