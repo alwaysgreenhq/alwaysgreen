@@ -1,4 +1,4 @@
-# Nova CI-Rescue GitHub App
+# AlwaysGreen CI-Rescue GitHub App
 
 A GitHub App that automatically fixes failing CI tests using AI-powered analysis and patch generation.
 
@@ -21,7 +21,7 @@ Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) an
 1. Go to your repository's Settings → Developer settings → GitHub Apps
 2. Click "New GitHub App"
 3. Configure with the following settings:
-   - **Name**: Nova CI-Rescue
+   - **Name**: AlwaysGreen CI-Rescue
    - **Homepage URL**: `https://nova-ci-rescue.fly.dev`
    - **Webhook URL**: `https://nova-ci-rescue.fly.dev/webhooks`
    - **Webhook Secret**: Generate a random secret
@@ -108,7 +108,7 @@ Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) an
 1. Go to your repository's Settings → Developer settings → GitHub Apps
 2. Click "New GitHub App"
 3. Configure with the following settings:
-   - **Name**: Nova CI-Rescue
+   - **Name**: AlwaysGreen CI-Rescue
    - **Homepage URL**: `https://nova-ci-rescue.fly.dev`
    - **Webhook URL**: `https://nova-ci-rescue.fly.dev/webhooks`
    - **Webhook Secret**: Generate a random secret
@@ -195,7 +195,7 @@ Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) an
 1. Go to your repository's Settings → Developer settings → GitHub Apps
 2. Click "New GitHub App"
 3. Configure with the following settings:
-   - **Name**: Nova CI-Rescue
+   - **Name**: AlwaysGreen CI-Rescue
    - **Homepage URL**: `https://nova-ci-rescue.fly.dev`
    - **Webhook URL**: `https://nova-ci-rescue.fly.dev/webhooks`
    - **Webhook Secret**: Generate a random secret
@@ -282,7 +282,7 @@ Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) an
 1. Go to your repository's Settings → Developer settings → GitHub Apps
 2. Click "New GitHub App"
 3. Configure with the following settings:
-   - **Name**: Nova CI-Rescue
+   - **Name**: AlwaysGreen CI-Rescue
    - **Homepage URL**: `https://nova-ci-rescue.fly.dev`
    - **Webhook URL**: `https://nova-ci-rescue.fly.dev/webhooks`
    - **Webhook Secret**: Generate a random secret
@@ -369,7 +369,7 @@ Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) an
 1. Go to your repository's Settings → Developer settings → GitHub Apps
 2. Click "New GitHub App"
 3. Configure with the following settings:
-   - **Name**: Nova CI-Rescue
+   - **Name**: AlwaysGreen CI-Rescue
    - **Homepage URL**: `https://nova-ci-rescue.fly.dev`
    - **Webhook URL**: `https://nova-ci-rescue.fly.dev/webhooks`
    - **Webhook Secret**: Generate a random secret
@@ -456,7 +456,7 @@ Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) an
 1. Go to your repository's Settings → Developer settings → GitHub Apps
 2. Click "New GitHub App"
 3. Configure with the following settings:
-   - **Name**: Nova CI-Rescue
+   - **Name**: AlwaysGreen CI-Rescue
    - **Homepage URL**: `https://nova-ci-rescue.fly.dev`
    - **Webhook URL**: `https://nova-ci-rescue.fly.dev/webhooks`
    - **Webhook Secret**: Generate a random secret

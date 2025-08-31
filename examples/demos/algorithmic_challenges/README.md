@@ -1,6 +1,6 @@
-# Algorithmic Challenges Demo for Nova CI-Rescue
+# Algorithmic Challenges Demo for AlwaysGreen CI-Rescue
 
-This demo showcases Nova's ability to fix complex algorithmic bugs that require deep understanding of computer science concepts.
+This demo showcases AlwaysGreen's ability to fix complex algorithmic bugs that require deep understanding of computer science concepts.
 
 ## What's Included
 
@@ -33,9 +33,9 @@ export OPENAI_API_KEY=sk-...
 ./demo-algorithmic.sh
 ```
 
-## What Nova Will Fix
+## What AlwaysGreen Will Fix
 
-Nova will analyze the failing tests and fix each algorithm:
+AlwaysGreen will analyze the failing tests and fix each algorithm:
 
 - **Kadane's**: Initialize `max_current` and `max_global` to `nums[0]` instead of 0
 - **LIS**: Add 1 to `dp[j]` in the recurrence: `dp[i] = max(dp[i], dp[j] + 1)`
@@ -48,7 +48,7 @@ Nova will analyze the failing tests and fix each algorithm:
 
 ## Key Insights
 
-This demo illustrates that Nova can:
+This demo illustrates that AlwaysGreen can:
 
 1. **Understand algorithmic correctness** - Not just syntax errors
 2. **Fix multiple related bugs** - In a single iteration
@@ -61,8 +61,8 @@ This demo illustrates that Nova can:
 The demo includes a GitHub Actions workflow (`auto-fix-ci.yml`) that:
 
 - Runs tests on every PR
-- Automatically invokes Nova when tests fail
+- Automatically invokes AlwaysGreen when tests fail
 - Creates a fix PR with all corrections
 - Comments on the original PR with status
 
-This demonstrates how Nova can be integrated into your CI/CD pipeline for automatic test fixing.
+This demonstrates how AlwaysGreen can be integrated into your CI/CD pipeline for automatic test fixing.

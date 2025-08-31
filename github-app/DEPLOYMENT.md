@@ -1,6 +1,6 @@
-# Nova CI-Rescue GitHub App Deployment Guide
+# AlwaysGreen CI-Rescue GitHub App Deployment Guide
 
-This guide covers deploying the Nova CI-Rescue GitHub App to Fly.io for production use.
+This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for production use.
 
 ## Prerequisites
 
@@ -111,7 +111,7 @@ The app provides several health endpoints:
     "install_flow_test": "passed",
     "app_details": {
       "id": 12345,
-      "name": "Nova CI-Rescue"
+      "name": "AlwaysGreen CI-Rescue"
     }
   }
 }
@@ -219,7 +219,7 @@ Set up monitoring for:
 - Resource usage
 - GitHub webhook deliveries
 
-This guide covers deploying the Nova CI-Rescue GitHub App to Fly.io for production use.
+This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for production use.
 
 ## Prerequisites
 
@@ -330,7 +330,7 @@ The app provides several health endpoints:
     "install_flow_test": "passed",
     "app_details": {
       "id": 12345,
-      "name": "Nova CI-Rescue"
+      "name": "AlwaysGreen CI-Rescue"
     }
   }
 }
@@ -438,7 +438,7 @@ Set up monitoring for:
 - Resource usage
 - GitHub webhook deliveries
 
-This guide covers deploying the Nova CI-Rescue GitHub App to Fly.io for production use.
+This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for production use.
 
 ## Prerequisites
 
@@ -549,7 +549,7 @@ The app provides several health endpoints:
     "install_flow_test": "passed",
     "app_details": {
       "id": 12345,
-      "name": "Nova CI-Rescue"
+      "name": "AlwaysGreen CI-Rescue"
     }
   }
 }
@@ -657,7 +657,7 @@ Set up monitoring for:
 - Resource usage
 - GitHub webhook deliveries
 
-This guide covers deploying the Nova CI-Rescue GitHub App to Fly.io for production use.
+This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for production use.
 
 ## Prerequisites
 
@@ -768,7 +768,7 @@ The app provides several health endpoints:
     "install_flow_test": "passed",
     "app_details": {
       "id": 12345,
-      "name": "Nova CI-Rescue"
+      "name": "AlwaysGreen CI-Rescue"
     }
   }
 }
@@ -876,7 +876,7 @@ Set up monitoring for:
 - Resource usage
 - GitHub webhook deliveries
 
-This guide covers deploying the Nova CI-Rescue GitHub App to Fly.io for production use.
+This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for production use.
 
 ## Prerequisites
 
@@ -987,7 +987,7 @@ The app provides several health endpoints:
     "install_flow_test": "passed",
     "app_details": {
       "id": 12345,
-      "name": "Nova CI-Rescue"
+      "name": "AlwaysGreen CI-Rescue"
     }
   }
 }
@@ -1095,7 +1095,7 @@ Set up monitoring for:
 - Resource usage
 - GitHub webhook deliveries
 
-This guide covers deploying the Nova CI-Rescue GitHub App to Fly.io for production use.
+This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for production use.
 
 ## Prerequisites
 
@@ -1206,7 +1206,7 @@ The app provides several health endpoints:
     "install_flow_test": "passed",
     "app_details": {
       "id": 12345,
-      "name": "Nova CI-Rescue"
+      "name": "AlwaysGreen CI-Rescue"
     }
   }
 }

@@ -10,22 +10,22 @@ Result: PRs arrive shippable, with full auditability and guardrails.
 
 ## Table of Contents
 
-- [Why Nova?](#why-nova)
-- [What Nova Does](#what-nova-does)
+- [Why AlwaysGreen?](#why-nova)
+- [What AlwaysGreen Does](#what-nova-does)
 - [How It Works (Autopatch Loop)](#how-it-works-autopatch-loop)
 - [Quickstart](#quickstart)
   - [GitHub Actions](#github-actions)
   - [Local run](#local-run)
   - [Other CI (GitLab, Buildkite)](#other-ci-gitlab-buildkite)
 - [Configuration](#configuration)
-- [Metrics Nova Improves](#metrics-nova-improves)
+- [Metrics AlwaysGreen Improves](#metrics-nova-improves)
 - [Roadmap](#roadmap)
-- [What Nova Is / Isn’t](#what-nova-is--isnt)
+- [What AlwaysGreen Is / Isn’t](#what-nova-is--isnt)
 - [FAQ](#faq)
 - [Contributing](#contributing)
 - [License](#license)
 
-## Why Nova?
+## Why AlwaysGreen?
 
 Editors have coding copilots (Copilot, Cursor, Claude Code). Shipping is still where velocity dies:
 
@@ -33,11 +33,11 @@ Editors have coding copilots (Copilot, Cursor, Claude Code). Shipping is still w
 - Hours of babysitting pipelines and parsing logs.
 - Tools that alert and gate, but rarely act and repair.
 
-Writing software is easy; shipping it safely at velocity is hard. Nova closes the loop by not only detecting failures but fixing them automatically.
+Writing software is easy; shipping it safely at velocity is hard. AlwaysGreen closes the loop by not only detecting failures but fixing them automatically.
 
-“Alerts are cheap; fixes are priceless. Nova does both.”
+“Alerts are cheap; fixes are priceless. AlwaysGreen does both.”
 
-## What Nova Does
+## What AlwaysGreen Does
 
 ### PR Review + Auto‑Fix (v1)
 
@@ -72,7 +72,7 @@ Each patch includes: rationale, diff stats, provenance. Limits and risk policy k
 Create `.github/workflows/nova.yml`:
 
 ```yaml
-name: Nova CI Rescue
+name: AlwaysGreen CI Rescue
 on:
   pull_request:
     types: [opened, synchronize, reopened]
@@ -91,7 +91,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install nova-ci-rescue
-      - name: Run Nova on this PR
+      - name: Run AlwaysGreen on this PR
         run: nova run --pr "${{ github.event.pull_request.number }}" --ci "pytest -q"
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -107,7 +107,7 @@ export OPENAI_API_KEY=sk-...   # your key
 nova run --ci "pytest -q"
 ```
 
-Nova will run your checks, attempt minimal fixes on a local branch, and re‑run until green or limits are reached.
+AlwaysGreen will run your checks, attempt minimal fixes on a local branch, and re‑run until green or limits are reached.
 
 ### Other CI (GitLab, Buildkite)
 
@@ -117,7 +117,7 @@ Install `nova-ci-rescue` in your CI job, then invoke:
 nova run --ci "pytest -q"
 ```
 
-Nova works wherever your checks run. Use your CI’s secret manager to provide `OPENAI_API_KEY`.
+AlwaysGreen works wherever your checks run. Use your CI’s secret manager to provide `OPENAI_API_KEY`.
 
 ## Configuration
 
@@ -146,7 +146,7 @@ features:
 
 Tune these to your comfort level (e.g., move categories into `auto_commit` as trust grows).
 
-## Metrics Nova Improves
+## Metrics AlwaysGreen Improves
 
 - Time‑to‑Green ↓
 - % of Red PRs Auto‑Fixed ↑
@@ -164,46 +164,46 @@ Track these over time to quantify ROI.
 
 Endgame: A self‑healing CI/CD autopilot that keeps PR→prod green across any runner.
 
-## What Nova Is / Isn’t
+## What AlwaysGreen Is / Isn’t
 
 - **Is**: An agentic reviewer/fixer that patches the obvious & repetitive breakages before humans look.
-- **Isn’t**: An IDE coding assistant. Nova focuses on shipping, not typing.
+- **Isn’t**: An IDE coding assistant. AlwaysGreen focuses on shipping, not typing.
 - **Is**: Safe, auditable, and conservative by default.
-- **Isn’t**: A “big bang” refactorer; Nova prefers minimal diffs with clear rationales.
+- **Isn’t**: A “big bang” refactorer; AlwaysGreen prefers minimal diffs with clear rationales.
 
 ## FAQ
 
 **Do I need a big test suite?**
-No. Nova already helps with lint/type/import/build failures and can generate small smoke tests. More tests = more autopatch power.
+No. AlwaysGreen already helps with lint/type/import/build failures and can generate small smoke tests. More tests = more autopatch power.
 
-**Will Nova touch main?**
-No. Nova works on `nova/fix/...` (or your configured branch). You review/merge.
+**Will AlwaysGreen touch main?**
+No. AlwaysGreen works on `nova/fix/...` (or your configured branch). You review/merge.
 
 **What if a fix looks risky?**
 Riskier categories land as suggestions (PR comments or draft commits). You stay in control via the risk policy.
 
 **Which languages are supported?**
-Nova’s v1 flow is optimized for Python projects (e.g., pytest). Additional stacks are on the roadmap.
+AlwaysGreen’s v1 flow is optimized for Python projects (e.g., pytest). Additional stacks are on the roadmap.
 
 **Which models can I use?**
 Bring your own API key (e.g., OpenAI). Configure via `OPENAI_API_KEY`. (Follow your model provider’s data policies.)
 
-**How do I observe what Nova changed?**
-Each patch includes a one‑paragraph rationale, diff stats, and provenance. The CI logs also show Nova’s plan/critic loop.
+**How do I observe what AlwaysGreen changed?**
+Each patch includes a one‑paragraph rationale, diff stats, and provenance. The CI logs also show AlwaysGreen’s plan/critic loop.
 
 ## Contributing
 
 Contributions welcome!
 
 - Open an issue or PR with repro steps and failing checks.
-- Keep diffs minimal where possible (Nova approves!).
+- Keep diffs minimal where possible (AlwaysGreen approves!).
 - Larger proposals: start a discussion first.
 
 We’ll add a full CONTRIBUTING guide and code of conduct shortly.
 
 ## License
 
-MIT © Nova contributors
+MIT © AlwaysGreen contributors
 
 ---
 
@@ -216,9 +216,9 @@ Badges / Links
 
 <!-- BEGIN: MARKET ONE-PAGER -->
 
-# Nova (AI CI/CD Fix Agent) – TAM & SAM Overview
+# AlwaysGreen (AI CI/CD Fix Agent) – TAM & SAM Overview
 
-Nova is an AI-based CI/CD review and fix agent that automatically reviews pull requests, identifies failing checks (tests, builds, lint, policy), and pushes minimal patches to fix them. Below we estimate Nova’s Total Addressable Market (TAM) and Serviceable Available Market (SAM) under two monetization models: a usage-based pricing (per fix) and an enterprise licensing (per team). The table summarizes annual market size, followed by key assumptions.
+AlwaysGreen is an AI-based CI/CD review and fix agent that automatically reviews pull requests, identifies failing checks (tests, builds, lint, policy), and pushes minimal patches to fix them. Below we estimate AlwaysGreen’s Total Addressable Market (TAM) and Serviceable Available Market (SAM) under two monetization models: a usage-based pricing (per fix) and an enterprise licensing (per team). The table summarizes annual market size, followed by key assumptions.
 
 ## TAM & SAM Estimates
 
@@ -233,7 +233,7 @@ Nova is an AI-based CI/CD review and fix agent that automatically reviews pull r
 
 - **Developer Ecosystem Scale**: ~27 million software developers worldwide. We assume roughly 2.7 M dev teams (avg. ~10 developers per team). GitHub is the largest dev platform (100 M+ users), so distribution via GitHub Marketplace can reach a majority of the market initially.
 - **CI/CD Usage Base**: GitHub Actions processes ~10.5 billion CI minutes per year (public repos). Extrapolating to include GitHub private repos and other CI providers (GitLab CI, CircleCI, Jenkins, etc.), we estimate ~30–40 B total CI minutes/year globally. GitHub Actions is used by ~53% of developers (Jenkins ~52%, GitLab CI ~35%), indicating GitHub accounts for roughly half of CI activity.
-- **CI Failure Rate**: Assume ~2%–10% of all CI runs fail due to code issues that Nova can automatically fix (failed tests, lint errors, etc.). We use a 5% failure rate as a midpoint for calculations.
+- **CI Failure Rate**: Assume ~2%–10% of all CI runs fail due to code issues that AlwaysGreen can automatically fix (failed tests, lint errors, etc.). We use a 5% failure rate as a midpoint for calculations.
 - **Usage-Based Pricing Model**: Price at \$0.10–\$1.00 per automated fix. Mid-case: \$0.50 per fix. With ~4 B CI runs/year (from ~40 B minutes, assuming ~10 min per run) and a 5% fixable failure rate → ~200 M fixes/year → ~\$100 M TAM. High case (10% at \$1) ≈ ~\$400 M; low case (2% at \$0.10) < \$10 M.
 - **Enterprise Licensing Model**: Annual team license ≈ \$1,000/mo per team (\$12K/year). With ~2.7 M addressable dev teams globally → \~\$32 B TAM. Focus on teams on GitHub (≈75% reach) → \~\$24 B SAM. Unlimited fixes per team under license captures more value vs per-fix.
 
@@ -241,19 +241,19 @@ Nova is an AI-based CI/CD review and fix agent that automatically reviews pull r
 
 ---
 
-# Nova: Self‑Healing CI/CD — Market One‑Pager (Aug 30, 2025)
+# AlwaysGreen: Self‑Healing CI/CD — Market One‑Pager (Aug 30, 2025)
 
 **One‑liner**
 
-Actions/GitLab/Buildkite run your checks; Nova makes them pass—safely, automatically.
+Actions/GitLab/Buildkite run your checks; AlwaysGreen makes them pass—safely, automatically.
 
 ## TL;DR
 
-- **Fast‑growth budget lines**: Nova sits where CI/CD & DevOps meet AIOps—markets compounding 19–22%+; faster than observability/testing (≈10–11%).
+- **Fast‑growth budget lines**: AlwaysGreen sits where CI/CD & DevOps meet AIOps—markets compounding 19–22%+; faster than observability/testing (≈10–11%).
 - **Massive user base & adoption**: ~19.6M professional devs; 47.2M total devs globally. 83% report involvement in DevOps/CI/CD activities.
 - **Clear pain to monetize**: Main‑branch success averages ~82.5% (CircleCI), leaving failure/retry drag; flaky tests remain pervasive at scale.
 
-## Core markets Nova touches (size → forecast)
+## Core markets AlwaysGreen touches (size → forecast)
 
 | Category                        | Base (\$B) | Base Year | Forecast / Horizon |              CAGR |
 | ------------------------------- | ---------: | --------: | ------------------ | ----------------: |
@@ -285,7 +285,7 @@ Actions/GitLab/Buildkite run your checks; Nova makes them pass—safely, automat
 - Datadog 2024 revenue: \$2.68B; TTM to mid‑2025 \~\$3.02B (+26% YoY).
 - CI tools market: \$1.73B (2025) → \$4.53B (2030).
 
-## Implications for Nova (numbers to quote)
+## Implications for AlwaysGreen (numbers to quote)
 
 - **Platform priority**: First‑class GitHub/Actions integration → direct reach into the largest CI share plus 10.54B annual CI minutes.
 - **Concurrency is exploding**: 71% commit multiple times/day; 29% release multiple times/day → “always‑green PRs” is a daily problem.
@@ -305,7 +305,7 @@ If helpful, I can harmonize all forecasts to a single window (e.g., 2025–2030)
 
 <!-- BEGIN: BUSINESS MODEL -->
 
-# Nova Greenline™ — Business Model & Pricing
+# AlwaysGreen Greenline™ — Business Model & Pricing
 
 Below I'll (1) name the billion‑dollar model in one sentence, then (2) lay out a concrete business model you can ship from the GitHub Marketplace up through enterprise ELAs, with pricing, packaging, ROI math, GTM, and defensibility that aligns with your repo's story.
 
@@ -327,7 +327,7 @@ Why this scales:
 
 ### A. Product → Packaging (good → better → best)
 
-**Wedge (PLG): GitHub App — "Nova CI Rescue" (Team‑ready)**
+**Wedge (PLG): GitHub App — "AlwaysGreen CI Rescue" (Team‑ready)**
 
 - **Promises**: On every PR, reproduce failure → propose a minimal patch → commit to a safe side branch → re‑run checks until green (within a risk budget).
 - **Trust UX**: never touch `main`; show rationale, diff stats, provenance; configurable risk categories (auto‑commit vs suggest‑only).
@@ -376,7 +376,7 @@ Anchor against what buyers already know:
 
 Use public benchmarks to do a fast payback story in‑product:
 
-- CircleCI's 2025 report shows **avg main‑branch success = 82.15%**, i.e., **17.85% failure** baseline. Suppose a customer runs **5,000 workflows/day**. Fails/day ≈ 5,000 × 17.85% = **893**. If Nova auto‑fixes **30%** of those, that's **268** saves/day. At **30 minutes** engineer time per failure avoided and a loaded rate of **$120/hour**, that's **~$16,065/day** or **~$4.18M/year** saved (260 workdays). Even at 5–10% autofix rates, the payback remains obvious.
+- CircleCI's 2025 report shows **avg main‑branch success = 82.15%**, i.e., **17.85% failure** baseline. Suppose a customer runs **5,000 workflows/day**. Fails/day ≈ 5,000 × 17.85% = **893**. If AlwaysGreen auto‑fixes **30%** of those, that's **268** saves/day. At **30 minutes** engineer time per failure avoided and a loaded rate of **$120/hour**, that's **~$16,065/day** or **~$4.18M/year** saved (260 workdays). Even at 5–10% autofix rates, the payback remains obvious.
 
 You can show similar ROI for smaller teams—e.g., **600 runs/day** yields **~$501k/year** in avoided toil at a 30% autofix rate.
 
@@ -406,7 +406,7 @@ A **Fix Credit** is one full autopatch attempt cycle on a PR (plan → patch →
 
 ### G. Moat: why this compounds defensibility
 
-1. **Fix‑graph & heuristics corpus.** Each accepted patch enriches a private "fix library" (by stack/version/test name/error signature). Over time, Nova becomes the default maintainer of **institutional CI knowledge**.
+1. **Fix‑graph & heuristics corpus.** Each accepted patch enriches a private "fix library" (by stack/version/test name/error signature). Over time, AlwaysGreen becomes the default maintainer of **institutional CI knowledge**.
 2. **Policy engine + auditability.** Compliance teams approve you as the **only** agent allowed to commit on CI failures under defined limits—this becomes sticky.
 3. **Distribution lock‑in.** Marketplace presence, verified publisher status, and PR‑native UX (checks, comments, branch writes) are hard for new entrants to replicate quickly at quality.
 
@@ -454,9 +454,9 @@ A **Fix Credit** is one full autopatch attempt cycle on a PR (plan → patch →
 
 ## 5) TL;DR—what to call it
 
-**Nova Greenline™ — the Release Reliability Platform.**
+**AlwaysGreen Greenline™ — the Release Reliability Platform.**
 
-Actions/GitLab/Buildkite run your checks; Nova makes them pass—and you only pay a predictable team license plus credits for the tough ones. (GitHub Marketplace gets 5%; you keep 95%.)
+Actions/GitLab/Buildkite run your checks; AlwaysGreen makes them pass—and you only pay a predictable team license plus credits for the tough ones. (GitHub Marketplace gets 5%; you keep 95%.)
 
 ---
 
@@ -468,17 +468,17 @@ _If you want, I'll adapt this into (a) a pricing page draft and (b) a one‑slid
 
 <!-- BEGIN: SOLUTION AUDIT -->
 
-# Nova "Green-SLA" Shipping Copilot – Solution Audit and Framing
+# AlwaysGreen "Green-SLA" Shipping Copilot – Solution Audit and Framing
 
 ## Problem Context: Failing CI/CD Drains Velocity
 
 Modern software teams often struggle with red builds, flaky tests, and broken pipelines that halt progress. A failing CI job means engineers spend hours babysitting pipelines – parsing logs, rerunning tests, and applying manual fixes. Current CI systems largely serve an alert-and-block role: they run tests and notify you of failures, but don't help fix the underlying issues. As a result, shipping velocity suffers; merges are delayed and developers lose focus context-switching to debug CI problems.
 
-Why Nova? The gap is clear – while editors have coding copilots to assist with writing code, there's no "shipping copilot" ensuring that code actually gets to production. This is the problem Nova addresses: automatically turning failing pull requests into passing ones (or providing a bounded plan) so that every PR arrives shippable with minimal human intervention.
+Why AlwaysGreen? The gap is clear – while editors have coding copilots to assist with writing code, there's no "shipping copilot" ensuring that code actually gets to production. This is the problem AlwaysGreen addresses: automatically turning failing pull requests into passing ones (or providing a bounded plan) so that every PR arrives shippable with minimal human intervention.
 
-## Solution Overview: Nova as a Self-Healing CI/CD Copilot
+## Solution Overview: AlwaysGreen as a Self-Healing CI/CD Copilot
 
-Nova is proposed as an autonomous CI/CD autopatcher – essentially a "self-healing" layer for your pipeline. On each pull request (PR), Nova will automatically:
+AlwaysGreen is proposed as an autonomous CI/CD autopatcher – essentially a "self-healing" layer for your pipeline. On each pull request (PR), AlwaysGreen will automatically:
 
 1. Reproduce the failure in a hermetic environment (same dependencies, seeds, etc.),
 2. Diagnose the root cause,
@@ -486,49 +486,49 @@ Nova is proposed as an autonomous CI/CD autopatcher – essentially a "self-heal
 4. Apply a minimal patch on a side branch, and
 5. Re-run the tests to verify the fix.
 
-It repeats this loop until the PR's checks go green or it reaches a defined attempt limit. If it cannot fix the issue, Nova will post a detailed analysis and plan for a human to review. All of this happens as part of your CI flow, so by the time a developer looks at the PR, it's either already green or comes with a clear path to green.
+It repeats this loop until the PR's checks go green or it reaches a defined attempt limit. If it cannot fix the issue, AlwaysGreen will post a detailed analysis and plan for a human to review. All of this happens as part of your CI flow, so by the time a developer looks at the PR, it's either already green or comes with a clear path to green.
 
-In short, Nova acts as a "shipping copilot": instead of just telling you something's wrong, it actively makes failing checks pass – safely and automatically. This turns the traditional CI promise into a "Green-SLA": an expectation that builds stay green by default, with Nova doing everything possible to meet that standard.
+In short, AlwaysGreen acts as a "shipping copilot": instead of just telling you something's wrong, it actively makes failing checks pass – safely and automatically. This turns the traditional CI promise into a "Green-SLA": an expectation that builds stay green by default, with AlwaysGreen doing everything possible to meet that standard.
 
-## Mapping the Runbook to Nova's Features
+## Mapping the Runbook to AlwaysGreen's Features
 
-Teams often have a runbook for CI failures – a series of manual steps engineers follow when a build breaks. Nova codifies that entire process into product features, creating a closed-loop, alert-first automation. For example:
+Teams often have a runbook for CI failures – a series of manual steps engineers follow when a build breaks. AlwaysGreen codifies that entire process into product features, creating a closed-loop, alert-first automation. For example:
 
-- **"Stop the line"** (halt merges, notify team) – Nova implements this via incident state + alerts (Slack notifications, GitHub check failures). If the main branch is broken, Nova posts status updates and prevents further merges.
+- **"Stop the line"** (halt merges, notify team) – AlwaysGreen implements this via incident state + alerts (Slack notifications, GitHub check failures). If the main branch is broken, AlwaysGreen posts status updates and prevents further merges.
 
-- **Reproduce in the same environment** – Nova uses a hermetic test runner (consistent base images, pinned dependencies, fixed random seeds) to ensure it sees the exact same failure as CI.
+- **Reproduce in the same environment** – AlwaysGreen uses a hermetic test runner (consistent base images, pinned dependencies, fixed random seeds) to ensure it sees the exact same failure as CI.
 
-- **Focus on first error** – Nova includes a log parser that extracts the first failure or error signature, so it concentrates on the root cause rather than getting lost in cascading errors.
+- **Focus on first error** – AlwaysGreen includes a log parser that extracts the first failure or error signature, so it concentrates on the root cause rather than getting lost in cascading errors.
 
-- **Time-box the investigation, then revert** – Nova has an auto-revert policy: if it can't fix the build within a grace period or a couple of attempts, it can automatically roll back the offending commit (this is configurable and initially off until you're comfortable).
+- **Time-box the investigation, then revert** – AlwaysGreen has an auto-revert policy: if it can't fix the build within a grace period or a couple of attempts, it can automatically roll back the offending commit (this is configurable and initially off until you're comfortable).
 
-- **Bisect when cause is unclear** – Nova provides an on-demand bisect job to pinpoint which commit introduced a failure. This isn't run every time, but you can trigger it (or even automate it) if a failure's cause isn't obvious.
+- **Bisect when cause is unclear** – AlwaysGreen provides an on-demand bisect job to pinpoint which commit introduced a failure. This isn't run every time, but you can trigger it (or even automate it) if a failure's cause isn't obvious.
 
-- **Detect flakiness and quarantine** – Nova includes a flake classifier that watches for tests that fail intermittently. It can label or quarantine flaky tests (e.g., move them out of required checks) so they don't keep spurious failures from blocking merges.
+- **Detect flakiness and quarantine** – AlwaysGreen includes a flake classifier that watches for tests that fail intermittently. It can label or quarantine flaky tests (e.g., move them out of required checks) so they don't keep spurious failures from blocking merges.
 
-- **Apply the smallest safe fix** – Nova's Green-SLA autopatcher tries to make the minimal change necessary (bounded by N attempts, F files, L lines of code) to resolve the failure. The focus is on small, surgical fixes that are easy to review.
+- **Apply the smallest safe fix** – AlwaysGreen's Green-SLA autopatcher tries to make the minimal change necessary (bounded by N attempts, F files, L lines of code) to resolve the failure. The focus is on small, surgical fixes that are easy to review.
 
-- **Explain every change** – Every Nova-generated patch comes with an explanation (a one-paragraph rationale) and links to relevant logs or artifacts. This way, developers can understand why the change was made.
+- **Explain every change** – Every AlwaysGreen-generated patch comes with an explanation (a one-paragraph rationale) and links to relevant logs or artifacts. This way, developers can understand why the change was made.
 
-- **Enforce guardrails** – Nova uses policy-as-code (OPA/Rego) plus scanners to enforce rules (e.g. no touching certain sensitive files, respecting CODEOWNERS, limiting how much can change). These guardrails ensure Nova's fixes stay within agreed boundaries.
+- **Enforce guardrails** – AlwaysGreen uses policy-as-code (OPA/Rego) plus scanners to enforce rules (e.g. no touching certain sensitive files, respecting CODEOWNERS, limiting how much can change). These guardrails ensure AlwaysGreen's fixes stay within agreed boundaries.
 
-By mapping the manual runbook steps to these capabilities, Nova ensures that the entire CI failure-handling process is owned end-to-end by automation. What used to be a page of instructions in a Wiki is now baked into the CI/CD pipeline itself.
+By mapping the manual runbook steps to these capabilities, AlwaysGreen ensures that the entire CI failure-handling process is owned end-to-end by automation. What used to be a page of instructions in a Wiki is now baked into the CI/CD pipeline itself.
 
 ## Key Components and Configuration
 
-Nova's solution is delivered through a combination of config-as-code, CI pipeline hooks, and lightweight CLI tools/scripts. The major components include:
+AlwaysGreen's solution is delivered through a combination of config-as-code, CI pipeline hooks, and lightweight CLI tools/scripts. The major components include:
 
-### Nova Configuration (nova.yml)
+### AlwaysGreen Configuration (nova.yml)
 
-A file (e.g. `.github/nova.yml`) in the repo defines Nova's operating limits and policies. For example, you can set limits like `max_attempts: 2` (Nova will try at most 2 patches), `max_files_changed: 5`, `max_loc_delta: 40` (no patch bigger than 40 lines added/removed) etc. It also defines risk categories – e.g., Nova might auto-commit safe fixes (linting, formatting, simple type errors) but only suggest changes for higher-risk issues (dependency upgrades, major refactors).
+A file (e.g. `.github/nova.yml`) in the repo defines AlwaysGreen's operating limits and policies. For example, you can set limits like `max_attempts: 2` (AlwaysGreen will try at most 2 patches), `max_files_changed: 5`, `max_loc_delta: 40` (no patch bigger than 40 lines added/removed) etc. It also defines risk categories – e.g., AlwaysGreen might auto-commit safe fixes (linting, formatting, simple type errors) but only suggest changes for higher-risk issues (dependency upgrades, major refactors).
 
-The config also lists alert channels and rules (Slack, GitHub comments, PagerDuty escalation) and policy settings (like which paths are protected, whether to enforce CODEOWNERS checks, etc.). All these settings make Nova's behavior transparent and tunable via versioned code.
+The config also lists alert channels and rules (Slack, GitHub comments, PagerDuty escalation) and policy settings (like which paths are protected, whether to enforce CODEOWNERS checks, etc.). All these settings make AlwaysGreen's behavior transparent and tunable via versioned code.
 
 ### GitHub Actions Workflows
 
-Nova integrates into CI via standard workflows. The solution provides ready-to-use YAML workflows:
+AlwaysGreen integrates into CI via standard workflows. The solution provides ready-to-use YAML workflows:
 
-**PR Auto-Fix Workflow** (e.g., `.github/workflows/nova-ci-rescue.yml`): This runs on every pull request update. It checks out the code, ensures the environment is ready (using a preflight script), then invokes Nova's CLI (for example: `nova run --pr $PR_NUMBER --ci "pytest -q"`). Nova then attempts to fix any test failures on that PR. If Nova makes changes, it commits them to a new branch (like `nova/fix/123` for PR #123) and pushes, so the PR picks up the changes.
+**PR Auto-Fix Workflow** (e.g., `.github/workflows/nova-ci-rescue.yml`): This runs on every pull request update. It checks out the code, ensures the environment is ready (using a preflight script), then invokes AlwaysGreen's CLI (for example: `nova run --pr $PR_NUMBER --ci "pytest -q"`). AlwaysGreen then attempts to fix any test failures on that PR. If AlwaysGreen makes changes, it commits them to a new branch (like `nova/fix/123` for PR #123) and pushes, so the PR picks up the changes.
 
 **Main Branch Guardian Workflow** (`nova-main-guardian.yml`): This runs on pushes to the main branch (or whatever the "protected" branch is). It executes the test suite in a controlled way (capturing the first error to a log). If the suite fails, this workflow will handle incident response: it can create a GitHub Check run that shows the failure, post a Slack alert to notify the team that the main branch is broken, and optionally trigger a PagerDuty escalation if no one responds in a given time.
 
@@ -536,117 +536,117 @@ Nova integrates into CI via standard workflows. The solution provides ready-to-u
 
 ### Utility Scripts
 
-Alongside the workflows, Nova provides scripts to assist in the CI environment:
+Alongside the workflows, AlwaysGreen provides scripts to assist in the CI environment:
 
-- `scripts/ci/preflight.sh` – This runs before Nova's main logic. It checks that the environment is sane and sets consistent environment settings.
+- `scripts/ci/preflight.sh` – This runs before AlwaysGreen's main logic. It checks that the environment is sane and sets consistent environment settings.
 - `scripts/ci/first_error.sh` – Given a full CI log, this script finds the first occurrence of a failure and prints that section.
 - `scripts/ci/env_fingerprint.sh` – This gathers information about the environment and dependencies and writes it to an artifact file.
 
 ### Guardrail Policies (OPA/Rego)
 
-The solution includes a policy file `policy/guardrails.rego` which encodes organization-specific rules for patches. Nova's orchestrator can query this policy before applying any fix. For example, the policy might say:
+The solution includes a policy file `policy/guardrails.rego` which encodes organization-specific rules for patches. AlwaysGreen's orchestrator can query this policy before applying any fix. For example, the policy might say:
 
 - "If more than 5 files are changed or more than 40 lines are added/removed, that's a violation (too large of a fix)."
 - "If the diff touches any file in `migrations/` or `secrets/` or other sensitive directories, that's a violation."
 - "If multiple distinct areas are changed in one patch, flag it."
 
-If any such rule is violated, Nova will not auto-commit the patch; instead, it can either skip that fix or mark it for human review.
+If any such rule is violated, AlwaysGreen will not auto-commit the patch; instead, it can either skip that fix or mark it for human review.
 
 ### Alerts and Notifications
 
-Nova is designed to integrate with team communication channels:
+AlwaysGreen is designed to integrate with team communication channels:
 
-**Slack**: You can configure a Slack webhook in the Nova config. The solution provides a sample shell script (`alerts/slack_payload.sh`) that formats a message with an emoji/status and a direct link to the relevant CI run or PR, then POSTs it to Slack.
+**Slack**: You can configure a Slack webhook in the AlwaysGreen config. The solution provides a sample shell script (`alerts/slack_payload.sh`) that formats a message with an emoji/status and a direct link to the relevant CI run or PR, then POSTs it to Slack.
 
-**PagerDuty (PD)**: For critical pipelines (like prod deploys), Nova can escalate to PagerDuty after a certain time. The config's alert rules allow an `escalate_after_minutes: X` setting.
+**PagerDuty (PD)**: For critical pipelines (like prod deploys), AlwaysGreen can escalate to PagerDuty after a certain time. The config's alert rules allow an `escalate_after_minutes: X` setting.
 
-**GitHub Checks and PR comments**: Nova leverages GitHub's status checks API. For instance, the "Nova CI Rescue" workflow can create a check run that reports the status of Nova's attempts. If Nova fails to fix a PR, it can mark the check as "action required" and attach logs or the plan for fixing.
+**GitHub Checks and PR comments**: AlwaysGreen leverages GitHub's status checks API. For instance, the "AlwaysGreen CI Rescue" workflow can create a check run that reports the status of AlwaysGreen's attempts. If AlwaysGreen fails to fix a PR, it can mark the check as "action required" and attach logs or the plan for fixing.
 
-All these components work together: the workflows trigger Nova at the right times, the config and policies constrain its behavior, and the scripts plus integration hooks let Nova communicate what it's doing.
+All these components work together: the workflows trigger AlwaysGreen at the right times, the config and policies constrain its behavior, and the scripts plus integration hooks let AlwaysGreen communicate what it's doing.
 
 ## Autopatch Loop Mechanism: "Plan → Patch → Verify"
 
-At the heart of Nova is an autopatch loop that embodies the "reproduce and repair" cycle:
+At the heart of AlwaysGreen is an autopatch loop that embodies the "reproduce and repair" cycle:
 
-1. **Reproduce & Capture**: Nova starts by running the test suite (or specific failing checks) in an isolated environment to see the failure firsthand. It captures the logs, and using the `first_error.sh` logic, identifies the first point of failure.
+1. **Reproduce & Capture**: AlwaysGreen starts by running the test suite (or specific failing checks) in an isolated environment to see the failure firsthand. It captures the logs, and using the `first_error.sh` logic, identifies the first point of failure.
 
-2. **Plan**: Based on the failure classification and Nova's internal knowledge base, it formulates a repair plan. The plan is essentially: "What minimal change could fix this?" Nova always stays within the risk budget defined – e.g., "At most 2 attempts for this PR, touching no more than 5 files and adding/removing ≤ 40 lines total."
+2. **Plan**: Based on the failure classification and AlwaysGreen's internal knowledge base, it formulates a repair plan. The plan is essentially: "What minimal change could fix this?" AlwaysGreen always stays within the risk budget defined – e.g., "At most 2 attempts for this PR, touching no more than 5 files and adding/removing ≤ 40 lines total."
 
-3. **Generate Patch**: Nova then uses AI (and possibly some templated fixes for known issues) to generate the code changes according to the plan. This could involve editing a few lines in a function, adding a small test, updating a version in a config file, etc. The emphasis is on minimality – the smallest possible diff that could resolve the failure.
+3. **Generate Patch**: AlwaysGreen then uses AI (and possibly some templated fixes for known issues) to generate the code changes according to the plan. This could involve editing a few lines in a function, adding a small test, updating a version in a config file, etc. The emphasis is on minimality – the smallest possible diff that could resolve the failure.
 
-4. **Apply to Side Branch**: Nova never commits directly to main. It commits the patch to a separate branch (e.g., `nova/fix/<PR-number>` or a similarly prefixed branch). This approach means that the original PR branch isn't altered by Nova – instead, the PR is updated via a new commit from Nova on a side branch.
+4. **Apply to Side Branch**: AlwaysGreen never commits directly to main. It commits the patch to a separate branch (e.g., `nova/fix/<PR-number>` or a similarly prefixed branch). This approach means that the original PR branch isn't altered by AlwaysGreen – instead, the PR is updated via a new commit from AlwaysGreen on a side branch.
 
-5. **Run Tests on the Patch**: After applying the patch, Nova triggers the CI checks again. Now we see if the fix worked. If all tests pass, wonderful – Nova has managed to turn the PR green. If there's still a failure (or a new failure), Nova records that outcome for the next iteration.
+5. **Run Tests on the Patch**: After applying the patch, AlwaysGreen triggers the CI checks again. Now we see if the fix worked. If all tests pass, wonderful – AlwaysGreen has managed to turn the PR green. If there's still a failure (or a new failure), AlwaysGreen records that outcome for the next iteration.
 
-6. **Critique & Iterate**: If the tests are still failing, Nova goes back to step 1 or 2: it analyzes the new failure and will then come up with a refined plan or a new plan for the new error. Nova will iterate this cycle, but only up to a fixed number of attempts (`max_attempts`) to avoid an infinite loop.
+6. **Critique & Iterate**: If the tests are still failing, AlwaysGreen goes back to step 1 or 2: it analyzes the new failure and will then come up with a refined plan or a new plan for the new error. AlwaysGreen will iterate this cycle, but only up to a fixed number of attempts (`max_attempts`) to avoid an infinite loop.
 
-7. **Decide & Report**: After either succeeding or exhausting attempts, Nova makes a decision:
+7. **Decide & Report**: After either succeeding or exhausting attempts, AlwaysGreen makes a decision:
 
-   - **Success**: Nova will update the PR with the fix branch commit(s) and typically add a comment like "✅ Nova auto-fix applied: all checks are now passing."
-   - **Failure/Exceeded Budget**: If Nova couldn't fix the issue within the set attempts, Nova will comment with a failure report and attach artifacts.
+   - **Success**: AlwaysGreen will update the PR with the fix branch commit(s) and typically add a comment like "✅ AlwaysGreen auto-fix applied: all checks are now passing."
+   - **Failure/Exceeded Budget**: If AlwaysGreen couldn't fix the issue within the set attempts, AlwaysGreen will comment with a failure report and attach artifacts.
 
-8. **Explain**: A key part of Nova's philosophy is explainability. Each Nova-generated patch comes with a one-paragraph rationale explaining why the change was made and evidence that it's safe.
+8. **Explain**: A key part of AlwaysGreen's philosophy is explainability. Each AlwaysGreen-generated patch comes with a one-paragraph rationale explaining why the change was made and evidence that it's safe.
 
-Throughout this loop, Nova is constrained by guardrails and policy at every step. It won't, for example, decide to pull in a new library or make a database schema change as a fix – those are beyond its scope unless explicitly allowed.
+Throughout this loop, AlwaysGreen is constrained by guardrails and policy at every step. It won't, for example, decide to pull in a new library or make a database schema change as a fix – those are beyond its scope unless explicitly allowed.
 
 ## Safety and Guardrails
 
-Nova's design prioritizes safety and control, recognizing that teams need to trust it gradually. Key safety mechanisms include:
+AlwaysGreen's design prioritizes safety and control, recognizing that teams need to trust it gradually. Key safety mechanisms include:
 
 - **No direct commits to main**: All fixes go to a `nova/fix/...` branch, keeping the primary branch untouched.
-- **Strict change budgets**: Nova enforces quantitative limits on its fixes (max files/LOC changed, max attempts).
+- **Strict change budgets**: AlwaysGreen enforces quantitative limits on its fixes (max files/LOC changed, max attempts).
 - **Protected areas**: Certain files or directories can be declared off-limits or sensitive.
-- **CODEOWNERS enforcement**: Nova can be set to respect your repo's CODEOWNERS rules.
+- **CODEOWNERS enforcement**: AlwaysGreen can be set to respect your repo's CODEOWNERS rules.
 - **Policy-driven guardrails**: The OPA/Rego policy file encodes rules in a single source of truth.
-- **Risk-tiered actions**: Not all fixes are equal. Nova categorizes fixes by risk (low/medium/high-risk).
-- **Human oversight for exceptions**: If Nova hits a guardrail, it will defer to humans.
+- **Risk-tiered actions**: Not all fixes are equal. AlwaysGreen categorizes fixes by risk (low/medium/high-risk).
+- **Human oversight for exceptions**: If AlwaysGreen hits a guardrail, it will defer to humans.
 
 ## Incident Handling and Alerting
 
-Nova treats CI failures as first-class incidents that need both attention and action:
+AlwaysGreen treats CI failures as first-class incidents that need both attention and action:
 
-**Main branch failures**: When a commit to main causes a red build, Nova's Main Guardian comes into play. It will immediately surface the issue via multiple channels and can automatically pause any merge queues or deployment pipelines.
+**Main branch failures**: When a commit to main causes a red build, AlwaysGreen's Main Guardian comes into play. It will immediately surface the issue via multiple channels and can automatically pause any merge queues or deployment pipelines.
 
-**Pull request failures**: When a PR's CI is failing, Nova's PR Auto-Fix workflow will try to fix it. While doing so, it can post status updates and notify on Slack as well.
+**Pull request failures**: When a PR's CI is failing, AlwaysGreen's PR Auto-Fix workflow will try to fix it. While doing so, it can post status updates and notify on Slack as well.
 
-**Alert tuning**: Not every failed test needs a loud alert. The Nova config allows tuning what conditions trigger which alerts.
+**Alert tuning**: Not every failed test needs a loud alert. The AlwaysGreen config allows tuning what conditions trigger which alerts.
 
 ## On-Demand Tools: Bisect and Flake Management
 
-Two special cases in CI failures are when the cause is unknown and when the cause is intermittent (flaky tests). Nova includes tools for both:
+Two special cases in CI failures are when the cause is unknown and when the cause is intermittent (flaky tests). AlwaysGreen includes tools for both:
 
-**Automated Bisect**: Nova has a workflow to automate `git bisect`. If you supply a range and a command that determines "good vs bad", Nova will binary-search through your commit history to find exactly which commit introduced the failure.
+**Automated Bisect**: AlwaysGreen has a workflow to automate `git bisect`. If you supply a range and a command that determines "good vs bad", AlwaysGreen will binary-search through your commit history to find exactly which commit introduced the failure.
 
-**Flake Detection & Quarantine**: Nova's orchestrator can identify patterns where a test fails but on re-run passes. For known flaky tests, Nova can automatically quarantine them.
+**Flake Detection & Quarantine**: AlwaysGreen's orchestrator can identify patterns where a test fails but on re-run passes. For known flaky tests, AlwaysGreen can automatically quarantine them.
 
 ## Adoption Path and Rollout Stages
 
-Introducing an autonomous tool into CI/CD should be done carefully. Nova's solution is designed to be adoptable in stages:
+Introducing an autonomous tool into CI/CD should be done carefully. AlwaysGreen's solution is designed to be adoptable in stages:
 
-- **M0 – Explain-Only Mode**: Start with Nova not making any changes at all. Nova will analyze failures but only output explanations and possible solutions.
-- **M1 – Automatic Small Fixes**: Allow Nova to auto-fix very low-risk issues like lint errors and simple test assertions.
-- **M2 – Moderate Fixes & Multi-File Changes**: Nova tackles more complex issues within a contained scope.
-- **M3 – Flake & Stability Management**: Nova becomes proactive about the health of the test suite itself.
-- **M4 – Deploy Guardian**: Nova's self-healing extends into the deployment phase.
+- **M0 – Explain-Only Mode**: Start with AlwaysGreen not making any changes at all. AlwaysGreen will analyze failures but only output explanations and possible solutions.
+- **M1 – Automatic Small Fixes**: Allow AlwaysGreen to auto-fix very low-risk issues like lint errors and simple test assertions.
+- **M2 – Moderate Fixes & Multi-File Changes**: AlwaysGreen tackles more complex issues within a contained scope.
+- **M3 – Flake & Stability Management**: AlwaysGreen becomes proactive about the health of the test suite itself.
+- **M4 – Deploy Guardian**: AlwaysGreen's self-healing extends into the deployment phase.
 
 ## Value Proposition and Differentiation
 
-Nova is positioned not as a traditional CI tool or a generic coding assistant, but as a new kind of outcome-focused CI companion:
+AlwaysGreen is positioned not as a traditional CI tool or a generic coding assistant, but as a new kind of outcome-focused CI companion:
 
-- **Core Promise (Green-SLA)**: Nova aims for "green by default" CI – it will do everything possible (within safe limits) to get a failing build back to green.
-- **Outcome-Focused vs Tool-Focused**: Unlike traditional CI/CD tools that stop at running tests and reporting failures, Nova actually acts to resolve those failures.
-- **Minimal & Safe Fixes**: Nova's fixes are intentionally small and auditable. Each patch is constrained in size and comes with an explanation and evidence.
-- **Safety & Control**: A huge part of Nova's differentiation is the safety layer with policies, config, and human approvals built-in.
+- **Core Promise (Green-SLA)**: AlwaysGreen aims for "green by default" CI – it will do everything possible (within safe limits) to get a failing build back to green.
+- **Outcome-Focused vs Tool-Focused**: Unlike traditional CI/CD tools that stop at running tests and reporting failures, AlwaysGreen actually acts to resolve those failures.
+- **Minimal & Safe Fixes**: AlwaysGreen's fixes are intentionally small and auditable. Each patch is constrained in size and comes with an explanation and evidence.
+- **Safety & Control**: A huge part of AlwaysGreen's differentiation is the safety layer with policies, config, and human approvals built-in.
 
 ## Operational Details and Evidence
 
-The described GitHub Actions workflows and scripts are straightforward to implement. They follow best practices and give Nova the needed permissions to push fix branches and update PRs. The use of hermetic test runs, first error focus, minimal patch strategy, and guardrails via Rego all show technical soundness.
+The described GitHub Actions workflows and scripts are straightforward to implement. They follow best practices and give AlwaysGreen the needed permissions to push fix branches and update PRs. The use of hermetic test runs, first error focus, minimal patch strategy, and guardrails via Rego all show technical soundness.
 
-The solution appears technically feasible and robust, covering the full spectrum from detection to fix to notification. Each piece is built on proven practices, which increases the likelihood that Nova can be adopted without a huge learning curve.
+The solution appears technically feasible and robust, covering the full spectrum from detection to fix to notification. Each piece is built on proven practices, which increases the likelihood that AlwaysGreen can be adopted without a huge learning curve.
 
 ## Product Framing and Language
 
-In positioning Nova, it's important to convey that this is not just another CI tool, but a new category of developer assistant focused on shipping quality code faster:
+In positioning AlwaysGreen, it's important to convey that this is not just another CI tool, but a new category of developer assistant focused on shipping quality code faster:
 
 - **Category Name**: Self-Healing CI/CD
 - **Role**: Shipping Copilot
@@ -657,8 +657,8 @@ In positioning Nova, it's important to convey that this is not just another CI t
 
 ## Conclusion
 
-The Nova "Green-SLA Shipping Copilot" solution provides a comprehensive answer to the problem of failing CI pipelines by automating the diagnosis and repair process with safety and accountability. The audit shows that it covers all the critical bases: effectiveness, safety, transparency, completeness, adaptability, and vision.
+The AlwaysGreen "Green-SLA Shipping Copilot" solution provides a comprehensive answer to the problem of failing CI pipelines by automating the diagnosis and repair process with safety and accountability. The audit shows that it covers all the critical bases: effectiveness, safety, transparency, completeness, adaptability, and vision.
 
-If implemented and calibrated correctly, Nova could significantly improve engineering productivity and confidence in the CI/CD process. It represents a promising step towards truly self-healing pipelines that change the mindset from "oh no, the build is red, who's going to fix it?" to "the build is red, but Nova is on it – it might be green by the time I get back from lunch."
+If implemented and calibrated correctly, AlwaysGreen could significantly improve engineering productivity and confidence in the CI/CD process. It represents a promising step towards truly self-healing pipelines that change the mindset from "oh no, the build is red, who's going to fix it?" to "the build is red, but AlwaysGreen is on it – it might be green by the time I get back from lunch."
 
 <!-- END: SOLUTION AUDIT -->
