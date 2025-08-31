@@ -190,7 +190,7 @@ flyctl releases rollback <version>
 For GitHub Marketplace listing:
 
 1. **App Manifest**: Use the provided manifest in `templates/`
-2. **Setup URL**: `https://nova-ci-rescue.fly.dev/setup`
+2. **Setup URL**: `https://alwaysgreen.fly.dev/setup`
 3. **Support**: Configure support email and documentation URLs
 4. **Pricing**: Set up pricing plans if applicable
 
@@ -409,7 +409,7 @@ flyctl releases rollback <version>
 For GitHub Marketplace listing:
 
 1. **App Manifest**: Use the provided manifest in `templates/`
-2. **Setup URL**: `https://nova-ci-rescue.fly.dev/setup`
+2. **Setup URL**: `https://alwaysgreen.fly.dev/setup`
 3. **Support**: Configure support email and documentation URLs
 4. **Pricing**: Set up pricing plans if applicable
 
@@ -628,7 +628,7 @@ flyctl releases rollback <version>
 For GitHub Marketplace listing:
 
 1. **App Manifest**: Use the provided manifest in `templates/`
-2. **Setup URL**: `https://nova-ci-rescue.fly.dev/setup`
+2. **Setup URL**: `https://alwaysgreen.fly.dev/setup`
 3. **Support**: Configure support email and documentation URLs
 4. **Pricing**: Set up pricing plans if applicable
 
@@ -847,7 +847,7 @@ flyctl releases rollback <version>
 For GitHub Marketplace listing:
 
 1. **App Manifest**: Use the provided manifest in `templates/`
-2. **Setup URL**: `https://nova-ci-rescue.fly.dev/setup`
+2. **Setup URL**: `https://alwaysgreen.fly.dev/setup`
 3. **Support**: Configure support email and documentation URLs
 4. **Pricing**: Set up pricing plans if applicable
 
@@ -1066,7 +1066,7 @@ flyctl releases rollback <version>
 For GitHub Marketplace listing:
 
 1. **App Manifest**: Use the provided manifest in `templates/`
-2. **Setup URL**: `https://nova-ci-rescue.fly.dev/setup`
+2. **Setup URL**: `https://alwaysgreen.fly.dev/setup`
 3. **Support**: Configure support email and documentation URLs
 4. **Pricing**: Set up pricing plans if applicable
 
@@ -1285,7 +1285,7 @@ flyctl releases rollback <version>
 For GitHub Marketplace listing:
 
 1. **App Manifest**: Use the provided manifest in `templates/`
-2. **Setup URL**: `https://nova-ci-rescue.fly.dev/setup`
+2. **Setup URL**: `https://alwaysgreen.fly.dev/setup`
 3. **Support**: Configure support email and documentation URLs
 4. **Pricing**: Set up pricing plans if applicable
 

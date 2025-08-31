@@ -1,5 +1,5 @@
-# Nova CI-Rescue GitHub App - Fly.io Configuration
-app = "nova-ci-rescue"
+# AlwaysGreen GitHub App - Fly.io Configuration
+app = "alwaysgreen"
 primary_region = "sjc"
 
 [build]
