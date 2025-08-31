@@ -25,34 +25,34 @@ Create a `.env` file in your project root:
 OPENAI_API_KEY=your_openai_api_key_here
 # Optional
 ANTHROPIC_API_KEY=your_anthropic_api_key_here
-NOVA_MAX_ITERS=3
-NOVA_RUN_TIMEOUT_SEC=600
+ALWAYSGREEN_MAX_ITERS=3
+ALWAYSGREEN_RUN_TIMEOUT_SEC=600
 ```
 
 ## Running AlwaysGreen
 
 ### Basic Usage
 ```bash
-nova fix /path/to/repo
+alwaysgreen fix /path/to/repo
 ```
 
 ### With Options
 ```bash
-nova fix . --max-iters 3 --timeout 600
+alwaysgreen fix . --max-iters 3 --timeout 600
 ```
 
 ### Batch Evaluation
 ```bash
-nova eval --repos repos.yaml
+alwaysgreen eval --repos repos.yaml
 ```
 
 ## Inspecting Results
 
 ### View Artifacts
 ```bash
-tree .nova/<run>/
+tree .alwaysgreen/<run>/
 # Expected structure:
-# .nova/20250813T201234Z/
+# .alwaysgreen/20250813T201234Z/
 # ├── trace.jsonl       # Complete execution log
 # ├── diffs/           # Patches for each iteration
 # │   ├── step-1.patch
@@ -65,7 +65,7 @@ tree .nova/<run>/
 ### Check Test Results
 ```bash
 # View the final test report
-cat .nova/<latest>/reports/final.xml
+cat .alwaysgreen/<latest>/reports/final.xml
 ```
 
 ## Resetting After a Run
@@ -96,6 +96,6 @@ git clean -fd
 
 ## Getting Help
 
-- Check logs: `.nova/<run>/trace.jsonl`
+- Check logs: `.alwaysgreen/<run>/trace.jsonl`
 - GitHub Issues: [github.com/alwaysgreen-ci/alwaysgreen/issues](https://github.com/alwaysgreen-ci/alwaysgreen/issues)
 - Email support: support@alwaysgreen.ai
