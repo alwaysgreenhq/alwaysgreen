@@ -16,15 +16,15 @@ pip install -e .
 
 ### Option 1: Environment Variable
 ```bash
-export OPENAI_API_KEY=sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+export OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 ### Option 2: .env File
 Create a `.env` file in your project root:
 ```env
-OPENAI_API_KEY=sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+OPENAI_API_KEY=your_openai_api_key_here
 # Optional
-ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
 NOVA_MAX_ITERS=3
 NOVA_RUN_TIMEOUT_SEC=600
 ```

@@ -22,7 +22,7 @@ npm install
 ### 2. Create Fly.io App
 
 ```bash
-flyctl launch --name nova-ci-rescue
+flyctl launch --name alwaysgreen
 ```
 
 ### 3. Configure Secrets
@@ -56,7 +56,7 @@ flyctl deploy
 The `fly.toml` file contains the production configuration:
 
 ```toml
-app = "nova-ci-rescue"
+app = "alwaysgreen"
 primary_region = "iad"
 
 [build]
@@ -241,7 +241,7 @@ npm install
 ### 2. Create Fly.io App
 
 ```bash
-flyctl launch --name nova-ci-rescue
+flyctl launch --name alwaysgreen
 ```
 
 ### 3. Configure Secrets
@@ -275,7 +275,7 @@ flyctl deploy
 The `fly.toml` file contains the production configuration:
 
 ```toml
-app = "nova-ci-rescue"
+app = "alwaysgreen"
 primary_region = "iad"
 
 [build]
@@ -460,7 +460,7 @@ npm install
 ### 2. Create Fly.io App
 
 ```bash
-flyctl launch --name nova-ci-rescue
+flyctl launch --name alwaysgreen
 ```
 
 ### 3. Configure Secrets
@@ -494,7 +494,7 @@ flyctl deploy
 The `fly.toml` file contains the production configuration:
 
 ```toml
-app = "nova-ci-rescue"
+app = "alwaysgreen"
 primary_region = "iad"
 
 [build]
@@ -679,7 +679,7 @@ npm install
 ### 2. Create Fly.io App
 
 ```bash
-flyctl launch --name nova-ci-rescue
+flyctl launch --name alwaysgreen
 ```
 
 ### 3. Configure Secrets
@@ -713,7 +713,7 @@ flyctl deploy
 The `fly.toml` file contains the production configuration:
 
 ```toml
-app = "nova-ci-rescue"
+app = "alwaysgreen"
 primary_region = "iad"
 
 [build]
@@ -898,7 +898,7 @@ npm install
 ### 2. Create Fly.io App
 
 ```bash
-flyctl launch --name nova-ci-rescue
+flyctl launch --name alwaysgreen
 ```
 
 ### 3. Configure Secrets
@@ -932,7 +932,7 @@ flyctl deploy
 The `fly.toml` file contains the production configuration:
 
 ```toml
-app = "nova-ci-rescue"
+app = "alwaysgreen"
 primary_region = "iad"
 
 [build]
@@ -1117,7 +1117,7 @@ npm install
 ### 2. Create Fly.io App
 
 ```bash
-flyctl launch --name nova-ci-rescue
+flyctl launch --name alwaysgreen
 ```
 
 ### 3. Configure Secrets
@@ -1151,7 +1151,7 @@ flyctl deploy
 The `fly.toml` file contains the production configuration:
 
 ```toml
-app = "nova-ci-rescue"
+app = "alwaysgreen"
 primary_region = "iad"
 
 [build]

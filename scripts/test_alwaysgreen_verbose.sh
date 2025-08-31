@@ -7,8 +7,8 @@ set -euo pipefail
 # Unset potentially conflicting environment variables
 unset PYTHONPATH
 unset VIRTUAL_ENV
-unset NOVA_API_KEY
-unset NOVA_CONFIG
+unset ALWAYSGREEN_API_KEY
+unset ALWAYSGREEN_CONFIG
 unset GIT_PYTHON_REFRESH
 
 echo "🧪 Testing AlwaysGreen CI-Rescue Demo Version - String Utils Bug (Verbose Mode)"

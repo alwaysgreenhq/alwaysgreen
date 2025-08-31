@@ -27,7 +27,7 @@ The demo includes intentionally broken implementations of classic algorithms:
 
 ```bash
 # Make sure you have an API key set
-export OPENAI_API_KEY=sk-...
+export OPENAI_API_KEY=your-key-here
 
 # Run the demo script
 ./demo-algorithmic.sh

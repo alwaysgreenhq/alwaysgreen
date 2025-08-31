@@ -103,7 +103,7 @@ jobs:
 
 ```bash
 pip install nova-ci-rescue
-export OPENAI_API_KEY=sk-...   # your key
+export OPENAI_API_KEY=your-key-here   # your key
 nova run --ci "pytest -q"
 ```
 
