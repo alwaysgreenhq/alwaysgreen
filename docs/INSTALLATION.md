@@ -18,7 +18,7 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-3. Install Nova in editable mode
+3. Install AlwaysGreen in editable mode
 
 ```bash
 pip install -e .
@@ -37,4 +37,4 @@ cp env.example .env
 nova version
 ```
 
-You are ready to run Nova.
+You are ready to run AlwaysGreen.

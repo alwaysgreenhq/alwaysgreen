@@ -1,4 +1,4 @@
-# Nova CI-Rescue GitHub App
+# AlwaysGreen CI-Rescue GitHub App
 
 A GitHub App that automatically fixes failing CI tests using AI-powered analysis and patch generation.
 
@@ -14,16 +14,16 @@ A GitHub App that automatically fixes failing CI tests using AI-powered analysis
 
 ### Option 1: One-Click Install (Recommended)
 
-Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) and click "Install" to add the app to your repositories.
+Visit the [GitHub Marketplace](https://github.com/marketplace/alwaysgreen) and click "Install" to add the app to your repositories.
 
 ### Option 2: Manual Setup
 
 1. Go to your repository's Settings → Developer settings → GitHub Apps
 2. Click "New GitHub App"
 3. Configure with the following settings:
-   - **Name**: Nova CI-Rescue
-   - **Homepage URL**: `https://nova-ci-rescue.fly.dev`
-   - **Webhook URL**: `https://nova-ci-rescue.fly.dev/webhooks`
+   - **Name**: AlwaysGreen CI-Rescue
+   - **Homepage URL**: `https://alwaysgreen.fly.dev`
+   - **Webhook URL**: `https://alwaysgreen.fly.dev/webhooks`
    - **Webhook Secret**: Generate a random secret
    - **Repository permissions**:
      - Repository contents: Read & Write
@@ -34,7 +34,7 @@ Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) an
 
 ## Configuration
 
-Create a `.nova-ci-rescue.yml` file in your repository root:
+Create a `.alwaysgreen.yml` file in your repository root:
 
 ```yaml
 max_iters: 3
@@ -73,8 +73,8 @@ npm run dev
 ### Docker
 
 ```bash
-docker build -t nova-ci-rescue .
-docker run -p 8080:8080 nova-ci-rescue
+docker build -t alwaysgreen .
+docker run -p 8080:8080 alwaysgreen
 ```
 
 ## Deployment
@@ -83,8 +83,8 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions to Fly.i
 
 ## Support
 
-- [Documentation](https://nova-ci-rescue.fly.dev/docs)
-- [Troubleshooting Guide](https://nova-ci-rescue.fly.dev/troubleshooting)
+- [Documentation](https://alwaysgreen.fly.dev/docs)
+- [Troubleshooting Guide](https://alwaysgreen.fly.dev/troubleshooting)
 - [GitHub Issues](https://github.com/ci-auto-rescue/ci-auto-rescue/issues)
 
 A GitHub App that automatically fixes failing CI tests using AI-powered analysis and patch generation.
@@ -101,16 +101,16 @@ A GitHub App that automatically fixes failing CI tests using AI-powered analysis
 
 ### Option 1: One-Click Install (Recommended)
 
-Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) and click "Install" to add the app to your repositories.
+Visit the [GitHub Marketplace](https://github.com/marketplace/alwaysgreen) and click "Install" to add the app to your repositories.
 
 ### Option 2: Manual Setup
 
 1. Go to your repository's Settings → Developer settings → GitHub Apps
 2. Click "New GitHub App"
 3. Configure with the following settings:
-   - **Name**: Nova CI-Rescue
-   - **Homepage URL**: `https://nova-ci-rescue.fly.dev`
-   - **Webhook URL**: `https://nova-ci-rescue.fly.dev/webhooks`
+   - **Name**: AlwaysGreen CI-Rescue
+   - **Homepage URL**: `https://alwaysgreen.fly.dev`
+   - **Webhook URL**: `https://alwaysgreen.fly.dev/webhooks`
    - **Webhook Secret**: Generate a random secret
    - **Repository permissions**:
      - Repository contents: Read & Write
@@ -121,7 +121,7 @@ Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) an
 
 ## Configuration
 
-Create a `.nova-ci-rescue.yml` file in your repository root:
+Create a `.alwaysgreen.yml` file in your repository root:
 
 ```yaml
 max_iters: 3
@@ -160,8 +160,8 @@ npm run dev
 ### Docker
 
 ```bash
-docker build -t nova-ci-rescue .
-docker run -p 8080:8080 nova-ci-rescue
+docker build -t alwaysgreen .
+docker run -p 8080:8080 alwaysgreen
 ```
 
 ## Deployment
@@ -170,8 +170,8 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions to Fly.i
 
 ## Support
 
-- [Documentation](https://nova-ci-rescue.fly.dev/docs)
-- [Troubleshooting Guide](https://nova-ci-rescue.fly.dev/troubleshooting)
+- [Documentation](https://alwaysgreen.fly.dev/docs)
+- [Troubleshooting Guide](https://alwaysgreen.fly.dev/troubleshooting)
 - [GitHub Issues](https://github.com/ci-auto-rescue/ci-auto-rescue/issues)
 
 A GitHub App that automatically fixes failing CI tests using AI-powered analysis and patch generation.
@@ -188,16 +188,16 @@ A GitHub App that automatically fixes failing CI tests using AI-powered analysis
 
 ### Option 1: One-Click Install (Recommended)
 
-Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) and click "Install" to add the app to your repositories.
+Visit the [GitHub Marketplace](https://github.com/marketplace/alwaysgreen) and click "Install" to add the app to your repositories.
 
 ### Option 2: Manual Setup
 
 1. Go to your repository's Settings → Developer settings → GitHub Apps
 2. Click "New GitHub App"
 3. Configure with the following settings:
-   - **Name**: Nova CI-Rescue
-   - **Homepage URL**: `https://nova-ci-rescue.fly.dev`
-   - **Webhook URL**: `https://nova-ci-rescue.fly.dev/webhooks`
+   - **Name**: AlwaysGreen CI-Rescue
+   - **Homepage URL**: `https://alwaysgreen.fly.dev`
+   - **Webhook URL**: `https://alwaysgreen.fly.dev/webhooks`
    - **Webhook Secret**: Generate a random secret
    - **Repository permissions**:
      - Repository contents: Read & Write
@@ -208,7 +208,7 @@ Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) an
 
 ## Configuration
 
-Create a `.nova-ci-rescue.yml` file in your repository root:
+Create a `.alwaysgreen.yml` file in your repository root:
 
 ```yaml
 max_iters: 3
@@ -247,8 +247,8 @@ npm run dev
 ### Docker
 
 ```bash
-docker build -t nova-ci-rescue .
-docker run -p 8080:8080 nova-ci-rescue
+docker build -t alwaysgreen .
+docker run -p 8080:8080 alwaysgreen
 ```
 
 ## Deployment
@@ -257,8 +257,8 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions to Fly.i
 
 ## Support
 
-- [Documentation](https://nova-ci-rescue.fly.dev/docs)
-- [Troubleshooting Guide](https://nova-ci-rescue.fly.dev/troubleshooting)
+- [Documentation](https://alwaysgreen.fly.dev/docs)
+- [Troubleshooting Guide](https://alwaysgreen.fly.dev/troubleshooting)
 - [GitHub Issues](https://github.com/ci-auto-rescue/ci-auto-rescue/issues)
 
 A GitHub App that automatically fixes failing CI tests using AI-powered analysis and patch generation.
@@ -275,16 +275,16 @@ A GitHub App that automatically fixes failing CI tests using AI-powered analysis
 
 ### Option 1: One-Click Install (Recommended)
 
-Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) and click "Install" to add the app to your repositories.
+Visit the [GitHub Marketplace](https://github.com/marketplace/alwaysgreen) and click "Install" to add the app to your repositories.
 
 ### Option 2: Manual Setup
 
 1. Go to your repository's Settings → Developer settings → GitHub Apps
 2. Click "New GitHub App"
 3. Configure with the following settings:
-   - **Name**: Nova CI-Rescue
-   - **Homepage URL**: `https://nova-ci-rescue.fly.dev`
-   - **Webhook URL**: `https://nova-ci-rescue.fly.dev/webhooks`
+   - **Name**: AlwaysGreen CI-Rescue
+   - **Homepage URL**: `https://alwaysgreen.fly.dev`
+   - **Webhook URL**: `https://alwaysgreen.fly.dev/webhooks`
    - **Webhook Secret**: Generate a random secret
    - **Repository permissions**:
      - Repository contents: Read & Write
@@ -295,7 +295,7 @@ Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) an
 
 ## Configuration
 
-Create a `.nova-ci-rescue.yml` file in your repository root:
+Create a `.alwaysgreen.yml` file in your repository root:
 
 ```yaml
 max_iters: 3
@@ -334,8 +334,8 @@ npm run dev
 ### Docker
 
 ```bash
-docker build -t nova-ci-rescue .
-docker run -p 8080:8080 nova-ci-rescue
+docker build -t alwaysgreen .
+docker run -p 8080:8080 alwaysgreen
 ```
 
 ## Deployment
@@ -344,8 +344,8 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions to Fly.i
 
 ## Support
 
-- [Documentation](https://nova-ci-rescue.fly.dev/docs)
-- [Troubleshooting Guide](https://nova-ci-rescue.fly.dev/troubleshooting)
+- [Documentation](https://alwaysgreen.fly.dev/docs)
+- [Troubleshooting Guide](https://alwaysgreen.fly.dev/troubleshooting)
 - [GitHub Issues](https://github.com/ci-auto-rescue/ci-auto-rescue/issues)
 
 A GitHub App that automatically fixes failing CI tests using AI-powered analysis and patch generation.
@@ -362,16 +362,16 @@ A GitHub App that automatically fixes failing CI tests using AI-powered analysis
 
 ### Option 1: One-Click Install (Recommended)
 
-Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) and click "Install" to add the app to your repositories.
+Visit the [GitHub Marketplace](https://github.com/marketplace/alwaysgreen) and click "Install" to add the app to your repositories.
 
 ### Option 2: Manual Setup
 
 1. Go to your repository's Settings → Developer settings → GitHub Apps
 2. Click "New GitHub App"
 3. Configure with the following settings:
-   - **Name**: Nova CI-Rescue
-   - **Homepage URL**: `https://nova-ci-rescue.fly.dev`
-   - **Webhook URL**: `https://nova-ci-rescue.fly.dev/webhooks`
+   - **Name**: AlwaysGreen CI-Rescue
+   - **Homepage URL**: `https://alwaysgreen.fly.dev`
+   - **Webhook URL**: `https://alwaysgreen.fly.dev/webhooks`
    - **Webhook Secret**: Generate a random secret
    - **Repository permissions**:
      - Repository contents: Read & Write
@@ -382,7 +382,7 @@ Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) an
 
 ## Configuration
 
-Create a `.nova-ci-rescue.yml` file in your repository root:
+Create a `.alwaysgreen.yml` file in your repository root:
 
 ```yaml
 max_iters: 3
@@ -421,8 +421,8 @@ npm run dev
 ### Docker
 
 ```bash
-docker build -t nova-ci-rescue .
-docker run -p 8080:8080 nova-ci-rescue
+docker build -t alwaysgreen .
+docker run -p 8080:8080 alwaysgreen
 ```
 
 ## Deployment
@@ -431,8 +431,8 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions to Fly.i
 
 ## Support
 
-- [Documentation](https://nova-ci-rescue.fly.dev/docs)
-- [Troubleshooting Guide](https://nova-ci-rescue.fly.dev/troubleshooting)
+- [Documentation](https://alwaysgreen.fly.dev/docs)
+- [Troubleshooting Guide](https://alwaysgreen.fly.dev/troubleshooting)
 - [GitHub Issues](https://github.com/ci-auto-rescue/ci-auto-rescue/issues)
 
 A GitHub App that automatically fixes failing CI tests using AI-powered analysis and patch generation.
@@ -449,16 +449,16 @@ A GitHub App that automatically fixes failing CI tests using AI-powered analysis
 
 ### Option 1: One-Click Install (Recommended)
 
-Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) and click "Install" to add the app to your repositories.
+Visit the [GitHub Marketplace](https://github.com/marketplace/alwaysgreen) and click "Install" to add the app to your repositories.
 
 ### Option 2: Manual Setup
 
 1. Go to your repository's Settings → Developer settings → GitHub Apps
 2. Click "New GitHub App"
 3. Configure with the following settings:
-   - **Name**: Nova CI-Rescue
-   - **Homepage URL**: `https://nova-ci-rescue.fly.dev`
-   - **Webhook URL**: `https://nova-ci-rescue.fly.dev/webhooks`
+   - **Name**: AlwaysGreen CI-Rescue
+   - **Homepage URL**: `https://alwaysgreen.fly.dev`
+   - **Webhook URL**: `https://alwaysgreen.fly.dev/webhooks`
    - **Webhook Secret**: Generate a random secret
    - **Repository permissions**:
      - Repository contents: Read & Write
@@ -469,7 +469,7 @@ Visit the [GitHub Marketplace](https://github.com/marketplace/nova-ci-rescue) an
 
 ## Configuration
 
-Create a `.nova-ci-rescue.yml` file in your repository root:
+Create a `.alwaysgreen.yml` file in your repository root:
 
 ```yaml
 max_iters: 3
@@ -508,8 +508,8 @@ npm run dev
 ### Docker
 
 ```bash
-docker build -t nova-ci-rescue .
-docker run -p 8080:8080 nova-ci-rescue
+docker build -t alwaysgreen .
+docker run -p 8080:8080 alwaysgreen
 ```
 
 ## Deployment
@@ -518,6 +518,6 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions to Fly.i
 
 ## Support
 
-- [Documentation](https://nova-ci-rescue.fly.dev/docs)
-- [Troubleshooting Guide](https://nova-ci-rescue.fly.dev/troubleshooting)
+- [Documentation](https://alwaysgreen.fly.dev/docs)
+- [Troubleshooting Guide](https://alwaysgreen.fly.dev/troubleshooting)
 - [GitHub Issues](https://github.com/ci-auto-rescue/ci-auto-rescue/issues)

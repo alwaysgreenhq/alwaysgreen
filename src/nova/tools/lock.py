@@ -24,7 +24,7 @@ class NovaLock:
         """
         self.repo_path = repo_path
         self.timeout = timeout
-        self.lock_file = repo_path / ".nova" / "nova.lock"
+        self.lock_file = repo_path / ".alwaysgreen" / "alwaysgreen.lock"
         self.lock_file.parent.mkdir(exist_ok=True, parents=True)
 
     def _read_lock_info(self) -> Optional[dict]:
@@ -126,7 +126,7 @@ class NovaLock:
 
 
 @contextmanager
-def nova_lock(repo_path: Path, timeout: int = 3600, wait: bool = False):
+def alwaysgreen_lock(repo_path: Path, timeout: int = 3600, wait: bool = False):
     """
     Context manager for Nova file locking.
 

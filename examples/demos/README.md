@@ -1,6 +1,6 @@
-# Nova CI-Rescue Demo Examples
+# AlwaysGreen CI-Rescue Demo Examples
 
-This directory contains various demo projects with intentionally broken code and failing tests. These are designed to test Nova CI-Rescue's ability to automatically fix different types of bugs.
+This directory contains various demo projects with intentionally broken code and failing tests. These are designed to test AlwaysGreen CI-Rescue's ability to automatically fix different types of bugs.
 
 ## Demo Projects
 
@@ -80,14 +80,14 @@ A complete calculator project with multiple bugs:
 Examples for testing LLM-based fixes (existing)
 
 ### 11. **demo_nova_test/**
-Nova-specific test scenarios (existing)
+AlwaysGreen-specific test scenarios (existing)
 
 ### 12. **demo_test_repo/**
 General test repository examples (existing)
 
 ## Running the Demos
 
-To test Nova CI-Rescue on any demo:
+To test AlwaysGreen CI-Rescue on any demo:
 
 ```bash
 # Navigate to a demo directory
@@ -96,7 +96,7 @@ cd demo_math_ops
 # Run the tests to see failures
 pytest
 
-# Use Nova to fix the failing tests
+# Use AlwaysGreen to fix the failing tests
 nova fix
 
 # Verify the fixes
@@ -110,7 +110,7 @@ Each demo contains:
 - Comprehensive test suites that will fail
 - Comments indicating the bugs (marked with "BUG:")
 
-Nova CI-Rescue should:
+AlwaysGreen CI-Rescue should:
 1. Detect all failing tests
 2. Analyze the code and test expectations
 3. Generate patches to fix the bugs

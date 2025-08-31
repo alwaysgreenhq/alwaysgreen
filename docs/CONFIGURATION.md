@@ -1,6 +1,6 @@
 # Configuration
 
-Nova is configured via environment variables (e.g., `.env`).
+AlwaysGreen is configured via environment variables (e.g., `.env`).
 
 ## Core
 
@@ -31,7 +31,7 @@ Nova is configured via environment variables (e.g., `.env`).
 ## Example `.env`
 
 ```bash
-OPENAI_API_KEY=sk-...
+OPENAI_API_KEY=your_openai_api_key_here
 # ANTHROPIC_API_KEY=...
 # NOVA_DEFAULT_LLM_MODEL=claude-3-5-sonnet
 # NOVA_REASONING_EFFORT=medium  # Use 'low' or 'medium' for faster runs

@@ -193,7 +193,7 @@ class GitBranchManager:
     # Branch lifecycle
     # ---------------------------
     def create_fix_branch(self) -> str:
-        """Create a new nova-auto-fix/<timestamp> branch and switch to it."""
+        """Create a new alwaysgreen-auto-fix/<timestamp> branch and switch to it."""
         self.original_head = self._get_current_head()
         if not self.original_head:
             raise RuntimeError("Failed to get current HEAD commit")
@@ -207,7 +207,7 @@ class GitBranchManager:
                 branches = output.strip().split("\n")
                 for branch in branches:
                     branch = branch.strip().lstrip("* ")
-                    if not branch.startswith("nova-auto-fix/"):
+                    if not branch.startswith("alwaysgreen-auto-fix/"):
                         self.original_branch = branch
                         break
             if self.original_branch == "HEAD":
@@ -222,7 +222,7 @@ class GitBranchManager:
                         self.original_branch = "master"
 
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        self.branch_name = f"nova-auto-fix/{timestamp}"
+        self.branch_name = f"alwaysgreen-auto-fix/{timestamp}"
 
         success, output = self._run_git_command("checkout", "-b", self.branch_name)
         if not success:
@@ -550,7 +550,7 @@ class GitBranchManager:
                 "\n[yellow]⚠️  Cleaning up... resetting to original state[/yellow]"
             )
             current_branch = self._get_current_branch()
-            if current_branch and current_branch.startswith("nova-auto-fix/"):
+            if current_branch and current_branch.startswith("alwaysgreen-auto-fix/"):
                 if self.original_branch and self.original_branch != "HEAD":
                     ok, output = self._run_git_command(
                         "checkout", "-f", self.original_branch
@@ -604,9 +604,9 @@ class GitBranchManager:
 @contextmanager
 def managed_fix_branch(repo_path: Path, verbose: bool = False):
     """
-    Context manager for Git branch operations during nova fix.
+    Context manager for Git branch operations during alwaysgreen fix.
 
-    Creates a nova-auto-fix/<timestamp> branch on entry, and handles cleanup on exit.
+    Creates a alwaysgreen-auto-fix/<timestamp> branch on entry, and handles cleanup on exit.
     On success, leaves the branch. On failure or interrupt, hard resets to original HEAD.
     """
     manager = GitBranchManager(repo_path, verbose)

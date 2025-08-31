@@ -1,6 +1,6 @@
-# Nova CI-Rescue GitHub App Deployment Guide
+# AlwaysGreen CI-Rescue GitHub App Deployment Guide
 
-This guide covers deploying the Nova CI-Rescue GitHub App to Fly.io for production use.
+This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for production use.
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ npm install
 ### 2. Create Fly.io App
 
 ```bash
-flyctl launch --name nova-ci-rescue
+flyctl launch --name alwaysgreen
 ```
 
 ### 3. Configure Secrets
@@ -56,7 +56,7 @@ flyctl deploy
 The `fly.toml` file contains the production configuration:
 
 ```toml
-app = "nova-ci-rescue"
+app = "alwaysgreen"
 primary_region = "iad"
 
 [build]
@@ -111,7 +111,7 @@ The app provides several health endpoints:
     "install_flow_test": "passed",
     "app_details": {
       "id": 12345,
-      "name": "Nova CI-Rescue"
+      "name": "AlwaysGreen CI-Rescue"
     }
   }
 }
@@ -190,7 +190,7 @@ flyctl releases rollback <version>
 For GitHub Marketplace listing:
 
 1. **App Manifest**: Use the provided manifest in `templates/`
-2. **Setup URL**: `https://nova-ci-rescue.fly.dev/setup`
+2. **Setup URL**: `https://alwaysgreen.fly.dev/setup`
 3. **Support**: Configure support email and documentation URLs
 4. **Pricing**: Set up pricing plans if applicable
 
@@ -219,7 +219,7 @@ Set up monitoring for:
 - Resource usage
 - GitHub webhook deliveries
 
-This guide covers deploying the Nova CI-Rescue GitHub App to Fly.io for production use.
+This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for production use.
 
 ## Prerequisites
 
@@ -241,7 +241,7 @@ npm install
 ### 2. Create Fly.io App
 
 ```bash
-flyctl launch --name nova-ci-rescue
+flyctl launch --name alwaysgreen
 ```
 
 ### 3. Configure Secrets
@@ -275,7 +275,7 @@ flyctl deploy
 The `fly.toml` file contains the production configuration:
 
 ```toml
-app = "nova-ci-rescue"
+app = "alwaysgreen"
 primary_region = "iad"
 
 [build]
@@ -330,7 +330,7 @@ The app provides several health endpoints:
     "install_flow_test": "passed",
     "app_details": {
       "id": 12345,
-      "name": "Nova CI-Rescue"
+      "name": "AlwaysGreen CI-Rescue"
     }
   }
 }
@@ -409,7 +409,7 @@ flyctl releases rollback <version>
 For GitHub Marketplace listing:
 
 1. **App Manifest**: Use the provided manifest in `templates/`
-2. **Setup URL**: `https://nova-ci-rescue.fly.dev/setup`
+2. **Setup URL**: `https://alwaysgreen.fly.dev/setup`
 3. **Support**: Configure support email and documentation URLs
 4. **Pricing**: Set up pricing plans if applicable
 
@@ -438,7 +438,7 @@ Set up monitoring for:
 - Resource usage
 - GitHub webhook deliveries
 
-This guide covers deploying the Nova CI-Rescue GitHub App to Fly.io for production use.
+This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for production use.
 
 ## Prerequisites
 
@@ -460,7 +460,7 @@ npm install
 ### 2. Create Fly.io App
 
 ```bash
-flyctl launch --name nova-ci-rescue
+flyctl launch --name alwaysgreen
 ```
 
 ### 3. Configure Secrets
@@ -494,7 +494,7 @@ flyctl deploy
 The `fly.toml` file contains the production configuration:
 
 ```toml
-app = "nova-ci-rescue"
+app = "alwaysgreen"
 primary_region = "iad"
 
 [build]
@@ -549,7 +549,7 @@ The app provides several health endpoints:
     "install_flow_test": "passed",
     "app_details": {
       "id": 12345,
-      "name": "Nova CI-Rescue"
+      "name": "AlwaysGreen CI-Rescue"
     }
   }
 }
@@ -628,7 +628,7 @@ flyctl releases rollback <version>
 For GitHub Marketplace listing:
 
 1. **App Manifest**: Use the provided manifest in `templates/`
-2. **Setup URL**: `https://nova-ci-rescue.fly.dev/setup`
+2. **Setup URL**: `https://alwaysgreen.fly.dev/setup`
 3. **Support**: Configure support email and documentation URLs
 4. **Pricing**: Set up pricing plans if applicable
 
@@ -657,7 +657,7 @@ Set up monitoring for:
 - Resource usage
 - GitHub webhook deliveries
 
-This guide covers deploying the Nova CI-Rescue GitHub App to Fly.io for production use.
+This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for production use.
 
 ## Prerequisites
 
@@ -679,7 +679,7 @@ npm install
 ### 2. Create Fly.io App
 
 ```bash
-flyctl launch --name nova-ci-rescue
+flyctl launch --name alwaysgreen
 ```
 
 ### 3. Configure Secrets
@@ -713,7 +713,7 @@ flyctl deploy
 The `fly.toml` file contains the production configuration:
 
 ```toml
-app = "nova-ci-rescue"
+app = "alwaysgreen"
 primary_region = "iad"
 
 [build]
@@ -768,7 +768,7 @@ The app provides several health endpoints:
     "install_flow_test": "passed",
     "app_details": {
       "id": 12345,
-      "name": "Nova CI-Rescue"
+      "name": "AlwaysGreen CI-Rescue"
     }
   }
 }
@@ -847,7 +847,7 @@ flyctl releases rollback <version>
 For GitHub Marketplace listing:
 
 1. **App Manifest**: Use the provided manifest in `templates/`
-2. **Setup URL**: `https://nova-ci-rescue.fly.dev/setup`
+2. **Setup URL**: `https://alwaysgreen.fly.dev/setup`
 3. **Support**: Configure support email and documentation URLs
 4. **Pricing**: Set up pricing plans if applicable
 
@@ -876,7 +876,7 @@ Set up monitoring for:
 - Resource usage
 - GitHub webhook deliveries
 
-This guide covers deploying the Nova CI-Rescue GitHub App to Fly.io for production use.
+This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for production use.
 
 ## Prerequisites
 
@@ -898,7 +898,7 @@ npm install
 ### 2. Create Fly.io App
 
 ```bash
-flyctl launch --name nova-ci-rescue
+flyctl launch --name alwaysgreen
 ```
 
 ### 3. Configure Secrets
@@ -932,7 +932,7 @@ flyctl deploy
 The `fly.toml` file contains the production configuration:
 
 ```toml
-app = "nova-ci-rescue"
+app = "alwaysgreen"
 primary_region = "iad"
 
 [build]
@@ -987,7 +987,7 @@ The app provides several health endpoints:
     "install_flow_test": "passed",
     "app_details": {
       "id": 12345,
-      "name": "Nova CI-Rescue"
+      "name": "AlwaysGreen CI-Rescue"
     }
   }
 }
@@ -1066,7 +1066,7 @@ flyctl releases rollback <version>
 For GitHub Marketplace listing:
 
 1. **App Manifest**: Use the provided manifest in `templates/`
-2. **Setup URL**: `https://nova-ci-rescue.fly.dev/setup`
+2. **Setup URL**: `https://alwaysgreen.fly.dev/setup`
 3. **Support**: Configure support email and documentation URLs
 4. **Pricing**: Set up pricing plans if applicable
 
@@ -1095,7 +1095,7 @@ Set up monitoring for:
 - Resource usage
 - GitHub webhook deliveries
 
-This guide covers deploying the Nova CI-Rescue GitHub App to Fly.io for production use.
+This guide covers deploying the AlwaysGreen CI-Rescue GitHub App to Fly.io for production use.
 
 ## Prerequisites
 
@@ -1117,7 +1117,7 @@ npm install
 ### 2. Create Fly.io App
 
 ```bash
-flyctl launch --name nova-ci-rescue
+flyctl launch --name alwaysgreen
 ```
 
 ### 3. Configure Secrets
@@ -1151,7 +1151,7 @@ flyctl deploy
 The `fly.toml` file contains the production configuration:
 
 ```toml
-app = "nova-ci-rescue"
+app = "alwaysgreen"
 primary_region = "iad"
 
 [build]
@@ -1206,7 +1206,7 @@ The app provides several health endpoints:
     "install_flow_test": "passed",
     "app_details": {
       "id": 12345,
-      "name": "Nova CI-Rescue"
+      "name": "AlwaysGreen CI-Rescue"
     }
   }
 }
@@ -1285,7 +1285,7 @@ flyctl releases rollback <version>
 For GitHub Marketplace listing:
 
 1. **App Manifest**: Use the provided manifest in `templates/`
-2. **Setup URL**: `https://nova-ci-rescue.fly.dev/setup`
+2. **Setup URL**: `https://alwaysgreen.fly.dev/setup`
 3. **Support**: Configure support email and documentation URLs
 4. **Pricing**: Set up pricing plans if applicable
 

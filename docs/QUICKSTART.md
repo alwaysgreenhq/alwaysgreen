@@ -4,28 +4,28 @@ Get AlwaysGreen fixing your failing tests in under 5 minutes.
 
 ## Step 1: Install the GitHub App
 
-[![Install Nova CI‑Rescue](https://img.shields.io/badge/Install-GitHub%20App-blue?logo=github)](https://github.com/apps/alwaysgreen/installations/new)
+[![Install AlwaysGreen CI‑Rescue](https://img.shields.io/badge/Install-GitHub%20App-blue?logo=github)](https://github.com/apps/alwaysgreen/installations/new)
 
 1. Click the install button above
 2. Choose your organization or personal account
-3. Select "All repositories" or specific repos you want Nova to monitor
+3. Select "All repositories" or specific repos you want AlwaysGreen to monitor
 4. Click **Install**
 
 ![GitHub App Installation](https://via.placeholder.com/600x300/f8f9fa/6c757d?text=GitHub+App+Installation+Flow)
 
 ## Step 2: Add your API key
 
-Nova needs an OpenAI API key to analyze and fix your code.
+AlwaysGreen needs an OpenAI API key to analyze and fix your code.
 
 1. Go to your repository → **Settings** → **Secrets and variables** → **Actions**
 2. Click **New repository secret**
 3. Name: `OPENAI_API_KEY`
-4. Value: Your OpenAI API key (starts with `sk-`)
+4. Value: Your OpenAI API key
 5. Click **Add secret**
 
 > **Don't have an OpenAI API key?** Get one at [platform.openai.com](https://platform.openai.com/api-keys)
 
-## Step 3: Add the Nova workflow
+## Step 3: Add the AlwaysGreen workflow
 
 Create `.github/workflows/alwaysgreen.yml` in your repository:
 
@@ -66,7 +66,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install Nova + test deps
+      - name: Install AlwaysGreen + test deps
         run: |
           python -m pip install -U pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
@@ -77,7 +77,7 @@ jobs:
           git config user.name "alwaysgreen[bot]"
           git config user.email "alwaysgreen[bot]@users.noreply.github.com"
 
-      - name: Run Nova auto-fix
+      - name: Run AlwaysGreen auto-fix
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -94,7 +94,7 @@ jobs:
 
 ## Step 4: Ensure you have a CI workflow
 
-Nova triggers when your CI fails. Make sure you have a basic CI workflow at `.github/workflows/ci.yml`:
+AlwaysGreen triggers when your CI fails. Make sure you have a basic CI workflow at `.github/workflows/ci.yml`:
 
 ```yaml
 name: CI
@@ -123,29 +123,29 @@ jobs:
 
 ## Step 5: Test it out
 
-Create a pull request with a failing test to see Nova in action:
+Create a pull request with a failing test to see AlwaysGreen in action:
 
 1. **Create a branch:** `git checkout -b test-nova-fix`
 2. **Break a test:** Edit a test file to make it fail
 3. **Push and open PR:** `git push origin test-nova-fix`
 4. **Watch the magic:**
    - Your CI will fail ❌
-   - Nova will automatically trigger 🤖
-   - Nova will analyze, fix, and open a new PR with the solution ✅
+   - AlwaysGreen will automatically trigger 🤖
+   - AlwaysGreen will analyze, fix, and open a new PR with the solution ✅
 
-## Step 6: See Nova's results
+## Step 6: See AlwaysGreen's results
 
-After Nova runs, you'll see:
+After AlwaysGreen runs, you'll see:
 
 ### ✅ GitHub Check
 
-Nova posts a status check showing what it did:
+AlwaysGreen posts a status check showing what it did:
 
-![Nova Check Status](https://via.placeholder.com/500x100/28a745/ffffff?text=✓+Nova+CI-Rescue+triggered+auto-fix)
+![AlwaysGreen Check Status](https://via.placeholder.com/500x100/28a745/ffffff?text=✓+AlwaysGreen+CI-Rescue+triggered+auto-fix)
 
 ### 💬 PR Comment
 
-Nova leaves a comment explaining the failure and linking to the fix:
+AlwaysGreen leaves a comment explaining the failure and linking to the fix:
 
 > 🤖 **AlwaysGreen detected failing tests and triggered an auto-fix.**
 >
@@ -153,7 +153,7 @@ Nova leaves a comment explaining the failure and linking to the fix:
 
 ### 🔧 Fix Pull Request
 
-Nova opens a new PR with:
+AlwaysGreen opens a new PR with:
 
 - **Focused fixes** for the failing tests
 - **Detailed explanation** of what was changed and why
@@ -166,7 +166,7 @@ Nova opens a new PR with:
 
 ## What's Next?
 
-- **Review Nova's fixes** before merging - always verify the changes make sense
+- **Review AlwaysGreen's fixes** before merging - always verify the changes make sense
 - **Customize behavior** with [configuration options](CONFIGURATION.md)
 - **Get help** if something doesn't work - see [Troubleshooting](TROUBLESHOOTING.md)
 
@@ -174,16 +174,16 @@ Nova opens a new PR with:
 
 ## Quick Test (Local)
 
-Want to try Nova locally first? Run this one-liner:
+Want to try AlwaysGreen locally first? Run this one-liner:
 
 ```bash
 pip install alwaysgreen && \
-export OPENAI_API_KEY=sk-your-key && \
+export OPENAI_API_KEY=your-key-here && \
 git clone https://github.com/novasolve/ci-auto-rescue.git && \
 nova fix ci-auto-rescue/examples/demos/demo_broken_project
 ```
 
-This will show you Nova fixing a deliberately broken calculator project.
+This will show you AlwaysGreen fixing a deliberately broken calculator project.
 
 ---
 

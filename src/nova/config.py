@@ -34,7 +34,7 @@ def load_yaml_config(config_path: Path) -> Dict[str, Any]:
 
 
 class AlwaysGreenSettings(BaseModel):
-    """Runtime configuration for Nova CI‑Rescue.
+    """Runtime configuration for AlwaysGreen.
 
     Uses python-dotenv to load a local .env (if present), and reads values from
     environment variables. We avoid depending on pydantic-settings to keep

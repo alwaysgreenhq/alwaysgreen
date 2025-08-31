@@ -1,11 +1,11 @@
 
-# Nova CI-Rescue Installation Validation
+# AlwaysGreen CI-Rescue Installation Validation
 
 ## New Features Added
 
 ### 1. Installation Validation Endpoint
 - **URL**: `/health/installation`
-- **Purpose**: Comprehensive validation of Nova CI-Rescue installation
+- **Purpose**: Comprehensive validation of AlwaysGreen CI-Rescue installation
 - **Validates**:
   - GitHub App authentication
   - Installation permissions (contents, pull_requests, issues)
@@ -67,5 +67,5 @@ curl http://localhost:3000/health/installation
    - Event processing validation
    - Application logging check
 
-This provides a comprehensive one-click validation path for ensuring Nova CI-Rescue is properly installed and fully operational!
+This provides a comprehensive one-click validation path for ensuring AlwaysGreen CI-Rescue is properly installed and fully operational!
 
