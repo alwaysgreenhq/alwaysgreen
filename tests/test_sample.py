@@ -1,5 +1,5 @@
 """
-Sample tests with intentional failures for demonstrating Nova CI-Rescue.
+Sample tests with intentional failures for demonstrating AlwaysGreen.
 """
 
 

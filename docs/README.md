@@ -1,4 +1,4 @@
-# Nova CI-Rescue Documentation
+# AlwaysGreen Documentation
 
 This folder contains all documentation for the CI-Rescue v1.0 Happy Path project.
 

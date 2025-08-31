@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, Optional
 
-from ..config import NovaSettings
+from ..config import AlwaysGreenSettings
 
 
 def _utc_now_iso() -> str:
@@ -46,7 +46,7 @@ def redact_secrets(payload: Any, secrets: Iterable[Optional[str]]) -> Any:
 
 
 class JSONLLogger:
-    def __init__(self, settings: NovaSettings, enabled: bool = True) -> None:
+    def __init__(self, settings: AlwaysGreenSettings, enabled: bool = True) -> None:
         self.settings = settings
         self.enabled = enabled
         self._run_id: Optional[str] = None

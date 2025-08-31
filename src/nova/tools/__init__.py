@@ -1,1 +1,1 @@
-"""Nova CI-Rescue tools package."""
+"""AlwaysGreen tools package."""

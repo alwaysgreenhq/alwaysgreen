@@ -1,5 +1,5 @@
 """
-Unified LLM client for Nova CI-Rescue supporting OpenAI, Grok, and Anthropic.
+Unified LLM client for AlwaysGreen supporting OpenAI, Grok, and Anthropic.
 """
 
 import json
@@ -31,8 +31,8 @@ class LLMClient:
         self.settings = get_settings()
         self.client = None
         self.provider = None
-        # Verbose controlled via env NOVA_VERBOSE=true set by CLI --verbose
-        self._verbose = os.environ.get("NOVA_VERBOSE", "").lower() in {
+        # Verbose controlled via env ALWAYSGREEN_VERBOSE=true set by CLI --verbose
+        self._verbose = os.environ.get("ALWAYSGREEN_VERBOSE", "").lower() in {
             "1",
             "true",
             "yes",

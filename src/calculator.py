@@ -1,4 +1,4 @@
-"""A simple calculator module for demonstrating Nova CI-Rescue."""
+"""A simple calculator module for demonstrating AlwaysGreen."""
 
 import math
 from typing import Iterable

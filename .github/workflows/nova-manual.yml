@@ -1,4 +1,4 @@
-name: Nova CI-Rescue Manual
+name: AlwaysGreen Manual
 
 on:
   workflow_dispatch:

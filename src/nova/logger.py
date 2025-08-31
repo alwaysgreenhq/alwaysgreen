@@ -1,5 +1,5 @@
 """
-Structured logging for Nova CI-Rescue
+Structured logging for AlwaysGreen
 
 Provides hierarchical, context-aware logging with multiple verbosity levels.
 """
@@ -22,8 +22,8 @@ class LogLevel(IntEnum):
     TRACE = 3  # --trace - show everything including raw data
 
 
-class NovaLogger:
-    """Structured logger for Nova CI-Rescue"""
+class AlwaysGreenLogger:
+    """Structured logger for AlwaysGreen"""
 
     def __init__(
         self, console: Optional[Console] = None, level: LogLevel = LogLevel.NORMAL
@@ -212,19 +212,19 @@ class NovaLogger:
 
 
 # Global logger instance
-_logger: Optional[NovaLogger] = None
+_logger: Optional[AlwaysGreenLogger] = None
 
 
-def get_logger() -> NovaLogger:
+def get_logger() -> AlwaysGreenLogger:
     """Get the global logger instance"""
     global _logger
     if _logger is None:
         # Default to normal unless overridden
-        _logger = NovaLogger(level=LogLevel.NORMAL)
+        _logger = AlwaysGreenLogger(level=LogLevel.NORMAL)
     return _logger
 
 
-def set_logger(logger: NovaLogger):
+def set_logger(logger: AlwaysGreenLogger):
     """Set the global logger instance"""
     global _logger
     _logger = logger
@@ -235,7 +235,7 @@ def create_logger(
     debug: bool = False,
     trace: bool = False,
     components: Optional[List[str]] = None,
-) -> NovaLogger:
+) -> AlwaysGreenLogger:
     """Create a logger with the specified verbosity level"""
     if trace:
         level = LogLevel.TRACE
@@ -246,7 +246,7 @@ def create_logger(
     else:
         level = LogLevel.NORMAL
 
-    logger = NovaLogger(level=level)
+    logger = AlwaysGreenLogger(level=level)
     if components:
         logger.set_components_filter(components)
     return logger

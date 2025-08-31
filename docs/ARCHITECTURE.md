@@ -1,4 +1,4 @@
-# Nova CI-Rescue — Architecture Diagram
+# AlwaysGreen — Architecture Diagram
 
 ```mermaid
 flowchart TD

@@ -1,4 +1,4 @@
-# Nova CI-Rescue — Demo Script
+# AlwaysGreen — Demo Script
 
 ## Pre-Demo Setup
 
