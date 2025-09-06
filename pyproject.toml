@@ -27,13 +27,6 @@ classifiers = [
     "Topic :: Software Development :: Quality Assurance",
 ]
 
-[project.urls]
-Homepage = "https://github.com/alwaysgreen-ci/alwaysgreen"
-Repository = "https://github.com/alwaysgreen-ci/alwaysgreen"
-Issues = "https://github.com/alwaysgreen-ci/alwaysgreen/issues"
-Documentation = "https://github.com/alwaysgreen-ci/alwaysgreen/tree/main/docs"
-
-[project]
 dependencies = [
     "pydantic>=2.0.0",
     "python-dotenv>=1.0.0",
@@ -43,6 +36,13 @@ dependencies = [
     "GitPython>=3.1.0",
     "PyYAML>=6.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/alwaysgreen-ci/alwaysgreen"
+Repository = "https://github.com/alwaysgreen-ci/alwaysgreen"
+Issues = "https://github.com/alwaysgreen-ci/alwaysgreen/issues"
+Documentation = "https://github.com/alwaysgreen-ci/alwaysgreen/tree/main/docs"
+
 
 [project.optional-dependencies]
 dev = [
